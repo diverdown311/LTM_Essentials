@@ -1,58 +1,50 @@
-Lab 1: Configure Virtual Servers and Pools
+Lab 1: Explore the F5 BIG-IP network configuration
 ------------------------------------------
 
-In this lab you will explore the BIG-IP configuration utility, create
-your first web application, and configure different types of virtual
-servers and load balancing methods.
+In this lab you will explore network settings on the BIG-IP.  You will also 
+configure a default route, internal and external vlans, and finally you will configure Self-IP 
+Addresses and map them to individual VLAN's.
 
-Task 1 – Connect to Ravello and Examine the BIG-IP Configuration Utility
+Task 1 – Connect to the F5 BIG-IP via the GUI (TMUI) and Examine the BIG-IP Configuration Utility
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#. Use a browser to access **http://IP\_address** with the IP address
-   supplied by your instructor, and log in using the username and
-   password supplied by your instructor.
+#. Within the lab environment using a web browser, click on the access down arrow object for the bigip01.f5demo.com via the UDF Course Portal.
+Then click on **TMUI**.  This will open a new tab in the browser.    Log into the bigip01 object with the below credentials.
 
-#. For **ADC Implementations with LTM** click **View**.
+admin
+admin.F5demo.com
 
-#. Copy the IP address of the **Windows 7 External** VM, and then use
-   RDP to access the IP address.
+#. While logged into the bigip01 gui click on the Network menu object, then click on the Interfaces object.   Note that there are two interfaces labeled 1.1 and 1.2
 
-#. Log into the Windows workstation as **external\_user** /
-   **password**.
+#. Network interface 1.1 is assigned to the external network while interface 1.2 is assigned to the internal network
 
-#. Open Chrome and click the **BIGIP\_A** bookmark.
+#. Click on the **Create** button at the top right and enter the name **external**.  Select interface 1.1, click the Tagging drop down menu and ensure the interface
+   is set to **Untagged** then click on the **Add** button.
 
-#. Log into the BIG-IP system as **admin** / **admin**.
+#. Follow the same process for creating a network interface named **internal** while ensuring interface 1.2 is selected as **Untagged**.
 
-#. From the left menu select **Local Traffic**.
+#. Now we will configure two Self-IP Addresses.
 
-   The **Local Traffic** menu is where most ADC functions are performed.
+#. From within the **Network** menu click on Self IPs object and click **Create**.
 
-#. From the left menu select **Network**.
+#. Click **Create** .
 
    The **Network** menu is where you configure elements for routing and
    switching.
 
-#. From the left menu select **System**.
+#. Name the first Self IP object **external_selfip**.
 
-   The **System** menu is where you configure DNS and NTP settings, manage
-   licensing, perform software updates, and import SSL certificates.
+#. Assign the 10.1.10.245 IP Address, with a Netmask of 255.255.255.0
 
-#. Open the **Network > VLANs > VLAN List** page.
+#. Ensure the VLAN/Tunnel is set to **External**, while the Port Lockdown should be configured for **Allow None**.
 
-   |image1|
+#. Follow the same process for the **Internal** interface with the following IP Address and Netmask.
 
-   Two VLANs were already created, an **external** VLAN for outside access,
-   and an **internal** VLAN for access to the internal network.
+   10.1.20.245/255.255.255.0
 
-#. Open the **Network > Self IPs > Self IP List** page.
+#. Click Finished after configuring each of the Self IP Addresses
 
-   This BIG-IP system is configured with four self IP addresses. Each VLAN
-   has a standard self IP address (ending in **.241**) and a floating self
-   IP address (ending in **.240**). We’ll use the floating self IP
-   addresses during the high availability exercise.
-
-#. Open the **Network > Routes** page.
+#.
 
    This BIG-IP system is configured with a default gateway route for
    outbound internet access (on **10.1.10.1**).
