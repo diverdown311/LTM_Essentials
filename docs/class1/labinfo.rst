@@ -5,29 +5,23 @@ In the interest of focusing as much time as possible configuring your
 application delivery controller, we have provided some resources and
 basic setup ahead of time. These are:
 
--  Cloud-based lab environment complete with a Windows workstation, a
-   virtual BIG-IP (VE), a virtual BIG-IQ acting as a logging node, a
-   virtual BIG-IQ acting as a management node, and a back-end banking
-   application running on a Linux web server.
+-  Cloud-based lab environment complete with a Windows 10 Jumphost, a
+   virtual BIG-IP (VE), and an Ubuntu Server running a LAMP Stack.
 
 -  The virtual BIG-IP has been pre-licensed
 
-If you wish to replicate these labs in your office you will need to
-perform these steps accordingly. Additional lab resources are provided
-as illustrated in the diagram on the next page.
-
-To access the lab environment, you will require a web browser and
+To access the lab environment, you will need a web browser and
 Remote Desktop Protocol (RDP) client software. The web browser will be
 used to access the lab training portal. The RDP client will be used to
-connect to a Windows workstation, where you will be able to access the
-BIG-IP and BIG-IQ management interfaces (HTTPS, SSH).
+connect to a Windows 10 Jumphost where you will access the virtual BIG-IP (VE)
+via the Google Chrome browser and perform testing of configuration resources 
+configured throughout each lab.
 
 You class instructor will provide additional lab access details.
 
 Lab Diagram
 ^^^^^^^^^^^
 
-|image0|
 
 Timing for Labs
 ^^^^^^^^^^^^^^^
