@@ -5,11 +5,10 @@ In this lab you will explore network settings on the BIG-IP.  You will also
 configure a default route, internal and external vlans, and finally you will configure Self-IP 
 Addresses and map them to individual VLAN's.
 
-Task 1 – Connect to the F5 BIG-IP via the GUI (TMUI) and Examine the BIG-IP Configuration Utility
+Task 1 – Connect to the Win10 Jumphost via RDP and log into the BIG-IP01 (https://10.1.1.4) Configuration Utility
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#. Within the lab environment using a web browser, click on the access down arrow object for the bigip01.f5demo.com via the UDF Course Portal.
-Then click on **TMUI**.  This will open a new tab in the browser.    Log into the bigip01 object with the below credentials.
+#. From the Win10 Jumphost using a web browser, log into the BIG-IP01 system with the below credentials.
 
 admin
 admin.F5demo.com
@@ -18,8 +17,7 @@ admin.F5demo.com
 
 #. Network interface 1.1 is assigned to the external network while interface 1.2 is assigned to the internal network
 
-#. Click on the **Create** button at the top right and enter the name **external**.  Select interface 1.1, click the Tagging drop down menu and ensure the interface
-   is set to **Untagged** then click on the **Add** button.
+#. Click on the VLANs object then click on the **Create** button at the top right and enter the name **external**.  Select interface 1.1, click the Tagging drop down menu and ensure the interface is set to **Untagged** then click on the **Add** button.
 
 #. Follow the same process for creating a network interface named **internal** while ensuring interface 1.2 is selected as **Untagged**.
 
@@ -44,17 +42,24 @@ admin.F5demo.com
 
 #. Click Finished after configuring each of the Self IP Addresses
 
-#.
+#. The next task is to configure a Network Default Route.
 
-   This BIG-IP system is configured with a default gateway route for
-   outbound internet access (on **10.1.10.1**).
+#. Under the Network menu click on the Routes object and click the Add button.
 
-Task 2 – Create a Basic Web Application
+#. Name the Network Default Route object **default_route**
+
+#. The Destination and Netmask should be 0.0.0.0/0 and 0.0.0.0/0
+
+#. Ensure Use Gateway is selected and Gateway Address is set to IP Address.
+
+#. Enter the address 10.1.10.1 and click Finished
+
+Task 2 – Create a Pool BIG-IP object
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Examine the lab diagram on page 2. We’ll be creating a web application
-for an application that is stored on three web servers (at **10.1.20.11
-– 10.1.20.13**).
+We will be configuring a Pool with one member object.  A pool is a group of pool members.   With few exceptions, all the members of a given pool
+host the same content.   Pools are named, and like most objects on BIG-IP systems, their names can begin with a letter or underscore as well as numbers but
+should not contain spaces.  Pools also have thier own load balancing method, monitors, and other features defined when a pool is created or modified.
 
 #. Open the **Local Traffic > Pools > Pool List** page and click
    **Create**.
@@ -67,20 +72,13 @@ for an application that is stored on three web servers (at **10.1.20.11
    +---------------+------------------------------------+
    | Form field    | Value                              |
    +===============+====================================+
-   | Name          | http\_pool                         |
+   | Name          | LAMP                         |
    +---------------+------------------------------------+
    | New Members   | Node Name: node1                   |
-   |               | Address: 10.1.20.11                |
+   |               | Address: 10.1.20.252             |
    |               | Service Port: 80 (Click **Add**)   |
    +---------------+------------------------------------+
-   |               | Node Name: node 2                  |
-   |               | Address 10.1.20.12                 |
-   |               | Service Port: 80 (Click **Add**)   |
-   +---------------+------------------------------------+
-   |               | Node Name: node 3                  |
-   |               | Address: 10.1.20.13                |
-   |               | Service Port: 80 (Click **Add**)   |
-   +---------------+------------------------------------+
+   
 
 #. Click **Finished**.
 
@@ -93,29 +91,28 @@ for an application that is stored on three web servers (at **10.1.20.11
    +-----------------------------+-----------------+
    | Form field                  | Value           |
    +=============================+=================+
-   | Name                        | http\_virtual   |
+   | Name                        | LAMP   |
    +-----------------------------+-----------------+
-   | Destination Address/ Mask   | 10.1.10.20      |
+   | Destination Address/ Mask   | 10.1.10.200      |
    +-----------------------------+-----------------+
    | Service Port                | 80              |
    +-----------------------------+-----------------+
-   | Resources > Default Pool    | http\_pool      |
+   | Resources > Default Pool    | LAMP      |
    +-----------------------------+-----------------+
 
-#. Use a new tab to access **http://10.1.10.20**.
+#. Use a new tab to access **http://10.1.10.200**.
 
 #. Use **Ctrl + F5** to reload the page several times.
 
-   You can see that page elements are coming from all three web servers.
-   That’s all it takes to create a basic web application on the BIG-IP
-   system.
+   If the LAMP Pool contain multiple members you would see that page elements are displayed from all members.
+   That’s all it takes to create a basic web application on the BIG-IP system.
 
 #. Close the tab.
 
 #. In the Configuration Utility, open the **Local Traffic > Pools >
    Statistics** page.
 
-#. Expand the **http\_pool** by clicking on the **+** icon.
+#. Expand the **LAMP** by clicking on the **+** icon.
 
    |image3|
 
@@ -123,15 +120,20 @@ for an application that is stored on three web servers (at **10.1.20.11
    to the pool members. Notice that the requests are evenly distributed
    across all three web servers.
 
-#. Select the **http\_pool** checkbox, and then click **Reset**.
+#. Select the **LAMP** checkbox, and then click **Reset**.
 
    |image4|
 
 Task 3 – Create a Forwarding Virtual Server
+An IP forwarding virtual server accepts traffic that matches the virtual server address and forwards it to the destination IP address
+that is specified in the request rather than load balancing the traffic to a pool. Address translation is disabled when you create an
+IP forwarding virtual server, leaving the destination address in the packet unchanged. When creating an IP forwarding virtual server,
+as with all virtual servers, you can create either a host IP forwarding virtual server, which forwards traffic for a single host address,
+or a network IP forwarding virtual server, which forwards traffic for a subnet.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. Use a new tab to attempt direct access to an internal web server at
-   **http://10.1.20.41**.
+   **http://10.1.20.252**.
 
    Currently you are unable to access resources on the internal network
    from the external Windows workstation.
@@ -142,12 +144,12 @@ Task 3 – Create a Forwarding Virtual Server
 
 #. At the command prompt, type (or copy and paste):
 
-   ``route add 10.1.20.0 mask 255.255.255.0 10.1.10.241``
+   ``route add 10.1.20.0 mask 255.255.255.0 10.1.10.245``
 
    This adds a route to the **10.1.20.0** network through the external self
-   IP address (**10.1.10.241**) of the BIG-IP system.
+   IP address (**10.1.10.245**) of the BIG-IP system.
 
-#. Reload the page directed at **http://10.1.20.41**.
+#. Reload the page directed at **http://10.1.20.252**.
 
    The request fails again, as the BIG-IP system does not have a listener
    to forward this request to the internal network.
@@ -175,7 +177,7 @@ Task 3 – Create a Forwarding Virtual Server
    This virtual server provides access to the **10.1.20.0/24** network on
    all ports and all protocols.
 
-#. Reload the page directed at **http://10.1.20.41**.
+#. Reload the page directed at **http://10.1.20.252**.
 
    The request is successful. The BIG-IP system doesn’t act as a full
    proxy, it simply forwards requests to the internal network.
