@@ -7,14 +7,14 @@ of the F5 Local Traffic Manager (LTM) module. This guide is
 intended to complement lecture material provided during the lab.
 The first section introduces students to the following BIG-IP concepts:
 
-Pools
-Members
-Nodes
-Virtual Servers
-SNAT's
-SSL Offload
-Monitors
-High-Availability
+-  Pools
+-  Members
+-  Nodes
+-  Virtual Servers
+-  SNAT's
+-  SSL Offload
+-  Monitors
+-  High-Availability
 
 The lab environment consists of the following components:
 
