@@ -1,12 +1,32 @@
 Class 1: Introduction to the F5 LTM Fundamentals Lab
 ========================================================
 
-Welcome to the F5 BIG-IP LTM Fundamentals lab session.
+Welcome to the F5 BIG-IP LTM Essentials lab session.
 This labs is intended to guide you through the basic components
 of the F5 Local Traffic Manager (LTM) module. This guide is
 intended to complement lecture material provided during the lab.
-Deployments with BIG-IP LTM as well as a reference guide that can be
-referred to after the class.
+The first section introduces students to the following BIG-IP concepts:
+
+Pools
+Members
+Nodes
+Virtual Servers
+SNAT's
+SSL Offload
+Monitors
+High-Availability
+
+The lab environment consists of the following components:
+
+bigip01.f5demo.com   Management IP Address:  10.1.1.4
+bigip02.f5demo.com   Management IP Address:  10.1.1.6
+LAMP Host            Internal IP Address:    10.1.20.252
+Win10 Jumphost       IP Address:             10.1.10.198
+
+It is recommended that all lab work be completed via the Win10 Jumphost; however, it is entirely possible to access each of the BIG-IP systems via
+TMUI interface and perform configuration work on each of the BIG-IP appliances.    
+
+
 
 .. toctree::
    :maxdepth: 1
