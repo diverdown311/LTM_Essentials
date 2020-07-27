@@ -1,4 +1,4 @@
-Class 1: Introduction to the F5 LTM Fundamentals Lab
+Class 1: Introduction to the F5 LTM Essentials Lab
 ========================================================
 
 Welcome to the F5 BIG-IP LTM Essentials lab session.
