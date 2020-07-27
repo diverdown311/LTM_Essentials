@@ -18,10 +18,10 @@ High-Availability
 
 The lab environment consists of the following components:
 
-bigip01.f5demo.com   Management IP Address:  10.1.1.4
-bigip02.f5demo.com   Management IP Address:  10.1.1.6
-LAMP Host            Internal IP Address:    10.1.20.252
-Win10 Jumphost       IP Address:             10.1.10.198
+#. bigip01.f5demo.com   Management IP Address:  10.1.1.4
+#. bigip02.f5demo.com   Management IP Address:  10.1.1.6
+#. LAMP Host            Internal IP Address:    10.1.20.252
+#. Win10 Jumphost       IP Address:             10.1.10.198
 
 It is recommended that all lab work be completed via the Win10 Jumphost; however, it is entirely possible to access each of the BIG-IP systems via
 TMUI interface and perform configuration work on each of the BIG-IP appliances.    
