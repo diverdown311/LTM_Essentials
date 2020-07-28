@@ -10,8 +10,9 @@ Task 1 – Connect to the Win10 Jumphost via RDP and log into the BIG-IP01 (http
 
 #. From the Win10 Jumphost using a web browser, log into the BIG-IP01 system with the below credentials.
 
-admin
-admin.F5demo.com
+-  admin
+
+-  admin.F5demo.com
 
 #. While logged into the bigip01 gui click on the Network menu object, then click on the Interfaces object.   Note that there are two interfaces labeled 1.1 and 1.2
 
@@ -60,6 +61,8 @@ Task 2 – Create a Pool BIG-IP object
 We will be configuring a Pool with one member object.  A pool is a group of pool members.   With few exceptions, all the members of a given pool
 host the same content.   Pools are named, and like most objects on BIG-IP systems, their names can begin with a letter or underscore as well as numbers but
 should not contain spaces.  Pools also have thier own load balancing method, monitors, and other features defined when a pool is created or modified.
+When a new connection is initiated to a virtual server that is mapped to a pool, various criteria, including the pool's load balancing method may be used
+to determine which member to use for that request.
 
 #. Open the **Local Traffic > Pools > Pool List** page and click
    **Create**.
@@ -125,6 +128,7 @@ should not contain spaces.  Pools also have thier own load balancing method, mon
    |image4|
 
 Task 3 – Create a Forwarding Virtual Server
+
 An IP forwarding virtual server accepts traffic that matches the virtual server address and forwards it to the destination IP address
 that is specified in the request rather than load balancing the traffic to a pool. Address translation is disabled when you create an
 IP forwarding virtual server, leaving the destination address in the packet unchanged. When creating an IP forwarding virtual server,
@@ -167,12 +171,15 @@ or a network IP forwarding virtual server, which forwards traffic for a subnet.
    +-----------------------------+--------------------+
    | Type                        | Forwarding (IP)    |
    +-----------------------------+--------------------+
+   | Source Address/ Mask        | 0.0.0.0/0          |
    | Destination Address/ Mask   | 10.1.20.0/24       |
    +-----------------------------+--------------------+
    | Service Port                | \* All Ports       |
    +-----------------------------+--------------------+
    | Protocol                    | \* All Protocols   |
    +-----------------------------+--------------------+
+   | Source Address Translation  | Auto Map           |
+   +--------------------------------------------------+
 
    This virtual server provides access to the **10.1.20.0/24** network on
    all ports and all protocols.
@@ -182,23 +189,11 @@ or a network IP forwarding virtual server, which forwards traffic for a subnet.
    The request is successful. The BIG-IP system doesn’t act as a full
    proxy, it simply forwards requests to the internal network.
 
-#. Edit the URL to **https://10.1.20.32**.
-
-#. Go to **Start > Remote Desktop Connection**.
-
-#. Click **Show Options**, then select the **Display** tab, then
-   change the
-   **Display configuration** to **1024 by 768**.
-
-#. Open the **General** tab and connect to **10.1.20.251** and log in
-   as **administrator** / **password**.
-
-#. On the Windows Server image go to **Start > Log off**.
-
 You now have access to all ports and all protocols on the **10.1.20.0**
 network.
 
 Task 4 – Create a Reject Virtual Server
+A Reject virtual server rejects any traffic destined for the virtual server IP address.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. In the Configuration Utility, on the **Virtual Server List** page
@@ -210,27 +205,24 @@ Task 4 – Create a Reject Virtual Server
    +-----------------------------+-----------------------+
    | Form field                  | Value                 |
    +=============================+=======================+
-   | Name                        | reject\_win\_server   |
+   | Name                        | reject\_server   |
    +-----------------------------+-----------------------+
    | Type                        | Reject                |
    +-----------------------------+-----------------------+
-   | Destination Address/ Mask   | 10.1.20.251           |
+   | Source Address/ Mask        | 0.0.0.0/0             |
+   | Destination Address/ Mask   | 10.1.20.252           |
    +-----------------------------+-----------------------+
    | Service Port                | \* All Ports          |
    +-----------------------------+-----------------------+
    | Protocol                    | \* All Protocols      |
    +-----------------------------+-----------------------+
 
-#. On the Lorax Intranet tab click **Corporate Tools**, and then close
-   the tab.
+#. Reload the page directed at **http://10.1.20.252**.
 
-#. Go to **Start > Remote Desktop Connection** and connect to
-   **10.1.20.251**.
+#. Although you still have access to the **10.1.20.0** network, you no
+   longer have access to **10.1.20.252** (LAMP Server).
 
-   Although you still have access to the **10.1.20.0** network, you no
-   longer have access to **10.1.20.251** (the Windows Server).
-
-#. Close the **Remote Desktop Connection** window.
+#. Close the **Browser Tab**.
 
 #. In the command prompt type the following, and then close the command
    prompt.
@@ -245,7 +237,7 @@ Task 5 – Use Different Pool Options
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. Open the **Local Traffic > Pools > Pool List** page and click
-   **http\_pool**, and then open the **Members** page.
+   **LAMP pool**, and then open the **Members** page.
 
    |image5|
 
@@ -257,26 +249,16 @@ Task 5 – Use Different Pool Options
 
 #. Examine the **Current Members** section.
 
-   Currently all three pool members have the same ratio value (**1**).
+   Currently the LAMP pool member has a ratio of (**1**).
 
-#. Click **node1:80**, then change the ratio value to **10**, and then
-   click **Update**.
+#. If there are multiple pool members by selecting **Ratio (member)** it
+   is possible to assign ratio values to each member of the pool.  The effect
+   this would have is that requests would be distributed to members of a pool
+   based on the ratio value assigned.   For example, if there were three pool
+   members a ratio value of **10 - 5 - 1** could be assigned to each pool member
+   respectivey.   
 
-#. At the top of the page click **Members**, then click **node2:80**,
-   then change the ratio value to **5**, and then click **Update**
-
-#. Click **Members** again and examine the **Current Members** section.
-
-#. Use an incognito window to access **http://10.1.10.20**, then type
-   **Ctrl + F5** at least 10 times to reload the page, and the close the
-   page.
-
-   |image6|
-
-#. In the Configuration Utility, at the top of the page click
-   **Statistics**.
-
-Requests are now being distributed to the three pool members in a 
+#. In this scenario, requests would be distributed to the three pool members in a 
 **10 – 5 – 1** ratio.
 
 .. |image1| image:: /_static/class1/image3.png
