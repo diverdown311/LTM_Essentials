@@ -58,7 +58,7 @@ Task 1 – Connect to the Win10 Jumphost via RDP and log into the BIG-IP01 (http
 Task 2 – Create a Pool BIG-IP object
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-We will be configuring a Pool with one member object.  A pool is a group of pool members.   With few exceptions, all the members of a given pool
+We will be configuring a Pool with two member objects.  A pool is a group of pool members.   With few exceptions, all the members of a given pool
 host the same content.   Pools are named, and like most objects on BIG-IP systems, their names can begin with a letter or underscore as well as numbers but
 should not contain spaces.  Pools also have thier own load balancing method, monitors, and other features defined when a pool is created or modified.
 When a new connection is initiated to a virtual server that is mapped to a pool, various criteria, including the pool's load balancing method may be used
@@ -75,14 +75,20 @@ to determine which member to use for that request.
    +---------------+------------------------------------+
    | Form field    | Value                              |
    +===============+====================================+
-   | Name          | LAMP                         |
+   | Name          | LAMP1                              |
    +---------------+------------------------------------+
    | New Members   | Node Name: node1                   |
-   |               | Address: 10.1.20.252             |
+   |               | Address: 10.1.20.252               |
+   |               | Service Port: 80 (Click **Add**)   |
+   +---------------+------------------------------------+
+   | Name          | LAMP2                              |
+   +---------------+------------------------------------+
+   | New Members   | Node Name: node1                   |
+   |               | Address: 10.1.20.250               |
    |               | Service Port: 80 (Click **Add**)   |
    +---------------+------------------------------------+
    
-
+   
 #. Click **Finished**.
 
 #. Open the **Local Traffic > Virtual Servers > Virtual Server List**
@@ -107,7 +113,7 @@ to determine which member to use for that request.
 
 #. Use **Ctrl + F5** to reload the page several times.
 
-   If the LAMP Pool contain multiple members you would see that page elements are displayed from all members.
+   You should notice the LAMP Pool displaying the respective page elements from both members.
    That’s all it takes to create a basic web application on the BIG-IP system.
 
 #. Close the tab.
