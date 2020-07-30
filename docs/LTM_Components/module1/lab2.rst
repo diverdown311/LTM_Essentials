@@ -6,7 +6,13 @@ requests as well as outbound requests from internal users. You’ll also
 use an HTTP and stream profile to make global modifications to text
 within a web site. Finally you’ll see how using health monitors ensures
 that you the BIG-IP knows which web servers are available for client
-requests.
+requests.  SNAT's provide a mapping between nodes, often internal devices
+and a SNAT address.   SNATs can be configured many different ways including
+one-to-one mappings, many-to-one mappings, or all to one mappings.  In all cases
+a SNAT must be enabled on the VLAN where the node's traffic arrives on the BIG-IP system.
+In this lab we will focus on the SNAT Automap feature which automatically maps the source
+address of an allowed host to an address from a defined group.   Often times this is a Self-IP
+address on the BIG-IP.
 
 Task 1 – Use SNAT AutoMap
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -14,43 +20,26 @@ Task 1 – Use SNAT AutoMap
 #. In the Configuration Utility, open the **Pool List** page and click
    **Create**.
 
-#. Use the following information for the new pool, and then click
-   **Finished**.
+#. For this lab we will use the existing **LAMP** pool which contains the below members.
 
    +---------------+------------------------------------+
    | Form field    | Value                              |
    +===============+====================================+
-   | Name          | lorax\_pool                        |
+   | Name          | LAMP                               |
    +---------------+------------------------------------+
-   | New Members   | Address: 10.1.20.41                |
-   |               | Service Port: 80 (Click **Add**)   |
+   | New Members   | Address: 10.1.20.252               |
+   |               | Service Port: 80                   |
    +---------------+------------------------------------+
-   |               | Address 10.1.20.42                 |
-   |               | Service Port: 80 (Click **Add**)   |
+   |               | Address 10.1.20.250                |
+   |               | Service Port: 80                   |
    +---------------+------------------------------------+
-   |               | Address: 10.1.20.43                |
-   |               | Service Port: 80 (Click **Add**)   |
-   +---------------+------------------------------------+
+  
 
-#. Open the **Virtual Server List** page and click **Create**.
+#. Open the **Virtual Server List** page and click on the **LAMP** virtual server
 
-#. Use the following information for the new virtual server, and then
-   click **Finished**.
 
-   +-----------------------------+------------------+
-   | Form field                  | Value            |
-   +=============================+==================+
-   | Name                        | lorax\_virtual   |
-   +-----------------------------+------------------+
-   | Destination Address/ Mask   | 10.1.10.25       |
-   +-----------------------------+------------------+
-   | Service Port                | 80               |
-   +-----------------------------+------------------+
-   | Resources > Default Pool    | lorax\_pool      |
-   +-----------------------------+------------------+
-
-#. From the desktop open putty, and then connect to **BIGIP\_A** and log
-   in as **root** / **default**.
+#. From the Windows Jump Host open putty, and then connect to **BIGIP01 10.1.1.4** and log
+   in as **root** / **admin.F5demo.com**.
 
    |image7|
 
@@ -58,74 +47,44 @@ Task 1 – Use SNAT AutoMap
 
    ``tcpdump -i external port 80``
 
-#. Open a second putty session and connect to **BIGIP\_A**.
+#. Open a second putty session and connect to **BIGIP02 10.1.1.6**.
 
 #. At the CLI type (or copy and paste):
 
    ``tcpdump -i internal port 80``
 
-#. Use a new tab to access **http://10.1.10.25**, and then close the
+#. Use a new tab to access **http://10.1.10.200**, and then close the
    tab.
 
    The page displays as expected.
 
-#. Examine the **tcpdump** windows.
+#. Examine the **tcpdump** in windows.
 
    On the external VLAN the communication is between the client IP
-   address (**10.1.10.199**) and the virtual server (**10.1.10.25**).
+   address (**10.1.10.190**) and the virtual server (**10.1.10.200**).
 
    On the internal VLAN the communication is between the client IP
-   address (**10.1.10.199**) and a back-end web server (**10.1.20.x**).
+   address (**10.1.10.190**) and a back-end web server (**10.1.20.x**).
 
 #. In both **tcpdump** sessions press the **Enter** key several times to
    move the log entries to the top of the window.
 
-#. In the Ravello window, open the Windows Server console and log in as
-   **f5demo\\administrator** / **password**.
-
-#. In the Windows Server image, go to **Start > Control Panel**, then
-   go to **Network and Internet > Network and Sharing Center**, and then
-   click **Change adapter settings**.
-
-#. Right-click on **Local Area Connection 3** and select **Properties**.
-
-#. Select **Internet Protocol Version 4 (TCP/IPv4)** and select
-   **Properties**.
-
-   Currently the Windows Server’s default gateway is configured for the
-   BIG-IP’s internal self IP address (**10.1.20.241**). The network
-   administrator has chosen to modify the default gateway to an external
-   router.
-
-#. Edit the **Default gateway** to **10.1.20.254**, then click **OK**
-   and **Close**.
-
-#. On the Windows desktop, use an incognito window to access
-   **http://10.1.10.25**.
-
-   The page fails to load because the web server is now sending its
-   responses to the external router, not the BIG-IP system.
-
-#. Close the page, and then examine the **tcpdump** window.
-
-   On the external VLAN the communication is still between the client IP
-   address (**10.1.10.199**) and the virtual server (**10.1.10.25**).
-  
-   On the internal VLAN the requests are from the client IP address to a
+#. On the internal VLAN the requests are from the client IP address to a
    back-end web server, however there are no responses from the web
    server.
 
 #. Press the **Enter** key several times to move the log entries to the
    top of the window.
 
-#. In the Configuration Utility, click **lorax\_virtual**.
+#. In the Configuration Utility, click **LAMP**.
 
-#. From the **Source Address Translation** list select **Auto Map**, and
-   then click **Update**.
+#. From the **Source Address Translation** list select **Auto Map** which has already
+   been configured when the virtual was created.  Notice there are several options to include
+   SNAT, Auto Map, and None.   
 
    |image8|
 
-#. Use an incognito window to access **http://10.1.10.25**, and then
+#. Use an incognito window to access **http://10.1.10.200**, and then
    close the window.
 
    SNAT Auto Map ensures that responses to server request are always sent
@@ -134,10 +93,10 @@ Task 1 – Use SNAT AutoMap
 #. Examine the **tcpdump** window.
 
    On the external VLAN the communication is still between the client IP
-   address (**10.1.10.199**) and the virtual server (**10.1.10.25**).
+   address (**10.1.10.190**) and the virtual server (**10.1.10.200**).
   
    On the internal VLAN the communication is now between the BIG-IP
-   internal floating self IP address (**10.1.20.240**) and a back-end web
+   internal self IP address (**10.1.20.245**) and a back-end web
    server (**10.1.20.x**).
 
 Task 2 – Create a SNAT for Internal Resources
@@ -146,7 +105,7 @@ Task 2 – Create a SNAT for Internal Resources
 #. Press the **Enter** key several times to move the log entries to the
    top of the window.
 
-#. On the Windows server, change the default gateway to **10.1.20.240**
+#. On the Windows server, change the default gateway to **10.1.20.245**
    (the BIG-IP internal floating self IP address).
 
 #. On the Windows server, use Internet Explorer to access
@@ -172,7 +131,7 @@ Task 2 – Create a SNAT for Internal Resources
    +=========================+================================+
    | Name                    | internal\_snat                 |
    +-------------------------+--------------------------------+
-   | Translation             | IP Address: 10.1.10.100        |
+   | Translation             | IP Address: 10.1.10.245        |
    +-------------------------+--------------------------------+
    | Origin                  | Address List                   |
    +-------------------------+--------------------------------+
@@ -197,14 +156,25 @@ Task 2 – Create a SNAT for Internal Resources
 
 Task 3 – Use Profiles with a Virtual Server
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Profiles are a powerful configuration tool providing an easy way to define
+traffic policies and apply those policies across virtual servers.   Through
+a profile you can also change a setting for traffic across many different
+applications.   
 
-#. Use a new tab to access **http://10.1.10.25**, and then select the
+Profiles provide
+
+- A centralized place to define specific traffic behavior such as compression, SSL, 
+  and authentication that can be applied to multiple virtual servers.
+  
+- A centralized place to change any setting and have them applied to all applications
+  using an existing profile.  A profile tells a virtual server how to process packets
+  it receives through the BIG-IP system.
+
+
+#. From the Jump Host use a new tab to access **http://10.1.10.200**, and then select the
    links at the top of the page and examine the text on each page.
 
-   The pages make several references to the company name **Lorax
-   Investments**. Lorax Investments has been acquired by **Smithy
-   Financial**. Instead of updating all the web site code we’ll use
-   profiles on the BIG-IP system to update the web site.
+  Instead of updating all the web site code we’ll use profiles on the BIG-IP system to update the web site.
 
 #. Close the tab.
 
@@ -219,12 +189,12 @@ Task 3 – Use Profiles with a Virtual Server
    +==============+=====================+
    | Name         | name\_change        |
    +--------------+---------------------+
-   | Source       | Lorax Investments   |
+   | Source       | Investments         |
    +--------------+---------------------+
-   | Target       | Smithy Financials   |
+   | Target       | Financials          |
    +--------------+---------------------+
 
-#. Open the **Virtual Server List** page and click **lorax\_virtual**.
+#. Open the **Virtual Server List** page and click **LAMP**.
 
 #. From the **Configuration** list select **Advanced**.
 
@@ -242,16 +212,19 @@ Task 3 – Use Profiles with a Virtual Server
 #. From the **Web Acceleration Profile** list select
    **optimized-caching**, and then click **Update**.
 
-#. Use an incognito window to access **http://10.1.10.25**, and then
+#. Use an incognito window to access **http://10.1.10.200**, and then
    select the links at the top of the page.
 
    Although the logo need to be updated, all the text on all pages now
-   references **Smithy Financials**.
+   references **Financials**.
 
 Task 4 – Work with Monitors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+During this section of the lab we will review many of the available
+monitors and how to customze them.  The BIG-IP system includes a set of
+pre-defined monitor templates for address, service, content, and interactive checks.
 
-#. Edit the URL to **http://10.1.10.25/health\_check.html**
+#. Edit the URL to **http://10.1.10.200/health\_check.html**
 
    We’re going to use this web page to identify if the web server is up or down.
 
@@ -266,7 +239,7 @@ Task 4 – Work with Monitors
    +--------------------------+---------------------------------+
    | Form field               | Value                           |
    +==========================+=================================+
-   | Name                     | lorax\_monitor                  |
+   | Name                     | LAMP_monitor                    |
    +--------------------------+---------------------------------+
    | Type                     | http                            |
    +--------------------------+---------------------------------+
@@ -281,14 +254,14 @@ Task 4 – Work with Monitors
    | Receive Disable String   | Server\_Down                    |
    +--------------------------+---------------------------------+
 
-#. Open the **Pool List** page and click **lorax\_pool**.
+#. Open the **Pool List** page and click **LAMP**.
 
 #. Identify the current **Availability** status of the pool.
 
    Unknown identifies when a pool or node doesn’t have a configured
    monitor.
 
-#. Add **lorax\_monitor** to the **Active** list and click **Update**.
+#. Add **LAMP\_monitor** to the **Active** list and click **Update**.
 
    The **Availability** of the pool changes to **Available (Enabled)**.
 
@@ -306,15 +279,15 @@ Task 4 – Work with Monitors
    responses.
 
 #. Open the **Local Traffic > Network Map** page and view the status for
-   **lorax\_virtual**.
+   **LAMP**.
 
    The virtual server, pool, and all three pool members display available.
 
 #. Use your mouse to hover over the pool members.
 
-   All three nodes also display available.
+   All two nodes also display available.
 
-Sub-Task 1 – Take 10.1.20.41:80 Offline
+Sub-Task 1 – Take 10.1.20.250:80 Offline
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #. On the Windows server go to **Start > Computer**, and then navigate
