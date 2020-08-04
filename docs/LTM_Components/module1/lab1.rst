@@ -66,6 +66,7 @@ host the same content.   Pools are named, and like most objects on BIG-IP system
 should not contain spaces.  Pools also have thier own load balancing method, monitors, and other features defined when a pool is created or modified.
 When a new connection is initiated to a virtual server that is mapped to a pool, various criteria, including the pool's load balancing method may be used
 to determine which member to use for that request.
+
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. Open the **Local Traffic > Pools > Pool List** page and click
@@ -148,6 +149,7 @@ that is specified in the request rather than load balancing the traffic to a poo
 IP forwarding virtual server, leaving the destination address in the packet unchanged. When creating an IP forwarding virtual server,
 as with all virtual servers, you can create either a host IP forwarding virtual server, which forwards traffic for a single host address,
 or a network IP forwarding virtual server, which forwards traffic for a subnet.
+
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. Use a new tab to attempt direct access to an internal web server at
@@ -209,6 +211,7 @@ network.
 Task 4 – Create a Reject Virtual Server
 
 A Reject virtual server rejects any traffic destined for the virtual server IP address.
+
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. In the Configuration Utility, on the **Virtual Server List** page
@@ -249,6 +252,7 @@ A Reject virtual server rejects any traffic destined for the virtual server IP a
    **Delete** again.
 
 Task 5 – Use Different Pool Options
+
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. Open the **Local Traffic > Pools > Pool List** page and click
