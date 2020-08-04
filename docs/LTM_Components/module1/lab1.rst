@@ -7,6 +7,7 @@ Addresses and map them to individual VLAN's.
 
 Task 1 – Connect to the Win10 Jumphost via RDP and log into the BIG-IP01 by clicking on the **ACCESS** drop down menu within 
 the lab environment.
+
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. From the Windows 10 Jumphost using a web browser (Chrome), log into BIG-IP01 (10.1.1.4) system with the below credentials.
