@@ -1,7 +1,7 @@
 Lab 2: Work with SNAT, Profiles, and Monitors
 ---------------------------------------------
 
-In this lab you will experiment with using SNAT Auto Map for inbound
+In this lab you will gain experience using SNAT Auto Map for inbound
 requests as well as outbound requests from internal users. You’ll also
 use an HTTP and stream profile to make global modifications to text
 within a web site. Finally you’ll see how using health monitors ensures
@@ -15,7 +15,10 @@ address of an allowed host to an address from a defined group.   Often times thi
 address on the BIG-IP.
 
 Task 1 – Use SNAT AutoMap
-^^^^^^^^^^^^^^^^^^^^^^^^^
+A virtual server configured on a BIG-IP system typically translates the destination IP address
+of an incoming packet to load balance requests.  Normally the source IP address remains unchanged.
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. In the Configuration Utility, open the **Pool List** page and click
    **Create**.
@@ -100,7 +103,8 @@ Task 1 – Use SNAT AutoMap
    server (**10.1.20.x**).
 
 Task 2 – Create a SNAT for Internal Resources
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. Press the **Enter** key several times to move the log entries to the
    top of the window.
@@ -155,7 +159,9 @@ Task 2 – Create a SNAT for Internal Resources
 #. Close the **putty** sessions.
 
 Task 3 – Use Profiles with a Virtual Server
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Profiles are a powerful configuration tool providing an easy way to define
 traffic policies and apply those policies across virtual servers.   Through
 a profile you can also change a setting for traffic across many different
@@ -219,12 +225,15 @@ Profiles provide
    references **Financials**.
 
 Task 4 – Work with Monitors
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 During this section of the lab we will review many of the available
 monitors and how to customze them.  The BIG-IP system includes a set of
 pre-defined monitor templates for address, service, content, and interactive checks.
 
-#. Edit the URL to **http://10.1.10.200/health\_check.html**
+#. From the Windows Jump host open a new tab in a browser and enter the 
+   following URL **http://10.1.10.200/peruggia**
 
    We’re going to use this web page to identify if the web server is up or down.
 
@@ -247,7 +256,7 @@ pre-defined monitor templates for address, service, content, and interactive che
    +--------------------------+---------------------------------+
    | Timeout                  | 13                              |
    +--------------------------+---------------------------------+
-   | Send String              | GET /health\_check.html\\r\\n   |
+   | Send String              | GET /peruggia\\r\\n             |
    +--------------------------+---------------------------------+
    | Receive String           | Server\_Up                      |
    +--------------------------+---------------------------------+
@@ -287,16 +296,13 @@ pre-defined monitor templates for address, service, content, and interactive che
 
    All two nodes also display available.
 
-Sub-Task 1 – Take 10.1.20.250:80 Offline
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Sub-Task 1 – Take Ubuntu_LAMP1 Offline
 
-#. On the Windows server go to **Start > Computer**, and then navigate
-   to **C:\\inetpub\\wwwroot\\lorax\_public\_site\_41**.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-   This is the directory is used for pool member **10.1.20.41:80**. The
-   **health\_check.html** web page currently exists on this pool member.
-
-#. Delete **health\_check.html**.
+#. From the Windows Jump Host while logged into BIG-IP01 click on **Pools**, 
+   then click on **LAMP** pool, click the **Members** tab then click on 
+   the **LAMP_Server** then click on the **Disabled** radio button.
 
 #. Wait 13 seconds, and then in the Configuration Utility on the
    **Network Map** page click **Update Map**.
@@ -305,67 +311,33 @@ Sub-Task 1 – Take 10.1.20.250:80 Offline
 
 #. Use your mouse to hover over the pool members.
 
-   The first pool member is offline, and all three nodes display available.
+   The first pool member is offline, while the other node displays available.
 
-Sub-Task 2 – Disable 10.1.20.42:80
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Sub-Task 2 – Disable Ubuntu_LAMP2
 
-#. On the Windows server navigate to
-   **C:\\inetpub\\wwwroot\\lorax\_public\_site\_42**.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#. Right-click **health\_check** and select **Open with > WordPad**.
-
-#. In the **<p>** tag, edit the text to **Server\_Down**, and then click
-   **Save**.
-
-   This file is used by pool member **10.1.20.42:80**. This pool member
-   will now match the disable string identified in the monitor.
+#. From the Windows Jump Host while logged into BIG-IP01 click on **Pools**, 
+   then click on **LAMP** pool, click the **Members** tab then click on 
+   the **LAMP_Server2** then click on the **Disabled** radio button.
 
 #. Wait 13 seconds, and then in the Configuration Utility on the
    **Network Map** page click **Update Map**.
 
-   The second pool member is now disabled; however, the virtual server and
-   pool still display available.
+#. Notice that the virtual server and pool display unavailable.
 
-Sub-Task 3 – Take Node 10.1.20.43 Offline
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Sub- Task 4 – Bring both pool members back online
 
-#. On the Windows server, for **Local Area Connection 3** open the
-   **Internet Protocol Version 4 (TCP/IPv4)** properties.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#. Click **Advanced**, and in the list of IP addresses scroll down to
-   **10.1.20.43** and click **Remove**, then click **OK** three times
-   and then click **Close**.
+#. From the Windows Jump Host while logged into BIG-IP01 click on **Pools**, 
+   then click on **LAMP** pool, click the **Members** tab then click on 
+   both the **LAMP_Server** and **LAMP_Server2** and then click on the **enabled** radio button.
+   Follow this process for both members of the **LAMP** pool
 
-#. Wait 13 seconds, and then in the Configuration Utility on the
-   **Network Map** page, click **Update Map**.
+#. Use an incognito window to access **http://10.1.10.200**.
 
-#. Use your mouse to hover over the pool members.
-
-   |image12|
-
-   The virtual server and pool display disabled but available. Node
-   **10.1.20.43** now displays offline, which causes pool member
-   **10.1.20.43:80** to display offline.
-
-Sub- Task 4 – Bring 10.1.20.42:80 Back Online
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-#. On the Windows server, in the **health\_check** WordPad document,
-   edit the text back to **Server\_Up**, then click **Save**, and then
-   close WordPad.
-
-#. In the Configuration Utility on the **Network Map** page click
-   **Update Map**.
-
-   Because pool member **10.1.20.42:80** is available, the virtual server
-   and pool once again display available.
-
-#. Use an incognito window to access **http://10.1.10.25**.
-
-   The page displays, with all page elements coming from **10.1.20.42:80**.
-
-#. Close the page.
+ #. Close the page.
 
 .. |image7| image:: /_static/class1/image9.png
    :width: 2.24402in
