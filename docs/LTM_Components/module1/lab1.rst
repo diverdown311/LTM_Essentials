@@ -56,7 +56,7 @@ the lab environment.
 
 #. Enter the address 10.1.10.1 and click Finished
 
-Task 2 – Create a Pool BIG-IP object
+Task 2 – Create a Pool BIG-IP object and a Virtual Server
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We will be configuring a Pool with two member objects.  A pool is a group of pool members.   With few exceptions, all the members of a given pool
@@ -101,13 +101,15 @@ to determine which member to use for that request.
    +-----------------------------+-----------------+
    | Form field                  | Value           |
    +=============================+=================+
-   | Name                        | LAMP   |
+   | Name                        | LAMP            |
    +-----------------------------+-----------------+
-   | Destination Address/ Mask   | 10.1.10.200      |
+   | Destination Address/ Mask   | 10.1.10.200     |
    +-----------------------------+-----------------+
    | Service Port                | 80              |
    +-----------------------------+-----------------+
-   | Resources > Default Pool    | LAMP      |
+   | Source Address Translation  | Auto  Map       |
+   +-----------------------------+-----------------+
+   | Resources > Default Pool    | LAMP            |
    +-----------------------------+-----------------+
 
 #. Use a new tab to access **http://10.1.10.200**.
