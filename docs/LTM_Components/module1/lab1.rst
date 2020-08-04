@@ -1,5 +1,5 @@
 Lab 1: Explore the F5 BIG-IP network configuration
-------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 It is assumed that you have already licensed each of the BIG-IP devices. In this lab you will explore network settings on the BIG-IP.
 You will also configure a default route, internal and external vlans, and finally you will configure Self-IP 
@@ -58,13 +58,14 @@ the lab environment.
 #. Enter the address 10.1.10.1 and click Finished
 
 Task 2 – Create a Pool BIG-IP object and a Virtual Server
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We will be configuring a Pool with two member objects.  A pool is a group of pool members.   With few exceptions, all the members of a given pool
 host the same content.   Pools are named, and like most objects on BIG-IP systems, their names can begin with a letter or underscore as well as numbers but
 should not contain spaces.  Pools also have thier own load balancing method, monitors, and other features defined when a pool is created or modified.
 When a new connection is initiated to a virtual server that is mapped to a pool, various criteria, including the pool's load balancing method may be used
 to determine which member to use for that request.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. Open the **Local Traffic > Pools > Pool List** page and click
    **Create**.
@@ -138,13 +139,14 @@ to determine which member to use for that request.
    |image4|
 
 Task 3 – Create a Forwarding Virtual Server
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 An IP forwarding virtual server accepts traffic that matches the virtual server address and forwards it to the destination IP address
 that is specified in the request rather than load balancing the traffic to a pool. Address translation is disabled when you create an
 IP forwarding virtual server, leaving the destination address in the packet unchanged. When creating an IP forwarding virtual server,
 as with all virtual servers, you can create either a host IP forwarding virtual server, which forwards traffic for a single host address,
 or a network IP forwarding virtual server, which forwards traffic for a subnet.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. Use a new tab to attempt direct access to an internal web server at
    **http://10.1.20.252**.
@@ -203,8 +205,9 @@ You now have access to all ports and all protocols on the **10.1.20.0**
 network.
 
 Task 4 – Create a Reject Virtual Server
+
 A Reject virtual server rejects any traffic destined for the virtual server IP address.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. In the Configuration Utility, on the **Virtual Server List** page
    click **Create**.
@@ -244,7 +247,7 @@ A Reject virtual server rejects any traffic destined for the virtual server IP a
    **Delete** again.
 
 Task 5 – Use Different Pool Options
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. Open the **Local Traffic > Pools > Pool List** page and click
    **LAMP pool**, and then open the **Members** page.
