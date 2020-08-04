@@ -58,6 +58,7 @@ the lab environment.
 #. Enter the address 10.1.10.1 and click Finished
 
 Task 2 – Create a Pool BIG-IP object and a Virtual Server
+
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We will be configuring a Pool with two member objects.  A pool is a group of pool members.   With few exceptions, all the members of a given pool
@@ -139,6 +140,7 @@ to determine which member to use for that request.
    |image4|
 
 Task 3 – Create a Forwarding Virtual Server
+
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 An IP forwarding virtual server accepts traffic that matches the virtual server address and forwards it to the destination IP address
