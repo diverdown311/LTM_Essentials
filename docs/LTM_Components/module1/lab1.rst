@@ -1,20 +1,21 @@
 Lab 1: Explore the F5 BIG-IP network configuration
 ------------------------------------------
 
-In this lab you will explore network settings on the BIG-IP.  You will also 
-configure a default route, internal and external vlans, and finally you will configure Self-IP 
+It is assumed that you have already licensed each of the BIG-IP devices. In this lab you will explore network settings on the BIG-IP.
+You will also configure a default route, internal and external vlans, and finally you will configure Self-IP 
 Addresses and map them to individual VLAN's.
 
-Task 1 – Connect to the Win10 Jumphost via RDP and log into the BIG-IP01 (https://10.1.1.4) Configuration Utility
+Task 1 – Connect to the Win10 Jumphost via RDP and log into the BIG-IP01 by clicking on the **ACCESS** drop down menu within 
+the lab environment.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#. From the Win10 Jumphost using a web browser, log into the BIG-IP01 system with the below credentials.
+#. From the Windows 10 Jumphost using a web browser (Chrome), log into BIG-IP01 (10.1.1.4) system with the below credentials.
 
 -  admin
 
 -  admin.F5demo.com
 
-#. While logged into the bigip01 gui click on the Network menu object, then click on the Interfaces object.   Note that there are two interfaces labeled 1.1 and 1.2
+#. While logged into the BIG-IP01 gui click on the Network menu object, then click on the Interfaces object.   Note that there are two interfaces labeled 1.1 and 1.2
 
 #. Network interface 1.1 is assigned to the external network while interface 1.2 is assigned to the internal network
 
@@ -77,13 +78,13 @@ to determine which member to use for that request.
    +===============+====================================+
    | Name          | LAMP1                              |
    +---------------+------------------------------------+
-   | New Members   | Node Name: node1                   |
+   | New Members   | Node Name: LAMP1                   |
    |               | Address: 10.1.20.252               |
    |               | Service Port: 80 (Click **Add**)   |
    +---------------+------------------------------------+
    | Name          | LAMP2                              |
    +---------------+------------------------------------+
-   | New Members   | Node Name: node1                   |
+   | New Members   | Node Name: LAMP2                   |
    |               | Address: 10.1.20.250               |
    |               | Service Port: 80 (Click **Add**)   |
    +---------------+------------------------------------+
