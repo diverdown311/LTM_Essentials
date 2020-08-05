@@ -83,13 +83,13 @@ to determine which member to use for that request.
    | Name          | LAMP_Server1                       |
    +---------------+------------------------------------+
    | New Members   | Node Name: LAMP_Server1            |
-   |               | Address: 10.1.20.11               |
+   |               | Address: 10.1.20.11                |
    |               | Service Port: 80 (Click **Add**)   |
    +---------------+------------------------------------+
    | Name          | LAMP_Server2                       |
    +---------------+------------------------------------+
    | New Members   | Node Name: LAMP_Server2            |
-   |               | Address: 10.1.20.12               |
+   |               | Address: 10.1.20.12                |
    |               | Service Port: 80 (Click **Add**)   |
    +---------------+------------------------------------+
    | Name          | LAMP_Server3                       |
@@ -319,7 +319,7 @@ Task 5 – Use Different Pool Options
    | Ratio Least Connections     | Us this method allows the BIG-IP to assign   |
    |                             | ratio weights applies to all pools of which  |
    |                             | each node is a member                        |
-   +----------------------------------------------------------------------------+
+   +-----------------------------+----------------------------------------------+
    | Dynamic Ratio               | Dymanic Ratio load balancing actively polls  |
    |                             | pool members and assigns a weight value      |
    |                             | to each member.                              |
