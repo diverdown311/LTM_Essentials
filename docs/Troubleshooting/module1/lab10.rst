@@ -40,10 +40,10 @@ SSL Decrypt from F5
 
 More often you will not have access to modify the client in order to capture the SSL session data.  The second option is to get the pre-master session data from the F5 itself by doing the following.
 
-In the lab we have already configured the iRule and applied it to the Virtual Server.  If you want to validate you can login to the BIG-IP from the jumpbox by launching the Chrome browser and clicking on the BIG-IP01 shortcut.  Login as:
+Login to the BIG-IP from the jumpbox by launching the Chrome browser and clicking on the BIG-IP01 shortcut.  Login as:
 
 user: 'admin'
-password: 'admin'
+password: 'admin.F5demo.com'
 
 #. Configure an iRule as follows (ours is named 'ssl-decrypt.ir'):
 
@@ -58,7 +58,7 @@ password: 'admin'
          log local0. "RSA Session-ID:[SSL::sessionid] Master-Key:[SSL::sessionsecret]"
       }  
 
-#. Apply this new iRule to the virtual server.  In our lab environment the iRule has already been created and applied to the Virtual Server.
+#. Apply this new iRule to the LAMP virtual server.  
 
 #. You can now start a tcpdump and surf the website.  
 

@@ -1,7 +1,8 @@
 tcpdump Filters
 ~~~~~~~~~~~~~~~
 
-This section is for informative value and nothing will be done in the lab environment.
+This section is for informative value and nothing will be done in the lab environment; however, students are
+encouraged to become familiar with tcpdump filters.
 
 When running tcpdump capture from the F5 you should always use a filter to limit the volume of traffic you will gather.
 
