@@ -1,39 +1,75 @@
 Lab 3: Use SSL Offload, Best Practices, and iApps
 -------------------------------------------------
 
-In this lab you will create an HTTPS web application and use the BIG-IP
-SSL offload feature to free up CPU resources from the web servers.
-You’ll update the BIG-IP configuration by including some best practices.
-Finally you’ll re-create the HTTPS web application by using BIG-IP
-iApps.
+In this lab we will configure client-side SSL processing on the BIG-IP
 
-Task 1 – Use SSL Offload
-^^^^^^^^^^^^^^^^^^^^^^^^
+Objective:
+#. Create a self-signed certificate
+#. Create a client SSL Profile
+#. Modify an existing HTTP Virtual Server to use HTTPS
 
-#. In the Configuration Utility, open the **Pool List** page and click
-   **Create**.
+We will create a self-signed certificate and key for a client SSL profile to
+attach to our virtual server
 
-#. Use the following information for the new pool, and then click
-   **Finished**.
+Task 1 – Create a self-signed certificate and key
 
-   +-------------------+-------------------------------------+
-   | Form field        | Value                               |
-   +===================+=====================================+
-   | Name              | https\_pool                         |
-   +-------------------+-------------------------------------+
-   | Health Monitors   | https\_443                          |
-   +-------------------+-------------------------------------+
-   | New Members       | Node List: node1 (10.1.20.11)       |
-   |                   | Service Port: 443 (Click **Add**)   |
-   +-------------------+-------------------------------------+
-   |                   | Node List: node2 (10.1.20.12)       |
-   |                   | Service Port: 443 (Click **Add**)   |
-   +-------------------+-------------------------------------+
-   |                   | Node List: node3 (10.1.20.13)       |
-   |                   | Service Port: 443 (Click **Add**)   |
-   +-------------------+-------------------------------------+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#. Open the **Virtual Server List** page and click **Create**.
+#. Go to **System**, **Certificate Management**, **Traffic Certificate Management**, 
+   **SSL Certificate List** and select Create.
+   
+#. The default key size is 2048.
+
+#. Enter the following data
+
+	Name			my-selfsigned-cert
+	Issuer			Self
+	Common Name		www.f5demo.com
+	Fill out the rest as desired
+	
+	
+Task 2 - Configure an SSL Client Profile
+
+#. Go to **Local Traffic**, **Profiles**, **SSL**, **Client menu and select **Create** 
+
+#. Under **General Properties**
+	Name		my_clientssl_profile
+
+#. Under **Configuration** in the **Certificate Key Chain** section, select the **Custom**
+   box and hit **Add** 
+   
+   In the **Add SSL Certificate to Key Chain** pop-up select
+   
+   **Certificate**	my-selfsigned-cert
+   **Key**			my-selfsigned-cert
+   
+#. Select **Add** 
+
+#. Click **Finished**
+
+Building our New Secure Virtual Server
+
+#. Go to **Local Traffic**, **Virtual Servers**, and hit the **Create** button.
+
+	**Name**							LAMP_SSL
+	**Source Address**					0.0.0.0/0
+	**Destination Address/Mask**		10.1.10.201
+	**Service Port**					443
+	**SSL Profile (Client)**			my_clientssl_profile (the profile you just created)
+	**Source Address Translation**		Auto Map
+	**Default Pool**					LAMP
+	Default all other settings
+	**Finish**
+	
+#. Test your new secure server.  Using a browser go to https://10.1.10.201
+
+	What port did your pool members see traffic on?
+	
+
+Task 2 - Configure HTTP Compression
+
+
+#. Open the **LAMP_SSL** Virtual Server and click **Create**.
 
 #. Use the following information for the new virtual server, and then
    click **Finished**.
@@ -41,18 +77,12 @@ Task 1 – Use SSL Offload
    +-------------------------------------------+-------------------+
    | Form field                                | Value             |
    +===========================================+===================+
-   | Name                                      | https\_virtual    |
-   +-------------------------------------------+-------------------+
-   | Destination Address/ Mask                 | 10.1.10.20        |
-   +-------------------------------------------+-------------------+
-   | Service Port                              | 443               |
    +-------------------------------------------+-------------------+
    | HTTP Profile                              | http              |
    +-------------------------------------------+-------------------+
    | Acceleration > HTTP Compression Profile   | httpcompression   |
    +-------------------------------------------+-------------------+
-   | Resources > Default Pool                  | https\_pool       |
-   +-------------------------------------------+-------------------+
+ 
 
 #. Use a new tab to access **https://10.1.10.20**.
 
@@ -103,6 +133,15 @@ Task 1 – Use SSL Offload
    CPU-intensive task of decrypting requests and encrypting responses.
 
 #. Close the tab.
+
+
+
+
+
+
+
+
+
 
 Task 2 – Configure BIG-IP Best Practices
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
