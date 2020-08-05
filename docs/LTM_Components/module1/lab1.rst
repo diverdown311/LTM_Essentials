@@ -61,7 +61,7 @@ Task 2 – Create a Pool BIG-IP object and a Virtual Server
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-We will be configuring a Pool with two member objects.  A pool is a group of pool members.   With few exceptions, all the members of a given pool
+We will be configuring a Pool with four member objects.  A pool is a group of pool members.   With few exceptions, all the members of a given pool
 host the same content.   Pools are named, and like most objects on BIG-IP systems, their names can begin with a letter or underscore as well as numbers but
 should not contain spaces.  Pools also have thier own load balancing method, monitors, and other features defined when a pool is created or modified.
 When a new connection is initiated to a virtual server that is mapped to a pool, various criteria, including the pool's load balancing method may be used
@@ -80,19 +80,35 @@ to determine which member to use for that request.
    +---------------+------------------------------------+
    | Form field    | Value                              |
    +===============+====================================+
-   | Name          | LAMP1                              |
+   | Name          | LAMP_Server1                       |
    +---------------+------------------------------------+
-   | New Members   | Node Name: LAMP1                   |
-   |               | Address: 10.1.20.252               |
+   | New Members   | Node Name: LAMP_Server1            |
+   |               | Address: 10.1.20.11               |
    |               | Service Port: 80 (Click **Add**)   |
    +---------------+------------------------------------+
-   | Name          | LAMP2                              |
+   | Name          | LAMP_Server2                       |
    +---------------+------------------------------------+
-   | New Members   | Node Name: LAMP2                   |
-   |               | Address: 10.1.20.250               |
+   | New Members   | Node Name: LAMP_Server2            |
+   |               | Address: 10.1.20.12               |
+   |               | Service Port: 80 (Click **Add**)   |
+   +---------------+------------------------------------+
+   | Name          | LAMP_Server3                       |
+   +---------------+------------------------------------+
+   | New Members   | Node Name: LAMP_Server3            |
+   |               | Address: 10.1.20.13                |
+   |               | Service Port: 80 (Click **Add**)   |
+   +---------------+------------------------------------+
+   | Name          | LAMP_Server4                       |
+   +---------------+------------------------------------+
+   | New Members   | Node Name: LAMP_Server3            |
+   |               | Address: 10.1.20.14                |
    |               | Service Port: 80 (Click **Add**)   |
    +---------------+------------------------------------+
    
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
    
 #. Click **Finished**.
 
@@ -140,7 +156,7 @@ to determine which member to use for that request.
 
    |image4|
 
-Task 3 – Create a Forwarding Virtual Server
+Task 3 – Create an IP Forwarding Virtual Server
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -152,8 +168,8 @@ or a network IP forwarding virtual server, which forwards traffic for a subnet.
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#. Use a new tab to attempt direct access to an internal web server at
-   **http://10.1.20.252**.
+#. From the Windows 10 Jump Host use a new tab to attempt direct access to an internal web server at
+   **http://10.1.20.15**.
 
    Currently you are unable to access resources on the internal network
    from the external Windows workstation.
@@ -169,7 +185,7 @@ or a network IP forwarding virtual server, which forwards traffic for a subnet.
    This adds a route to the **10.1.20.0** network through the external self
    IP address (**10.1.10.245**) of the BIG-IP system.
 
-#. Reload the page directed at **http://10.1.20.252**.
+#. Reload the page directed at **http://10.1.20.15**.
 
    The request fails again, as the BIG-IP system does not have a listener
    to forward this request to the internal network.
@@ -200,7 +216,7 @@ or a network IP forwarding virtual server, which forwards traffic for a subnet.
    This virtual server provides access to the **10.1.20.0/24** network on
    all ports and all protocols.
 
-#. Reload the page directed at **http://10.1.20.252**.
+#. Reload the page directed at **http://10.1.20.15**.
 
    The request is successful. The BIG-IP system doesn’t act as a full
    proxy, it simply forwards requests to the internal network.
@@ -268,17 +284,47 @@ Task 5 – Use Different Pool Options
 
 #. Examine the **Current Members** section.
 
-   Currently the LAMP pool member has a ratio of (**1**).
+   Currently all members of the LAMP pool member have a ratio of (**1**).
 
-#. If there are multiple pool members by selecting **Ratio (member)** it
-   is possible to assign ratio values to each member of the pool.  The effect
-   this would have is that requests would be distributed to members of a pool
-   based on the ratio value assigned.   For example, if there were three pool
-   members a ratio value of **10 - 5 - 1** could be assigned to each pool member
-   respectivey.   
+#. Given that there are four members of the LAMP pool we can modify the ration 
+   of connections to each pool member.  As an example let's go ahead and change
+   ratio value for LAMP_Server1 to 4, assign a ratio value of 3 to pool member LAMP_Server2,
+   a ratio value of 2 to pool member LAMP_server3, and a ratio value of 1 to
+   pool member LAMP_Server1.  The effect this would have is that connection requests would
+   be distributed to members of the LAMP pool in following manner **4, 3, 2, 1**.
+   
 
-#. In this scenario, requests would be distributed to the three pool members in a 
-**10 – 5 – 1** ratio.
+#. The BIG-IP system provides several Ratio load balancing methods for load balancing traffic
+   to pool members including the following:
+   
+   
+   +-----------------------------+----------------------------------------------+
+   | Form field                  | Value                                        |
+   +=============================+==============================================+
+   | Ratio (member)              | Ratio member is recommended when the server  |
+   |                             | capacity of pool members is different        |
+   +-----------------------------+----------------------------------------------+
+   | Ratio (Node)                | Ratio Node method can be used when the       |
+   |                             | server capacity of pool members is different |
+   |                             | and user specified weights are applied to    |
+   |                             | all pools which each nodes is a member.      |
+   +-----------------------------+----------------------------------------------+
+   | Ratio (session)             | Ratio session method can be used for message |
+   |                             | based load balancing protocols such as       |
+   |                             | RADIUS, DIAMETER, or other protocols         |
+   +-----------------------------+----------------------------------------------+
+   | Ratio Least Connections     | Use this method when you want the BIG-IP     |
+   | (member)                    | to weight connections to each pool member    | 
+   +-----------------------------+----------------------------------------------+
+   | Ratio Least Connections     | Us this method allows the BIG-IP to assign   |
+   |                             | ratio weights applies to all pools of which  |
+   |                             | each node is a member                        |
+   +----------------------------------------------------------------------------+
+   | Dynamic Ratio               | Dymanic Ratio load balancing actively polls  |
+   |                             | pool members and assigns a weight value      |
+   |                             | to each member.                              |
+   +-----------------------------+----------------------------------------------+
+   
 
 .. |image1| image:: /_static/class1/image3.png
    :width: 5.32107in
