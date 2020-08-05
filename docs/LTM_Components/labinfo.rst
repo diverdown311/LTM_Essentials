@@ -5,14 +5,15 @@ In the interest of focusing as much time as possible configuring your
 application delivery controller, we have provided some resources and
 basic setup ahead of time. These are:
 
--  Cloud-based lab environment complete with a Windows 10 Jumphost, a
-   virtual BIG-IP (VE), and an Ubuntu Server running a LAMP Stack.
+-  Cloud-based lab environment complete with a Windows 10 Jumphost, two 
+   virtual BIG-IP's (VE), and an Ubuntu Server running a LAMP Stack.
 
 -  The virtual BIG-IP has been pre-licensed
 
 To access the lab environment, you will need a web browser and
-Remote Desktop Protocol (RDP) client software. The web browser will be
-used to access the lab training portal. The RDP client will be used to
+Remote Desktop Protocol (RDP) client software. If you are using a MAC you will
+need to download the Microsoft RDP client from the Apple Mac App Store.  The web
+browser will be used to access the lab training portal. The RDP client will be used to 
 connect to a Windows 10 Jumphost where you will access the virtual BIG-IP (VE)
 via the Google Chrome browser and perform testing of configuration resources 
 configured throughout each lab.
@@ -20,11 +21,13 @@ configured throughout each lab.
 You class instructor will provide additional lab access details.
 
 Lab Diagram
-^^^^^^^^^^^
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 Timing for Labs
-^^^^^^^^^^^^^^^
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The time it takes to perform each lab varies and is mostly dependent on
 accurately completing steps. This can never be accurately predicted but
