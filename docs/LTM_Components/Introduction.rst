@@ -31,10 +31,4 @@ TMUI interface and perform configuration work on each of the BIG-IP appliances.
 
 
 
-.. toctree::
-   :maxdepth: 1
-   :glob:
-
-   labinfo
-   module*/module*
 
