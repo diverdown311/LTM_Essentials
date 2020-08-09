@@ -84,6 +84,10 @@ Task 2 - Configure HTTP Compression
    +-------------------------------------------+-------------------+
  
 
+
+
+
+
 #. Use a new tab to access **https://10.1.10.20**.
 
    The page fails to load. At this point the BIG-IP system is simply
