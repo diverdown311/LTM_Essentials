@@ -1,82 +1,67 @@
-Task 3 – Re-create the Application using iApp
+Lab 6 – Introduct to iApps and FAST Templates
+F5 iApps are a powerful features on every BIG-IP system
+that provides a better way to architect application delivery.
+iApp technology abstracts the many individual components required
+to deliver an application grouping resources together in templates
+associated with a specific application.  iApps have been available
+on the BIG-IP system for a number of years, and consist of 
+three main components:
+
+#. Application Services
+#. Templates
+#. Devcentral Ecosystem
+
+
+Recently F5 introduced the next phase of evoltion for the BIG-IP
+ADC platform known ad FAST (F5 Application Services Templates).  FAST
+technology was developed for the following reasons:
+
+#. Cosistent, cross-platform declarative APIs
+#. Seamless integration and insertion into CI/CD pipelines
+#. Modern development languages like Node.js and Python
+#. Templates and automation
+
+In short, FAST will enable and empower customers while they
+navigate their digital transformation journey, and ensure 
+their apps are available, performant, and secure.
+
+
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#. Open the **Virtual Server List** page, then select the
-   **http\_virtual** and **https\_virtual** checkboxes, and then click
-   **Delete** twice.
+Task 1 – Configure the F5 iApp for NIST
+(National Institute of Standards and Technology) Special
+Publication 800-53 (Revision 4): Security and Privacy
+Controls for Federal Information Systems and Organizations.
 
-#. Open the **Pool List** page, then select the **http\_pool** and
-   **https\_pool** checkboxes, and then click **Delete** twice.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#. Open the **Node List** page, then select the **node1**, **node2**,
-   and **node3** checkboxes, and then click **Delete** twice.
+#. The F5 NIST sp800-53 iApp has already been uploaded to BIG-IP01
 
-#. Open the **iApps > Application Services > Applications** page and
-   click **Create**.
-
-#. Create an application using the following information, and then click
-   **Finished**.
-
-   +-----------------------------------+---------------------------------------+
-   | Form field                        | Value                                 |
-   +===================================+=======================================+
-   | User Name                         | https\_app                            |
-   +-----------------------------------+---------------------------------------+
-   | Template                          | f5.http                               |
-   +-----------------------------------+---------------------------------------+
-   | Network > Do you want to use the  | Yes                                   |
-   | latest TCP profiles?              |                                       |
-   +-----------------------------------+---------------------------------------+
-   | SSL Encryption > How should the   | Terminate SSL from clients, plaintext |
-   | BIG-IP system handle SSL traffic? | to servers                            |
-   +-----------------------------------+---------------------------------------+
-   | Virtual Server and Pools > What   | 10.1.10.20                            |
-   | IP address do you want to use     |                                       |
-   +-----------------------------------+---------------------------------------+
-   | FQDN                              | www.f5demo.com                        |
-   +-----------------------------------+---------------------------------------+
-   | Web servers                       | 10.1.20.11: 80 (Click **Add**)        |
-   |                                   | 10.1.20.12: 80 (Click **Add**)        |
-   |                                   | 10.1.20.13: 80                        |
-   +-----------------------------------+---------------------------------------+
-   | Application Health > What HTTP    | /index.php                            |
-   | URI                               |                                       |
-   +-----------------------------------+---------------------------------------+
-   | Expected Response                 | Welcome                               |
-   +-----------------------------------+---------------------------------------+
+#. Under the iApps menu, click on Templates, and then click on
+   the f5.nist_sp800-53.v1.0.0 iApp template to view the properties.
+   This particular iApp only requires the LTM module. Please review 
+   each section of the iApp to become familiar with the various
+   components of an iApp.
    
-#. Open the **Virtual Server List** page.
+#. For this part of the lab we will simply provision a new application
+   service leveraging the NIST sp800-53 the purpose of which is to configure
+   a BIG-IP system to be compliant with security controls outlined in the NIST
+   SP800-53 special publicliation.
 
-   iApp created two virtual servers for the web application. The port 80
-   virtual server is used to redirect requests to the port 443 virtual
-   server.
+#. Under the iApps menu, click on **Application Services** then click on
+   the + sign to the right of **Applications**.
+   
+#. Name the Application **NIST**, click the down arrow to the right of
+   **Template** and select the **f5.nist_sp800-53.v1.0.0** iApp.
+   
+#. Under the **Usage Banner -- AC-8** enter a banner message.
 
-#. Open the **Pool List** page.
+#. Enter **time.google.com** in the NTP Server field.
 
-   iApp created a pool with three pool members and a monitor attached
-   (which you can identify by it being identified as available).
+#. Leave all other fields with their default settings.
 
-#. Open the **Monitors** page and click **https\_app\_http\_monitor**.
+#. Click **Finished**
 
-   iApp created the custom HTTP monitor for the web application.
 
-#. Use a new tab to access **http://10.1.10.20**.
 
-   Notice that the request is redirected to **https**. The requests are
-   sent to the web servers on port **80**, identifying that SSL offload is
-   taking place.
 
-#. Close the tab.
-
-.. |image13| image:: /_static/class1/image15.png
-   :width: 3.49562in
-   :height: 0.60484in
-.. |image14| image:: /_static/class1/image16.png
-   :width: 4.39805in
-   :height: 0.60484in
-.. |image15| image:: /_static/class1/image17.png
-   :width: 4.50934in
-   :height: 0.38567in
-.. |image16| image:: /_static/class1/image18.png
-   :width: 3.65323in
-   :height: 0.78965in
