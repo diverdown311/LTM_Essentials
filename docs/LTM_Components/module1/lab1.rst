@@ -100,7 +100,7 @@ to determine which member to use for that request.
    +---------------+------------------------------------+
    | Name          | LAMP_Server4                       |
    +---------------+------------------------------------+
-   | New Members   | Node Name: LAMP_Server3            |
+   | New Members   | Node Name: LAMP_Server4            |
    |               | Address: 10.1.20.14                |
    |               | Service Port: 80 (Click **Add**)   |
    +---------------+------------------------------------+

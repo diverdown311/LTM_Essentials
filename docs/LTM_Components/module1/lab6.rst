@@ -1,4 +1,7 @@
-Lab 6 – Introduct to iApps and FAST Templates
+Lab 6 – Introduction to F5 iApps and FAST Templates
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 F5 iApps are a powerful features on every BIG-IP system
 that provides a better way to architect application delivery.
 iApp technology abstracts the many individual components required
@@ -11,6 +14,7 @@ three main components:
 #. Templates
 #. Devcentral Ecosystem
 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Recently F5 introduced the next phase of evoltion for the BIG-IP
 ADC platform known ad FAST (F5 Application Services Templates).  FAST
@@ -20,35 +24,39 @@ technology was developed for the following reasons:
 #. Seamless integration and insertion into CI/CD pipelines
 #. Modern development languages like Node.js and Python
 #. Templates and automation
+#. Declarative Interface
+#. JSON Schema
+
 
 In short, FAST will enable and empower customers while they
 navigate their digital transformation journey, and ensure 
 their apps are available, performant, and secure.
 
 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Task 1 – Configure the F5 iApp for NIST
-(National Institute of Standards and Technology) Special
-Publication 800-53 (Revision 4): Security and Privacy
-Controls for Federal Information Systems and Organizations.
+Task 1 – Configure the F5 NIST iApp.   F5 provides a number of different
+iApp Templates many of which require multiple F5 modules such as Access
+Policy Manager and Application Security Manager to be provisioned.   The 
+F5 NIST iApp only requires LTM to be provisioned and is relatively simple 
+to deploy and appply.   
 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. The F5 NIST sp800-53 iApp has already been uploaded to BIG-IP01
 
-#. Under the iApps menu, click on Templates, and then click on
-   the f5.nist_sp800-53.v1.0.0 iApp template to view the properties.
-   This particular iApp only requires the LTM module. Please review 
-   each section of the iApp to become familiar with the various
+#. Under the iApps menu, click on Templates object, then click on the **+**
+   to the right of Templates.  Click on the f5.nist_sp800-53.v1.0.0 iApp
+   template to view the properties.  The NIST iApp only requires the LTM module.
+   Please review each section of the iApp and become familiar with the various
    components of an iApp.
    
-#. For this part of the lab we will simply provision a new application
+#. For this part of the lab we will provision a new application
    service leveraging the NIST sp800-53 the purpose of which is to configure
    a BIG-IP system to be compliant with security controls outlined in the NIST
-   SP800-53 special publicliation.
+   SP800-53 special publication.
 
-#. Under the iApps menu, click on **Application Services** then click on
+#. Within the iApps menu, click on **Application Services** then click on
    the + sign to the right of **Applications**.
    
 #. Name the Application **NIST**, click the down arrow to the right of
@@ -61,6 +69,62 @@ Controls for Federal Information Systems and Organizations.
 #. Leave all other fields with their default settings.
 
 #. Click **Finished**
+
+#. Now that the **NIST** iApp has been applied to the BIG-IP system
+   if a changed it's possible to modify the application by clicking 
+   on **Application Services** under the iApps menu and then clicking 
+   on the the iApp name and then clicking on **Reconfigure**.
+   
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Task 2 - Introduction to F5 FAST
+
+**F5 FAST Documentat can be found at  https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/  **
+
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#. F5 FAST templates are hosted on Github at the following URL - https://github.com/F5Networks
+
+#. The f5-appsvcs-3.21.0-4.noarch.rpm file has already been uploaded to both BIG-IP devices
+
+#. From the Windows 10 Jumphost ssh into each BIG-IP and enter the following command:
+   touch /var/config/rest/iapps/enable
+   
+#. The rpm file has already been imported, but note that importing the rpm file is a
+   required step in order to leveral F5 FAST.
+   
+#. The rpm import process is accomplished by clicking the iApps menu, then clicking
+   **Package Management LX**, and then **import** and selecting the rpm file.
+   
+#.  
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
