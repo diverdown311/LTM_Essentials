@@ -20,12 +20,14 @@ Recently F5 introduced the next phase of evoltion for the BIG-IP
 ADC platform known ad FAST (F5 Application Services Templates).  FAST
 technology was developed for the following reasons:
 
+#. Replacement for deprecated iApp templates
 #. Cosistent, cross-platform declarative APIs
 #. Seamless integration and insertion into CI/CD pipelines
 #. Modern development languages like Node.js and Python
 #. Templates and automation
 #. Declarative Interface
 #. JSON Schema
+#. Less error prone
 
 
 In short, FAST will enable and empower customers while they
@@ -98,7 +100,56 @@ Task 2 - Introduction to F5 FAST
 #. The rpm import process is accomplished by clicking the iApps menu, then clicking
    **Package Management LX**, and then **import** and selecting the rpm file.
    
-#.  
+#. Log back into the Windows 10 Jump Host
+
+#. On the Windows 10 Jump Host launch Postman
+
+#. Using Windows Notepad open the **Hello_World** text file.
+
+#. Copy the contents of the **Hello_World** text file
+
+#. From within Postman we will be sending a **Post** request to the BIG-IP
+
+#. Enter the following within **Postman** https://10.1.1.4/mgmt/shared/appsvcs/declarative
+
+#. Click on the **Authorization** tab and ensure **Basic Auth** is selected.
+
+#. Enter the BIG-IP credentials **admin/admin.F5admin.com
+
+#. Click on the **Body** section within Postman
+
+#. Click on the **Body** section in Postman, then click **raw**
+
+#. Ensure that **JSON** is selected
+
+#. Paste the contents of the **Hello_World** text file
+
+#. Click the **SEND** button in Postman
+
+#. Log back into BIG-IP01 and select the **Sample_01** partition
+
+#. Within the **Sample_01** partition note the new Virtual Server
+   has been created along with a pool named **web_pool**
+   
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
