@@ -45,91 +45,100 @@ to deploy and appply.
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#. The F5 NIST sp800-53 iApp has already been uploaded to BIG-IP01
+#.  The F5 NIST sp800-53 iApp has already been uploaded to BIG-IP01
 
-#. Under the iApps menu, click on Templates object, then click on the **+**
-   to the right of Templates.  Click on the f5.nist_sp800-53.v1.0.0 iApp
-   template to view the properties.  The NIST iApp only requires the LTM module.
-   Please review each section of the iApp and become familiar with the various
-   components of an iApp.
+#.  Under the iApps menu, click on Templates object, then click on the **+**
+    to the right of Templates.  Click on the f5.nist_sp800-53.v1.0.0 iApp
+    template to view the properties.  The NIST iApp only requires the LTM module.
+    Please review each section of the iApp and become familiar with the various
+    components of an iApp.
    
-#. For this part of the lab we will provision a new application
-   service leveraging the NIST sp800-53 the purpose of which is to configure
-   a BIG-IP system to be compliant with security controls outlined in the NIST
-   SP800-53 special publication.
+#.  For this part of the lab we will provision a new application
+    service leveraging the NIST sp800-53 the purpose of which is to configure
+    a BIG-IP system to be compliant with security controls outlined in the NIST
+    SP800-53 special publication.
 
-#. Within the iApps menu, click on **Application Services** then click on
-   the + sign to the right of **Applications**.
+#.  Within the iApps menu, click on **Application Services** then click on
+    the + sign to the right of **Applications**.
    
-#. Name the Application **NIST**, click the down arrow to the right of
-   **Template** and select the **f5.nist_sp800-53.v1.0.0** iApp.
+#.  Name the Application **NIST**, click the down arrow to the right of
+    **Template** and select the **f5.nist_sp800-53.v1.0.0** iApp.
    
-#. Under the **Usage Banner -- AC-8** enter a banner message.
+#.  Under the **Usage Banner -- AC-8** enter a banner message.
 
-#. Enter **time.google.com** in the NTP Server field.
+#.  Enter **time.google.com** in the NTP Server field.
 
 #. Leave all other fields with their default settings.
 
-#. Click **Finished**
+#.  Click **Finished**
 
-#. Now that the **NIST** iApp has been applied to the BIG-IP system
-   if a changed it's possible to modify the application by clicking 
-   on **Application Services** under the iApps menu and then clicking 
-   on the the iApp name and then clicking on **Reconfigure**.
+#.  Now that the **NIST** iApp has been applied to the BIG-IP system
+    if a changed it's possible to modify the application by clicking 
+    on **Application Services** under the iApps menu and then clicking 
+    on the the iApp name and then clicking on **Reconfigure**.
    
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Task 2 - Introduction to F5 FAST
+Task 2 - Introduction to FAST **F5 Application Services Templates** 
 
-**F5 FAST Documentat can be found at  https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/  **
-
+**F5 FAST Documentation can be found at  **https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/**
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#. F5 FAST templates are hosted on Github at the following URL - https://github.com/F5Networks
+#.  F5 FAST templates are hosted on Github at the following URL - **https://github.com/F5Networks**
 
-#. The f5-appsvcs-3.21.0-4.noarch.rpm file has already been uploaded to both BIG-IP devices
+#.  The f5-appsvcs-3.21.0-4.noarch.rpm file has already been uploaded to both BIG-IP devices
 
-#. From the Windows 10 Jumphost ssh into each BIG-IP and enter the following command:
-   touch /var/config/rest/iapps/enable
+#.  From the Windows 10 Jumphost ssh into each BIG-IP and enter the following command:
+    touch /var/config/rest/iapps/enable
    
-#. The rpm file has already been imported, but note that importing the rpm file is a
-   required step in order to leveral F5 FAST.
+#.  The rpm file has already been imported, but note that importing the rpm file is a
+    required step in order to leveral F5 FAST.
    
-#. The rpm import process is accomplished by clicking the iApps menu, then clicking
-   **Package Management LX**, and then **import** and selecting the rpm file.
+#.  The rpm import process is accomplished by clicking the iApps menu, then clicking
+    **Package Management LX**, and then **import** and selecting the rpm file.
    
-#. Log back into the Windows 10 Jump Host
+#.  Log back into the Windows 10 Jump Host
 
-#. On the Windows 10 Jump Host launch Postman
+#.  On the Windows 10 Jump Host launch Postman
 
-#. Using Windows Notepad open the **Hello_World** text file.
+#.  Using Windows Notepad open the **Hello_World** text file.
 
-#. Copy the contents of the **Hello_World** text file
+#.  Copy the contents of the **Hello_World** text file
 
-#. From within Postman we will be sending a **Post** request to the BIG-IP
+#.  From within Postman we will be sending a **Post** request to the BIG-IP
 
-#. Enter the following within **Postman** https://10.1.1.4/mgmt/shared/appsvcs/declarative
+#.  Enter the following within **Postman** https://10.1.1.4/mgmt/shared/appsvcs/declarative
 
-#. Click on the **Authorization** tab and ensure **Basic Auth** is selected.
+#.  Click on the **Authorization** tab and ensure **Basic Auth** is selected.
 
-#. Enter the BIG-IP credentials **admin/admin.F5admin.com
+#.  Enter the BIG-IP credentials **admin/admin.F5admin.com**
 
-#. Click on the **Body** section within Postman
+#.  Click on the **Body** section within Postman
 
-#. Click on the **Body** section in Postman, then click **raw**
+#.  Click on the **Body** section in Postman, then click **raw**
 
-#. Ensure that **JSON** is selected
+#.  Ensure **JSON** is selected
 
-#. Paste the contents of the **Hello_World** text file
+#.  Paste the contents of the **Hello_World** text file
 
-#. Click the **SEND** button in Postman
+#.  Click the **SEND** button in Postman
 
-#. Log back into BIG-IP01 and select the **Sample_01** partition
+#.  Log back into BIG-IP01 and select the **Sample_01** partition
 
-#. Within the **Sample_01** partition note the new Virtual Server
+#.  Within the **Sample_01** partition note the new Virtual Server
    has been created along with a pool named **web_pool**
+
+
+   Completion of this task illustrates a simple **Hello World** FAST Template and the completion
+   of the LTM Essentials lab.   For more information on FAST please refer to the documentation link
+   below.
+   
+   **https://clouddocs.f5.com/products/extensions/f5-appsvcs-templates/latest/**
+   
+   
+   
    
    
 
