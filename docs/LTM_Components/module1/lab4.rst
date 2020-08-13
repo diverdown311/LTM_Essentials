@@ -4,48 +4,67 @@ Lab 4: Configure High-Availability
 In this lab you will set up a high availability pair using two BIG-IP
 systems. You’ll then test failover between the two HA members.
 
-Task 1 – Set up a Device Group
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Task 1 – Configure Device Trust and a Device Group
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#. Open a new tab and click the **BIGIP\_B** bookmark and then log into
-   the BIG-IP system.
+#. From the Windows 10 Jump Host open up two browser tabs and log into both the **BIGIP01** bookmark and the **BIGIP02** system.
 
-#. Note the status of both BIG-IP systems.
+#. From the Navigation pane, expand the **Device Management** menu. 
 
-   |image17|
+#. Select the **Device Trust** pane, then click on the **Device Trust Members**
 
-**On bigipA.f5demo.com**
+#. On **BIGIP01** click Add, and enter the following information
 
-#. Open the **Device Management > Device Trust > Device Trust
-   Members** page and click **Add**.
 
-#. In the **Device IP Address** field, type **10.1.1.246**.
+   +--------------+----------------------------------+
+   | Form field     | Value                          |
+   +==============+==================================+
+   | Device Type    | Peer                           |
+   +--------------+----------------------------------+
+   | Device IP      | 10.1.1.6                       |
+   | Address        |                                |
+   +--------------+----------------------------------+
+   | Administrator  | admin                          |
+   | Username       |                                |
+   +--------------+----------------------------------+
+   | Administrator  | admin.F5demo.com               |
+   | Password       |                                |
+   +--------------+----------------------------------+
+   
+   
+#. Click on **Retrieve Device Information**
 
-#. Enter **admin** for the **Administrator Username** and
-   **Administrator Password**.
+n **BIGIP02** click Add, and enter the following information
 
-#. Click **Retrieve Device Information**.
 
-#. Click **Device Certificate Matches**.
+   +--------------+----------------------------------+
+   | Form field     | Value                          |
+   +==============+==================================+
+   | Device Type    | Peer                           |
+   +--------------+----------------------------------+
+   | Device IP      | 10.1.1.4                       |
+   | Address        |                                |
+   +--------------+----------------------------------+
+   | Administrator  | admin                          |
+   | Username       |                                |
+   +--------------+----------------------------------+
+   | Administrator  | admin.F5demo.com               |
+   | Password       |                                |
+   +--------------+----------------------------------+
+   
+   
+#. Click on **Retrieve Device Information**
+   
+#. Note the status of both BIG-IP systems. Each BIG-IP system should trust each other 
+   through a public/private encryption key exchange.  Note the new status of both BIG-IP systems.
 
-#. Verify that the **Name** value is **bigipB.f5demo.com** and click
-   **Add Device**.
 
-**On bigipB.f5demo.com**
+Task 2 – Configure a **Sync-Failover** Group
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#. Open the **Device Management > Device Trust > Device Trust Members**
-   page.
 
-   This BIG-IP system sees **bigipA.f5demo.com** as a trusted peer.
-
-#. Note the new status of both BIG-IP systems.
-
-   |image18|
-
-**On bigipA.f5demo.com**
-
-#. Open the **Device Management > Device Groups** page and click
-   **Create**. (ENSURE you are on **bigipA.f5demo.com**.)
+#. From the Navigation Pane, expand **Device Management, Device Groups** and click
+   **Create**. (ENSURE you are on **BIGIP01**.)
 
 #. Create a device group using the following information, and then click
    **Finished**.
@@ -53,67 +72,67 @@ Task 1 – Set up a Device Group
    +--------------+--------------------------------+
    | Form field   | Value                          |
    +==============+================================+
-   | Name         | lorax\_device\_group           |
+   | Name         | syncfailover                   |
    +--------------+--------------------------------+
    | Group Type   | Sync-Failover                  |
    +--------------+--------------------------------+
-   | Members      | bigipA.f5demo.com              |
-   |              | bigipB.f5demo.com              |
+   | Members      | bigip01.f5demo.com             |
+   |              | bigip02.f5demo.com             |
    +--------------+--------------------------------+
    | Sync Type    | Manual with Incremental Sync   |
    +--------------+--------------------------------+
+   
+#. Click Finished
 
-#. Note the new status of **bigipA.f5demo.com**.
+#. Note the new status of **bigip01.f5demo.com**.
 
 #. Click **Awaiting Initial Sync**.
 
    This directs you to the **Device Management > Overview** page.
 
-#. In the **Devices** section, leave the **bigipA.f5demo.com (Self)**
+#. In the **Devices** section, leave the **bigip01.f5demo.com (Self)**
    option selected.
 
 #. For **Sync Options** leave **Push the selected device configuration
    to the group** selected and click **Sync**.
 
-#. Note the status of **bigipA.f5demo.com**.
+#. Note the status of **bigip01.f5demo.com**.
 
-   Both BIG-IP systems are now in sync with each other.
+   Both BIG-IP systems should no be in sync with each other.
 
-**On bigipB.f5demo.com**
+**On bigip02.f5demo.com**
 
 #. Attempt to log in as **admin** / **admin**.
 
    Why do you think your login failed?
 
-#. Log in as **bigip\_admin** / **password**.
+#. Log in as **admin** / **admin.F5demo.com**.
 
 #. Examine the **Virtual Server List** and **Pool List** pages.
 
-#. Open the **iApps > Application Services > Applications** page and
-   click **https\_app**.
+#. On BIGIP01 from the Navigation pane click on Local Traffic, Virtual Servers, Virtual Server List
 
-#. Open the **Reconfigure** page.
+#. Click on the **LAMP** Virtual Server, and change the **HTTP Profile (Client) to **http**
 
-#. Add a new pool member for **10.1.20.14:80**, and then click
-   **Finished**.
+#. Click on **Resources** 
 
-#. Note the updated status of **bigipB.f5demo.com**.
+#. Change the **Default Persistence Profile** to **cookie** and then click on **Update**
+
+#. Note the status message of **Changes Pending** in the top left corner of BIGIP01**
 
 #. Click **Changes Pending**.
 
 #. In the **Devices** section leave the default options selected and
    click **Sync**.
 
-**On bigipA.f5demo.com**
-
-#. Examine the **Pool List** page.
+#. On **BIGIP02** examine the **LAMP** Virtual Server
 
    The **https\_app\_pool** now contains 4 members.
 
-Task 2 – Test Failover
+Task 3 – Test Failover
 ^^^^^^^^^^^^^^^^^^^^^^
 
-**On bigipA.f5demo.com**
+**On BIGIP01**
 
 #. Navigate to **Local Traffic > Virtual Servers** and right-click on
    **Statistics** and open the page in a new tab.
@@ -121,17 +140,17 @@ Task 2 – Test Failover
 #. In the statistics tab reset the statistics for all three virtual
    servers.
 
-**On bigipB.f5demo.com**
+**On BIGIP02**
 
 #. Navigate to **Local Traffic > Virtual Servers** and right-click on
    **Statistics** and open the page in a new tab.
 
-#. Use a new tab to access **http://10.1.10.25**.
+#. From the Windows 10 Jump Host using Google Chrome open a new tab to access **http://10.1.10.200**.
 
 #. Use both statistics tabs (click **Refresh**) to identify which BIG-IP
    system processed the incoming request.
 
-#. In the Configuration Utility tab for **bigipB.f5demo.com**, open the
+#. In the Configuration Utility tab for **B**, open the
    **Device Management > Traffic Groups** page and click
    **traffic-group-1**.
 
