@@ -20,14 +20,14 @@ Recently F5 introduced the next phase of evoltion for the BIG-IP
 ADC platform known ad FAST (F5 Application Services Templates).  FAST
 technology was developed for the following reasons:
 
-#. Replacement for deprecated iApp templates
-#. Cosistent, cross-platform declarative APIs
-#. Seamless integration and insertion into CI/CD pipelines
-#. Modern development languages like Node.js and Python
-#. Templates and automation
-#. Declarative Interface
-#. JSON Schema
-#. Less error prone
+-  Replacement for deprecated iApp templates
+-  Consistent, cross-platform declarative APIs
+-  Seamless integration and insertion into CI/CD pipelines
+-  Modern development languages like Node.js and Python
+-  Templates and automation
+-  Declarative Interface
+-  JSON Schema
+-  Less error prone
 
 
 In short, FAST will enable and empower customers while they
