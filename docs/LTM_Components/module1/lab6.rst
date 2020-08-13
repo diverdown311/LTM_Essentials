@@ -10,9 +10,9 @@ associated with a specific application.  iApps have been available
 on the BIG-IP system for a number of years, and consist of 
 three main components:
 
-#. Application Services
-#. Templates
-#. Devcentral Ecosystem
+-  Application Services
+-  Templates
+-  Devcentral Ecosystem
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
