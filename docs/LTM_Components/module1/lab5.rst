@@ -1,11 +1,26 @@
 Lab 4: Profiles
 ----------------------------------
+Profiles are a powerful configuration tool providing an easy
+way to define traffic policies and apply those policies across
+many virtual servers.  Profiles allow one to change a setting
+for traffic across different applications.   Profiles provide
+the following:
 
-In this lab you will set up a high availability pair using two BIG-IP
-systems. You’ll then test failover between the two HA members.
+#. A centralized place to define specific traffic behavior
 
-Task 1 – Set up a Device Group
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+#. A centralized place to change any setting and have them
+   applied to all applications using an existing profile
+   
+Profiles are grouped to make    
+
+
+
+
+Task 1 – Configure a Profile
+
+
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. Open a new tab and click the **BIGIP\_B** bookmark and then log into
    the BIG-IP system.
