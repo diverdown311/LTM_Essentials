@@ -84,6 +84,12 @@ Task 2 – Configure a **Sync-Failover** Group
    
 #. Click Finished
 
+#. From the Navigation Pane under **Device Management** click on **Traffic Groups**
+
+#. Within the **Failover Order** section select both **BIGIP01** and **BIGIP02** and click the
+   left arrow button.   Both BIGIP objects should now be in the **Preferred Order** section with
+   **BIGIP01** listed above **BIGIP02**.   Click Save.
+
 #. Note the new status of **bigip01.f5demo.com**.
 
 #. Click **Awaiting Initial Sync**.
@@ -127,25 +133,25 @@ Task 2 – Configure a **Sync-Failover** Group
 
 #. On **BIGIP02** examine the **LAMP** Virtual Server
 
-   The **https\_app\_pool** now contains 4 members.
-
 Task 3 – Test Failover
-^^^^^^^^^^^^^^^^^^^^^^
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#. From the Windows 10 Jump Host using Google Chrome log into both BIG-IP systems.
 
 **On BIGIP01**
 
-#. Navigate to **Local Traffic > Virtual Servers** and right-click on
-   **Statistics** and open the page in a new tab.
+#. Navigate to **Device Management**, click on **Devices**, click on the **bigip01.f5demo.com** object.
 
-#. In the statistics tab reset the statistics for all three virtual
-   servers.
+#. Scroll to the bottom and click on **Force Offline**
+
+#. Notice in the top left corner the device status should reflect **FORCED OFFLINE**
+
 
 **On BIGIP02**
 
 #. Navigate to **Local Traffic > Virtual Servers** and right-click on
    **Statistics** and open the page in a new tab.
-
-#. From the Windows 10 Jump Host using Google Chrome open a new tab to access **http://10.1.10.200**.
 
 #. Use both statistics tabs (click **Refresh**) to identify which BIG-IP
    system processed the incoming request.
@@ -185,8 +191,12 @@ Task 3 – Test Failover
 When **bigipA.f5demo.com** comes back online it doesn’t become the
 active device.
 
-Task 3 – Create an Active / Active Pair
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+Task 4 – Create an Active / Active Pair
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
 
 **On bigipA.f5demo.com**
 
