@@ -52,7 +52,11 @@ attach to our virtual server
 
 #. Click **Finished**
 
-Building our New Secure Virtual Server
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Task 3** - Building our New Secure Virtual Server
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. Go to **Local Traffic**, **Virtual Servers**, and hit the **Create** button.
 
@@ -72,7 +76,7 @@ Building our New Secure Virtual Server
 	
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Task 3** - Configure HTTP Compression
+**Task 4** - Configure HTTP Compression
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -148,7 +152,7 @@ Building our New Secure Virtual Server
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Task 4** – Configure BIG-IP Best Practices
+**Task 5** – Configure BIG-IP Best Practices
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
