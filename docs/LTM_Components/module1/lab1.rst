@@ -10,6 +10,11 @@ and choose the **RDP** option.
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+
+|image1|
+
+
+
 #. From the Windows 10 Jumphost using a web browser (Chrome), log into BIG-IP01 (https://10.1.1.4) system with the below credentials.
 
 -  admin
