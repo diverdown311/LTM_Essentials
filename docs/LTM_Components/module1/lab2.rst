@@ -5,39 +5,47 @@ In this lab you will gain experience using SNAT Auto Map for inbound
 requests as well as outbound requests from internal users. You’ll also
 use an HTTP and stream profile to make global modifications to text
 within a web site. Finally you’ll see how using health monitors ensures
-that you the BIG-IP knows which web servers are available for client
-requests.  SNAT's provide a mapping between nodes, often internal devices
-and a SNAT address.   SNATs can be configured many different ways including
+that the BIG-IP knows which web servers are available for client
+requests.  SNATs, or Secure Network Address Translation, provide a mapping between nodes, often internal devices
+and a SNAT address. SNATs can be configured many different ways including
 one-to-one mappings, many-to-one mappings, or all to one mappings.  In all cases
 a SNAT must be enabled on the VLAN where the node's traffic arrives on the BIG-IP system.
 In this lab we will focus on the SNAT Automap feature which automatically maps the source
 address of an allowed host to an address from a defined group.   Often times this is a Self-IP
 address on the BIG-IP.
 
-Task 1 – Use SNAT AutoMap
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Task 1** – Use SNAT Auto Map
+
 A virtual server configured on a BIG-IP system typically translates the destination IP address
-of an incoming packet to load balance requests.  Normally the source IP address remains unchanged.
+of an incoming packet to load balance requests.  By default the source IP address remains unchanged.
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#. In the Configuration Utility, open the **Pool List** page and click
-   **Create**.
+#. In the Configuration Utility, open the **Pool List** page.
 
 #. For this lab we will use the existing **LAMP** pool which contains the below members.
+   Make sure load balancing method is Round Robin.
 
    +---------------+------------------------------------+
    | Form field    | Value                              |
    +===============+====================================+
    | Name          | LAMP                               |
    +---------------+------------------------------------+
-   | New Members   | Address: 10.1.20.252               |
+   | LAMP_Server1  | Address: 10.1.20.11                |
    |               | Service Port: 80                   |
    +---------------+------------------------------------+
-   |               | Address 10.1.20.250                |
+   | LAMP_Server2  | Address: 10.1.20.12                |
    |               | Service Port: 80                   |
    +---------------+------------------------------------+
-  
-
+   | LAMP_Server3  | Address: 10.1.20.13                |
+   |               | Service Port: 80                   |
+   +---------------+------------------------------------+  
+   | LAMP_Server4  | Address: 10.1.20.14                |
+   |               | Service Port: 80                   |
+   +---------------+------------------------------------+
+ 
 #. Open the **Virtual Server List** page and click on the **LAMP** virtual server
 
 
@@ -79,7 +87,7 @@ of an incoming packet to load balance requests.  Normally the source IP address 
 #. Press the **Enter** key several times to move the log entries to the
    top of the window.
 
-#. In the Configuration Utility, click **LAMP**.
+#. In the Configuration Utility you should be in the **LAMP** virtual server configuration.
 
 #. From the **Source Address Translation** list select **Auto Map** which has already
    been configured when the virtual was created.  Notice there are several options to include
@@ -102,7 +110,9 @@ of an incoming packet to load balance requests.  Normally the source IP address 
    internal self IP address (**10.1.20.245**) and a back-end web
    server (**10.1.20.x**).
 
-Task 2 – Create a SNAT for Internal Resources
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Task 2** – Create a SNAT for Internal Resources
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -158,9 +168,9 @@ Task 2 – Create a SNAT for Internal Resources
 
 #. Close the **putty** sessions.
 
-Task 3 – Use Profiles with a Virtual Server
-
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Task 3** – Use Profiles with a Virtual Server
 
 Profiles are a powerful configuration tool providing an easy way to define
 traffic policies and apply those policies across virtual servers.   Through
@@ -176,11 +186,12 @@ Profiles provide
   using an existing profile.  A profile tells a virtual server how to process packets
   it receives through the BIG-IP system.
 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. From the Jump Host use a new tab to access **http://10.1.10.200**, and then select the
-   links at the top of the page and examine the text on each page.
+   **Stream Profile Example** link toward the bottom of the page and examine the text.
 
-  Instead of updating all the web site code we’ll use profiles on the BIG-IP system to update the web site.
+   Instead of updating all the web site code we’ll use profiles on the BIG-IP system to update the web site.
 
 #. Close the tab.
 
@@ -195,9 +206,9 @@ Profiles provide
    +==============+=====================+
    | Name         | name\_change        |
    +--------------+---------------------+
-   | Source       | Investments         |
+   | Source       | Lorax Bank          |
    +--------------+---------------------+
-   | Target       | Financials          |
+   | Target       | Seuss Bank          |
    +--------------+---------------------+
 
 #. Open the **Virtual Server List** page and click **LAMP**.
@@ -221,19 +232,24 @@ Profiles provide
 #. Use an incognito window to access **http://10.1.10.200**, and then
    select the links at the top of the page.
 
-   Although the logo need to be updated, all the text on all pages now
-   references **Financials**.
-
-Task 4 – Work with Monitors
+   Although the logo need to be updated, all the text on the page now
+   references **Seuss Bank**.
+   
+#. Remove the **Stream Profile**, **Web Acceleration Profile**, and **Acceleration** profile 
+   from the **LAMP** Virtual Server and update.
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+**Task 4** – Work with Monitors
+
 During this section of the lab we will review many of the available
-monitors and how to customze them.  The BIG-IP system includes a set of
+monitors and how to customize them.  The BIG-IP system includes a set of
 pre-defined monitor templates for address, service, content, and interactive checks.
 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 #. From the Windows Jump host open a new tab in a browser and enter the 
-   following URL **http://10.1.10.200/peruggia**
+   following URL **http://10.1.10.200/HealthCheck.html**
 
    We’re going to use this web page to identify if the web server is up or down.
 
@@ -256,11 +272,11 @@ pre-defined monitor templates for address, service, content, and interactive che
    +--------------------------+---------------------------------+
    | Timeout                  | 13                              |
    +--------------------------+---------------------------------+
-   | Send String              | GET /peruggia\\r\\n             |
+   | Send String              | GET /HealthCheck.html\\r\\n     |
    +--------------------------+---------------------------------+
-   | Receive String           | Server\_Up                      |
+   | Receive String           | SERVER\_UP                      |
    +--------------------------+---------------------------------+
-   | Receive Disable String   | Server\_Down                    |
+   | Receive Disable String   | SERVER\_DOWN                    |
    +--------------------------+---------------------------------+
 
 #. Open the **Pool List** page and click **LAMP**.
@@ -296,7 +312,9 @@ pre-defined monitor templates for address, service, content, and interactive che
 
    All two nodes also display available.
 
-Sub-Task 1 – Take Ubuntu_LAMP1 Offline
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Sub-Task 1** – Take Ubuntu_LAMP1 Offline
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -313,7 +331,9 @@ Sub-Task 1 – Take Ubuntu_LAMP1 Offline
 
    The first pool member is offline, while the other node displays available.
 
-Sub-Task 2 – Disable Ubuntu_LAMP2
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Sub-Task 2** – Disable Ubuntu_LAMP2
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -326,7 +346,9 @@ Sub-Task 2 – Disable Ubuntu_LAMP2
 
 #. Notice that the virtual server and pool display unavailable.
 
-Sub- Task 4 – Bring both pool members back online
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Sub- Task 3** – Bring both pool members back online
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
