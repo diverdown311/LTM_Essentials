@@ -10,7 +10,14 @@ Addresses and map them to individual VLANs.
 **Task 1** – Connect to the Windows 10 Jumphost via RDP and log into BIG-IP01. Select the **ACCESS** drop down menu under Windows 10
 and choose the **RDP** option.
 
+
+
+
 |image1|
+
+
+
+
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
