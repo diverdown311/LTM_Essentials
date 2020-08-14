@@ -133,15 +133,54 @@ Task 2 – Configure a **Sync-Failover** Group
 
 #. On **BIGIP02** examine the **LAMP** Virtual Server
 
-Task 3 – Test Failover
+Task 3 – Traffic Groups
+
+A traffic-group is a collection of related configuration objects which together, process a particular type of traffic.
+These include  Self IPs, Virtual IPs, iApps, SNATs and VLANs objects.  A Local Traffic group – is local significant only;
+it has no scope beyond the device where it’s configured. A default local traffic group is created automatically during 
+the initial setup wizard called traffic-group-local-only – it contains the non-floating self IPs associated to the external
+and internal VLANs.
+
+There are also floating traffic groups, and as the name suggests, these can be automatically reassigned (float) between
+devices part of the same device-group. Objects which belong to a floating traffic group are called failover objects
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#. From the Windows 10 Jump Host using Google Chrome log into both BIG-IP systems.
+#. From the **Navigation Pane*, on BIGIP01, click on Network, Self-IP's, and create the following Floating Self-IP addresses:
+
+   +--------------+-------------------------------------------+
+   | Form field   | Value                                     |
+   +==============+===========================================+
+   | Name         | external_selfip_floating                  |
+   +--------------+-------------------------------------------+
+   | IP Address   | 10.1.10.248                               |
+   +--------------+-------------------------------------------+
+   | Netmask      | 255.255.255.0                             |
+   +--------------+-------------------------------------------+
+   | Traffic Group| traffic-group-1 (floating)                |
+   +--------------+-------------------------------------------+
+
+
+   +--------------+-------------------------------------------+
+   | Form field   | Value                                     |
+   +==============+===========================================+
+   | Name         | _internal_selfip_floating                 |
+   +--------------+-------------------------------------------+
+   | IP Address   | 10.1.20.248                               |
+   +--------------+-------------------------------------------+
+   | Netmask      | 255.255.255.0                             |
+   +--------------+-------------------------------------------+
+   | Traffic Group| traffic-group-1 (floating)                |
+   +--------------+-------------------------------------------+
+
+
+Task 4 – Test Failover
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **On BIGIP01**
 
-#. Navigate to **Device Management**, click on **Devices**, click on the **bigip01.f5demo.com** object.
+#. From the **Navigation Pane*, on BIGIP01, click on Device Management, Devices
 
 #. Scroll to the bottom and click on **Force Offline**
 
@@ -150,99 +189,29 @@ Task 3 – Test Failover
 
 **On BIGIP02**
 
-#. Navigate to **Local Traffic > Virtual Servers** and right-click on
-   **Statistics** and open the page in a new tab.
+#. Note the status of **BIGIP02**.
 
-#. Use both statistics tabs (click **Refresh**) to identify which BIG-IP
-   system processed the incoming request.
+#. BIGIP02 status as displayed in the top left corner of the GUI should reflect **ONLINE ACTIVE**, (In Sync)
 
-#. In the Configuration Utility tab for **B**, open the
-   **Device Management > Traffic Groups** page and click
-   **traffic-group-1**.
+#. Verify that the Self IP objects are now active on BIGIP02 by navigating to the Network menu object and clicking on
+   the Self IP objects.
+   
+#. Virtual Servers, Pools, Pool members and any SNAT object should also exist on BIGIP02 which is now the active BIG-IP device
 
-   For this traffic group the **Current Device** is **bigipB.f5demo.com**.
-
-#. Click **Force to Standby** twice, and then view the value in the
-   **Active Device** column.
-
-#. In the Lorax Investments page, edit the URL to **http://10.1.10.20**,
-   then use both statistics tabs to identify which BIG-IP system
-   processed the incoming request.
-
-**On bigipA.f5demo.com**
-
-#. In the Configuration Utility tab, open the **Device Management >
-   Devices** page and click **bigipA.f5demo.com (Self)**.
-
-#. Click **Force Offline** and then **OK**.
-
-**On bigipB.f5demo.com**
-
-#. Note the status of **bigipB.f5demo.com**.
-
-**On bigipA.f5demo.com**
+**On BIGIP01**
 
 #. On the **Devices** page click **Release Offline** and then **OK**.
 
-**On bigipB.f5demo.com**
+**On BIGIP01**
 
-#. Note the status of **bigipB.f5demo.com**.
+#. Note the status of **BIGIP01**.
 
-When **bigipA.f5demo.com** comes back online it doesn’t become the
-active device.
+This concludes Lab 4
 
-
-
-Task 4 – Create an Active / Active Pair
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-
-
-**On bigipA.f5demo.com**
-
-#. Open the **Device Management > Traffic Groups** page and click
-   **Create**.
-
-#. Create a traffic group using the following information, and then
-   click **Create Traffic Group**.
-
-   +-------------------+--------------------------+
-   | Form field        | Value                    |
-   +===================+==========================+
-   | Name              | traffic-group-2          |
-   +-------------------+--------------------------+
-   | Failover Method   | Preferred Device Order   |
-   +-------------------+--------------------------+
-   | Preferred Order   | bigipA.f5demo.com        |
-   |                   | bigipB.f5demo.com        |
-   +-------------------+--------------------------+
-
-#. Open the **Local Traffic > Virtual Servers > Virtual Address List**
-   page and click **10.1.10.25**.
-
-#. From the **Traffic Group** list select **traffic-group-2
-   (floating)**, and then click **Update**.
 
    |image19|
 
-#. Click **Changes Pending**.
 
-#. Leave the default options selected and click **Sync**.
-
-#. Note the status of both BIG-IP systems.
-
-   You now have an active / active pair.
-
-#. Reset both statistics pages.
-
-#. Access **https ://10.1.10.20** and identify which BIG-IP processed
-   the request.
-
-#. Access **http://10.1.10.25** and identify which BIG-IP is processed
-   the request.
-
-That concludes the hands-on exercises for the Introduction to ADC
-Deployments with LTM lab session.
 
 .. |image17| image:: /_static/class1/image19.png
    :width: 1.70088in
