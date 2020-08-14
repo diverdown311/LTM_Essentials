@@ -340,6 +340,6 @@ Task 5 – Use Different Pool Options
 
 
 
-.. |image1| image:: images/image1.PNG
+.. |image1| image:: images/image1.JPG
    :width: 2.32107in
    :height: 0.33645in
