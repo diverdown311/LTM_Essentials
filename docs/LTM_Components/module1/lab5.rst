@@ -86,7 +86,30 @@ changes may flow through to your custom profile.
 
 #.  Click Finished
 
-#   From the Windows 10 Jump Host open a new tab in Google Chrome and enter **https://10.1.10.201**.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Task 4** - Assign the new Persistence Profile to the **LAMP_SSL** Virtual Server
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#.  From the Navigation pane expand the **Local Traffic** section and select
+    **Virtual Servers**.
+    
+#.  Select the **LAMP_SSL** Virtual Server
+
+#.  Select the **Resources** tab at the top of the screen.
+
+#.  Select the drop down for **Default Persistence Profile** and select **LTM_Cookie_Insert**.
+    
+#.  Click **Update**
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Task 5** - Checking the new SSL configuration and Persistence
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#.  From the Windows 10 Jump Host open a new tab in Google Chrome and enter **https://10.1.10.201**.
 
 #.  Google Chrome allows a user to view attributes such as SSL certificates and cookies.  In order to verify 
     the **HelloWorld** cookie attribute click on the **Not Secure** section to the left of the URL and then click
