@@ -14,7 +14,10 @@ In this lab we will focus on the SNAT Automap feature which automatically maps t
 address of an allowed host to an address from a defined group.   Often times this is a Self-IP
 address on the BIG-IP.
 
-Task 1 – Use SNAT AutoMap
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Task 1** – Use SNAT AutoMap
+
 A virtual server configured on a BIG-IP system typically translates the destination IP address
 of an incoming packet to load balance requests.  Normally the source IP address remains unchanged.
 
@@ -102,7 +105,9 @@ of an incoming packet to load balance requests.  Normally the source IP address 
    internal self IP address (**10.1.20.245**) and a back-end web
    server (**10.1.20.x**).
 
-Task 2 – Create a SNAT for Internal Resources
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Task 2** – Create a SNAT for Internal Resources
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -158,7 +163,9 @@ Task 2 – Create a SNAT for Internal Resources
 
 #. Close the **putty** sessions.
 
-Task 3 – Use Profiles with a Virtual Server
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Task 3** – Use Profiles with a Virtual Server
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -224,7 +231,9 @@ Profiles provide
    Although the logo need to be updated, all the text on all pages now
    references **Financials**.
 
-Task 4 – Work with Monitors
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Task 4** – Work with Monitors
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -296,7 +305,9 @@ pre-defined monitor templates for address, service, content, and interactive che
 
    All two nodes also display available.
 
-Sub-Task 1 – Take Ubuntu_LAMP1 Offline
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Sub-Task 1** – Take Ubuntu_LAMP1 Offline
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -313,7 +324,9 @@ Sub-Task 1 – Take Ubuntu_LAMP1 Offline
 
    The first pool member is offline, while the other node displays available.
 
-Sub-Task 2 – Disable Ubuntu_LAMP2
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Sub-Task 2** – Disable Ubuntu_LAMP2
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -326,7 +339,9 @@ Sub-Task 2 – Disable Ubuntu_LAMP2
 
 #. Notice that the virtual server and pool display unavailable.
 
-Sub- Task 4 – Bring both pool members back online
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Sub- Task 3** – Bring both pool members back online
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
