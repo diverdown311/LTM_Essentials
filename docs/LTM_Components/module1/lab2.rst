@@ -314,48 +314,47 @@ pre-defined monitor templates for address, service, content, and interactive che
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Sub-Task 1** – Take Ubuntu_LAMP1 Offline
+**Sub-Task 1** – Take Lamp_Server1 Offline
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. From the Windows Jump Host while logged into BIG-IP01 click on **Pools**, 
    then click on **LAMP** pool, click the **Members** tab then click on 
-   the **LAMP_Server** then click on the **Disabled** radio button.
+   the **LAMP_Server1** then click on the **Disabled** radio button.
 
-#. Wait 13 seconds, and then in the Configuration Utility on the
-   **Network Map** page click **Update Map**.
+#. In the Configuration Utility under **Local Traffic** open the
+   **Network Map**.
 
    |image11|
 
 #. Use your mouse to hover over the pool members.
 
-   The first pool member is offline, while the other node displays available.
+   The first pool member is offline, while the other pool members are available.
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Sub-Task 2** – Disable Ubuntu_LAMP2
+**Sub-Task 2** – Disable all pool members
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. From the Windows Jump Host while logged into BIG-IP01 click on **Pools**, 
-   then click on **LAMP** pool, click the **Members** tab then click on 
-   the **LAMP_Server2** then click on the **Disabled** radio button.
+   click on **LAMP** pool, click the **Members** tab, click 
+   the **check box** to select all members and then click on the **Disable** radio button.
 
-#. Wait 13 seconds, and then in the Configuration Utility on the
-   **Network Map** page click **Update Map**.
+#. In the Configuration Utility under **Local Traffic** open the
+   **Network Map**.
 
 #. Notice that the virtual server and pool display unavailable.
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Sub- Task 3** – Bring both pool members back online
+**Sub- Task 3** – Bring all pool members back online
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. From the Windows Jump Host while logged into BIG-IP01 click on **Pools**, 
-   then click on **LAMP** pool, click the **Members** tab then click on 
-   both the **LAMP_Server** and **LAMP_Server2** and then click on the **enabled** radio button.
-   Follow this process for both members of the **LAMP** pool
+   click on **LAMP** pool, click the **Members** tab, click 
+   the **check box** to select all members and then click on the **Enable** radio button.
 
 #. Use an incognito window to access **http://10.1.10.200**.
 
