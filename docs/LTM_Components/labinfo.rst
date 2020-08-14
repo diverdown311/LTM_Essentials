@@ -8,7 +8,7 @@ basic setup ahead of time. These are:
 -  Cloud-based lab environment complete with a Windows 10 Jumphost, two 
    virtual BIG-IP's (VE), and an Ubuntu Server running a LAMP Stack.
 
--  The virtual BIG-IP has been pre-licensed
+-  The virtual BIG-IPs have been pre-licensed
 
 To access the lab environment, you will need a web browser and
 Remote Desktop Protocol (RDP) client software. If you are using a MAC you will
