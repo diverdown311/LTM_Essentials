@@ -26,6 +26,7 @@ of an incoming packet to load balance requests.  By default the source IP addres
 #. In the Configuration Utility, open the **Pool List** page.
 
 #. For this lab we will use the existing **LAMP** pool which contains the below members.
+   Make sure load balancing method is Round Robin.
 
    +---------------+------------------------------------+
    | Form field    | Value                              |
@@ -242,13 +243,13 @@ Profiles provide
 **Task 4** – Work with Monitors
 
 During this section of the lab we will review many of the available
-monitors and how to customze them.  The BIG-IP system includes a set of
+monitors and how to customize them.  The BIG-IP system includes a set of
 pre-defined monitor templates for address, service, content, and interactive checks.
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. From the Windows Jump host open a new tab in a browser and enter the 
-   following URL **http://10.1.10.200/peruggia**
+   following URL **http://10.1.10.200/HealthCheck.html**
 
    We’re going to use this web page to identify if the web server is up or down.
 
@@ -271,11 +272,11 @@ pre-defined monitor templates for address, service, content, and interactive che
    +--------------------------+---------------------------------+
    | Timeout                  | 13                              |
    +--------------------------+---------------------------------+
-   | Send String              | GET /peruggia\\r\\n             |
+   | Send String              | GET /HealthCheck.html\\r\\n     |
    +--------------------------+---------------------------------+
-   | Receive String           | Server\_Up                      |
+   | Receive String           | SERVER\_UP                      |
    +--------------------------+---------------------------------+
-   | Receive Disable String   | Server\_Down                    |
+   | Receive Disable String   | SERVER\_DOWN                    |
    +--------------------------+---------------------------------+
 
 #. Open the **Pool List** page and click **LAMP**.
