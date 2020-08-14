@@ -34,7 +34,9 @@ changes may flow through to your custom profile.
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Task 1 – Configure a custom Client SSL Profile
+**Task 1** – Configure a custom Client SSL Profile
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #.  From the Windows 10 Jump Host log into BIG-IP01
 
@@ -51,7 +53,11 @@ Task 1 – Configure a custom Client SSL Profile
 
 #.  Click **Finished**
 
-Task 2 - Assign the new Client SSL Profile to the **LAMP_SSL** Virtual Server
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Task 2** - Assign the new Client SSL Profile to the **LAMP_SSL** Virtual Server
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #.  From the Navigation pane expand the **Local Traffic** section and select
     **Virtual Servers**.
@@ -63,7 +69,11 @@ Task 2 - Assign the new Client SSL Profile to the **LAMP_SSL** Virtual Server
     
 #.  Click **Update**
 
-Task 3 - Configure a custom Persistence Profile
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Task 3** - Configure a custom Persistence Profile
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #.  From the Navigation pane expand the **Local Traffic** section and select
     **Profiles**, **Persistence** and click the **+** sign to create a new Profile
