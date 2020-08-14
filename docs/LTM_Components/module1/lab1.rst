@@ -5,16 +5,16 @@ It is assumed that you have already licensed each of the BIG-IP devices. In this
 You will also configure a default route, internal and external vlans, and finally you will configure Self-IP 
 Addresses and map them to individual VLANs.
 
-Task 1 – Connect to the Windows 10 Jumphost via RDP and log into BIG-IP01. Select the **ACCESS** drop down menu under Windows 10
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Task 1** – Connect to the Windows 10 Jumphost via RDP and log into BIG-IP01. Select the **ACCESS** drop down menu under Windows 10
 and choose the **RDP** option.
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. From the Windows 10 Jumphost using a web browser (Chrome), log into BIG-IP01 (https://10.1.1.4) system with the below credentials.
 
--  admin
-
--  admin.F5demo.com
+   **U:** admin **P:** admin.F5demo.com
 
 #. While logged into the BIG-IP01 gui click on the Network menu object, then click on the Interfaces object. Note that there are two interfaces labeled 1.1 and 1.2
 
@@ -60,9 +60,9 @@ and choose the **RDP** option.
 
 #. Enter the address 10.1.10.1 and click Finished
 
-Task 2 – Create a Pool BIG-IP object and a Virtual Server
-
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Task 2** – Create a Pool BIG-IP object and a Virtual Server
 
 We will be configuring a Pool with four member objects.  A pool is a group of pool members.   With few exceptions, all the members of a given pool
 host the same content.   Pools are named, and like most objects on BIG-IP systems, their names can begin with a letter or underscore as well as numbers but
@@ -139,7 +139,7 @@ to determine which member to use for that request.
 
 #. Use **Ctrl + F5** to reload the page several times.
 
-   You should notice the LAMP Pool displaying the respective page elements from both members.
+   You should notice the LAMP Pool displaying the respective page elements from all members.
    That’s all it takes to create a basic web application on the BIG-IP system.
 
 #. Close the tab.
@@ -155,13 +155,13 @@ to determine which member to use for that request.
    to the pool members. Notice that the requests are evenly distributed
    across all three web servers.
 
-#. Select the **LAMP** checkbox, and then click **Reset**.
+#. Select the checkbox next to **LAMP**, and then click **Reset**.
 
    |image4|
 
-Task 3 – Create an IP Forwarding Virtual Server
-
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Task 3** – Create an IP Forwarding Virtual Server
 
 An IP forwarding virtual server accepts traffic that matches the virtual server address and forwards it to the destination IP address
 that is specified in the request rather than load balancing the traffic to a pool. Address translation is disabled when you create an
@@ -207,6 +207,7 @@ or a network IP forwarding virtual server, which forwards traffic for a subnet.
    | Type                        | Forwarding (IP)    |
    +-----------------------------+--------------------+
    | Source Address/ Mask        | 0.0.0.0/0          |
+   +-----------------------------+--------------------+
    | Destination Address/ Mask   | 10.1.20.0/24       |
    +-----------------------------+--------------------+
    | Service Port                | \* All Ports       |
@@ -227,7 +228,9 @@ or a network IP forwarding virtual server, which forwards traffic for a subnet.
 You now have access to all ports and all protocols on the **10.1.20.0**
 network.
 
-Task 4 – Create a Reject Virtual Server
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Task 4** – Create a Reject Virtual Server
 
 A Reject virtual server rejects any traffic destined for the virtual server IP address.
 
@@ -242,11 +245,12 @@ A Reject virtual server rejects any traffic destined for the virtual server IP a
    +-----------------------------+-----------------------+
    | Form field                  | Value                 |
    +=============================+=======================+
-   | Name                        | reject\_server   |
+   | Name                        | reject\_server        |
    +-----------------------------+-----------------------+
    | Type                        | Reject                |
    +-----------------------------+-----------------------+
    | Source Address/ Mask        | 0.0.0.0/0             |
+   +-----------------------------+-----------------------+
    | Destination Address/ Mask   | 10.1.20.252           |
    +-----------------------------+-----------------------+
    | Service Port                | \* All Ports          |
@@ -270,17 +274,18 @@ A Reject virtual server rejects any traffic destined for the virtual server IP a
    **reject\_win\_server** checkboxes and then click **Delete** and
    **Delete** again.
 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Task 5 – Use Different Pool Options
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. Open the **Local Traffic > Pools > Pool List** page and click
-   **LAMP pool**, and then open the **Members** page.
+   **LAMP** pool, and then open the **Members** page.
 
    |image5|
 
-   Currently the pool is using the default load balancing method: **Round
-   Robin**.
+   Currently the pool is using the default load balancing method: **Round Robin**.
 
 #. From the **Load Balancing Method** list select **Ratio (member)**,
    and then click **Update**.
