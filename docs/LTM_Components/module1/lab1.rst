@@ -3,35 +3,38 @@ Lab 1: Explore the F5 BIG-IP network configuration
 
 It is assumed that you have already licensed each of the BIG-IP devices. In this lab you will explore network settings on the BIG-IP.
 You will also configure a default route, internal and external vlans, and finally you will configure Self-IP 
-Addresses and map them to individual VLAN's.
+Addresses and map them to individual VLANs.
 
-Task 1 – Connect to the Win10 Jumphost via RDP and log into the BIG-IP01 by clicking on the **ACCESS** drop down menu within 
-the lab environment.
+Task 1 – Connect to the Windows 10 Jumphost via RDP and log into BIG-IP01. Select the **ACCESS** drop down menu under Windows 10
+and choose the **RDP** option.
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#. From the Windows 10 Jumphost using a web browser (Chrome), log into BIG-IP01 (10.1.1.4) system with the below credentials.
+#. From the Windows 10 Jumphost using a web browser (Chrome), log into BIG-IP01 (https://10.1.1.4) system with the below credentials.
 
 -  admin
 
 -  admin.F5demo.com
 
-#. While logged into the BIG-IP01 gui click on the Network menu object, then click on the Interfaces object.   Note that there are two interfaces labeled 1.1 and 1.2
+#. While logged into the BIG-IP01 gui click on the Network menu object, then click on the Interfaces object. Note that there are two interfaces labeled 1.1 and 1.2
+
+   The **Network** menu is where you configure elements for routing and switching.
 
 #. Network interface 1.1 is assigned to the external network while interface 1.2 is assigned to the internal network
 
-#. Click on the VLANs object then click on the **Create** button at the top right and enter the name **external**.  Select interface 1.1, click the Tagging drop down menu and ensure the interface is set to **Untagged** then click on the **Add** button.
+#. Now we will create VLANs on these interfaces.
 
-#. Follow the same process for creating a network interface named **internal** while ensuring interface 1.2 is selected as **Untagged**.
+#. From within the **Network** menu click on the VLANs object then click on the **Create**.
+
+#. Enter the name **external**.  Select interface 1.1, click the Tagging drop down menu and ensure the interface is set to **Untagged** then click on the **Add** button.
+
+   Note: The BIG-IP will assign VLAN tags automatically starting from 4094 and decreasing if a tag is not provided.
+
+#. Follow the same process for creating a VLAN named **internal** while ensuring interface 1.2 is selected as **Untagged**.
 
 #. Now we will configure two Self-IP Addresses.
 
 #. From within the **Network** menu click on Self IPs object and click **Create**.
-
-#. Click **Create** .
-
-   The **Network** menu is where you configure elements for routing and
-   switching.
 
 #. Name the first Self IP object **external_selfip**.
 
@@ -39,7 +42,7 @@ the lab environment.
 
 #. Ensure the VLAN/Tunnel is set to **External**, while the Port Lockdown should be configured for **Allow None**.
 
-#. Follow the same process for the **Internal** interface with the following IP Address and Netmask.
+#. Follow the same process for **internal_selfip** using **Internal** VLAN with the following IP Address and Netmask.
 
    10.1.20.245/255.255.255.0
 
@@ -64,7 +67,7 @@ Task 2 – Create a Pool BIG-IP object and a Virtual Server
 We will be configuring a Pool with four member objects.  A pool is a group of pool members.   With few exceptions, all the members of a given pool
 host the same content.   Pools are named, and like most objects on BIG-IP systems, their names can begin with a letter or underscore as well as numbers but
 should not contain spaces.  Pools also have thier own load balancing method, monitors, and other features defined when a pool is created or modified.
-When a new connection is initiated to a virtual server that is mapped to a pool, various criteria, including the pool's load balancing method may be used
+When a new connection is initiated to a virtual server that is mapped to a pool, various criteria, including the pools load balancing method may be used
 to determine which member to use for that request.
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
