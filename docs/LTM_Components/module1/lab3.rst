@@ -11,7 +11,9 @@ Objective:
 We will create a self-signed certificate and key for a client SSL profile to
 attach to our virtual server
 
-Task 1 – Create a self-signed certificate and key
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Task 1** – Create a self-signed certificate and key
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -27,8 +29,11 @@ Task 1 – Create a self-signed certificate and key
 	Common Name		www.f5demo.com
 	Fill out the rest as desired
 	
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 	
-Task 2 - Configure an SSL Client Profile
+**Task 2** - Configure an SSL Client Profile
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. Go to **Local Traffic**, **Profiles**, **SSL**, **Client menu and select **Create** 
 
@@ -65,9 +70,11 @@ Building our New Secure Virtual Server
 
 	What port did your pool members see traffic on?
 	
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Task 2 - Configure HTTP Compression
+**Task 3** - Configure HTTP Compression
 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. Open the **LAMP_SSL** Virtual Server and click **Create**.
 
@@ -139,16 +146,12 @@ Task 2 - Configure HTTP Compression
 #. Close the tab.
 
 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+**Task 4** – Configure BIG-IP Best Practices
 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-
-
-
-
-
-Task 2 – Configure BIG-IP Best Practices
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. Close the Configuration Utility, then open Internet Explorer and
    access **https://10.1.10.240**.
