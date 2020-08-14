@@ -7,6 +7,8 @@ Addresses and map them to individual VLANs.
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+|image1|
+
 **Task 1** – Connect to the Windows 10 Jumphost via RDP and log into BIG-IP01. Select the **ACCESS** drop down menu under Windows 10
 and choose the **RDP** option.
 
@@ -333,22 +335,10 @@ Task 5 – Use Different Pool Options
    |                             | to each member.                              |
    +-----------------------------+----------------------------------------------+
    
+   
+   
 
-.. |image1| image:: /_static/class1/image3.png
+.. |image1| image:: /images/Capture.PNG
    :width: 5.32107in
    :height: 0.55645in
-.. |image2| image:: /_static/class1/image4.png
-   :width: 5.06779in
-   :height: 0.86290in
-.. |image3| image:: /_static/class1/image5.png
-   :width: 3.32258in
-   :height: 0.68200in
-.. |image4| image:: /_static/class1/image6.png
-   :width: 4.03226in
-   :height: 1.21631in
-.. |image5| image:: /_static/class1/image7.png
-   :width: 3.10484in
-   :height: 0.51346in
-.. |image6| image:: /_static/class1/image8.png
-   :width: 1.65833in
-   :height: 0.99709in
+
