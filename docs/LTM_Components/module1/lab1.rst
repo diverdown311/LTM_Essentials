@@ -5,21 +5,16 @@ It is assumed that you have already licensed each of the BIG-IP devices. In this
 You will also configure a default route, internal and external vlans, and finally you will configure Self-IP 
 Addresses and map them to individual VLANs.
 
-Task 1 – Connect to the Windows 10 Jumphost via RDP and log into BIG-IP01. Select the **ACCESS** drop down menu under Windows 10
+
+
+**Task 1** – Connect to the Windows 10 Jumphost via RDP and log into BIG-IP01. Select the **ACCESS** drop down menu under Windows 10
 and choose the **RDP** option.
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-
-|image1|
-
-
-
 #. From the Windows 10 Jumphost using a web browser (Chrome), log into BIG-IP01 (https://10.1.1.4) system with the below credentials.
 
--  admin
-
--  admin.F5demo.com
+   **U:** admin **P:** admin.F5demo.com
 
 #. While logged into the BIG-IP01 gui click on the Network menu object, then click on the Interfaces object. Note that there are two interfaces labeled 1.1 and 1.2
 
@@ -65,7 +60,9 @@ and choose the **RDP** option.
 
 #. Enter the address 10.1.10.1 and click Finished
 
-Task 2 – Create a Pool BIG-IP object and a Virtual Server
+
+
+**Task 2** – Create a Pool BIG-IP object and a Virtual Server
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -144,7 +141,7 @@ to determine which member to use for that request.
 
 #. Use **Ctrl + F5** to reload the page several times.
 
-   You should notice the LAMP Pool displaying the respective page elements from both members.
+   You should notice the LAMP Pool displaying the respective page elements from all members.
    That’s all it takes to create a basic web application on the BIG-IP system.
 
 #. Close the tab.
@@ -160,11 +157,13 @@ to determine which member to use for that request.
    to the pool members. Notice that the requests are evenly distributed
    across all three web servers.
 
-#. Select the **LAMP** checkbox, and then click **Reset**.
+#. Select the checkbox next to **LAMP**, and then click **Reset**.
 
    |image4|
 
-Task 3 – Create an IP Forwarding Virtual Server
+
+
+**Task 3** – Create an IP Forwarding Virtual Server
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -212,6 +211,7 @@ or a network IP forwarding virtual server, which forwards traffic for a subnet.
    | Type                        | Forwarding (IP)    |
    +-----------------------------+--------------------+
    | Source Address/ Mask        | 0.0.0.0/0          |
+   +-----------------------------+--------------------+
    | Destination Address/ Mask   | 10.1.20.0/24       |
    +-----------------------------+--------------------+
    | Service Port                | \* All Ports       |
