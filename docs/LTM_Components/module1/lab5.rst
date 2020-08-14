@@ -114,7 +114,9 @@ changes may flow through to your custom profile.
 #.  Google Chrome allows a user to view attributes such as SSL certificates and cookies.  In order to verify 
     the **HelloWorld** cookie attribute click on the **Not Secure** section to the left of the URL and then click
     the **Cookies** object.   We can view the cookie by clicking the 10.1.10.201 IP Address and then clicking on
-    the Cookies object.   
+    the Cookies object.
+
+#.  Refresh the page a couple of times and notice that your persistence profile if your persistence profile is working.
     
 This concludes Lab 5 and a basic introduction into the different types of Profiles  as well as the capabilities and actions
 Profiles can have on Virtual Servers.
