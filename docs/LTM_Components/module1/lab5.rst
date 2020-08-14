@@ -116,7 +116,7 @@ changes may flow through to your custom profile.
     the **Cookies** object.   We can view the cookie by clicking the 10.1.10.201 IP Address and then clicking on
     the Cookies object.
 
-#.  Refresh the page a couple of times and notice that your persistence profile if your persistence profile is working.
+#.  Refresh the page a couple of times and check if your persistence profile is working. You should only receive elements from a single server.
     
 This concludes Lab 5 and a basic introduction into the different types of Profiles  as well as the capabilities and actions
 Profiles can have on Virtual Servers.
