@@ -235,17 +235,17 @@ Profiles provide
    references **Seuss Bank**.
    
 #. Remove the **Stream Profile**, **Web Acceleration Profile**, and **Acceleration** profile 
-from the **LAMP** Virtual Server and update.
+   from the **LAMP** Virtual Server and update.
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Task 4** – Work with Monitors
 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 During this section of the lab we will review many of the available
 monitors and how to customze them.  The BIG-IP system includes a set of
 pre-defined monitor templates for address, service, content, and interactive checks.
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. From the Windows Jump host open a new tab in a browser and enter the 
    following URL **http://10.1.10.200/peruggia**
