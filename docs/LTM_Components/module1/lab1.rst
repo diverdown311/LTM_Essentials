@@ -2,7 +2,7 @@ Lab 1: Explore the F5 BIG-IP network configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 It is assumed that you have already licensed each of the BIG-IP devices. In this lab you will explore network settings on the BIG-IP.
-You will also configure a default route, internal and external vlans, and finally you will configure Self-IP 
+You will also configure a default route, internal and external vlans, and finally you will configure Self-IP
 Addresses and map them to individual VLANs.
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -11,12 +11,7 @@ Addresses and map them to individual VLANs.
 and choose the **RDP** option.
 
 
-
-
 |image1|
-
-
-
 
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -116,12 +111,12 @@ to determine which member to use for that request.
    |               | Address: 10.1.20.14                |
    |               | Service Port: 80 (Click **Add**)   |
    +---------------+------------------------------------+
-   
+
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
-   
+
 #. Click **Finished**.
 
 #. Open the **Local Traffic > Virtual Servers > Virtual Server List**
@@ -303,18 +298,18 @@ Task 5 – Use Different Pool Options
 
    Currently all members of the LAMP pool member have a ratio of (**1**).
 
-#. Given that there are four members of the LAMP pool we can modify the ration 
+#. Given that there are four members of the LAMP pool we can modify the ration
    of connections to each pool member.  As an example let's go ahead and change
    ratio value for LAMP_Server1 to 4, assign a ratio value of 3 to pool member LAMP_Server2,
    a ratio value of 2 to pool member LAMP_server3, and a ratio value of 1 to
    pool member LAMP_Server1.  The effect this would have is that connection requests would
    be distributed to members of the LAMP pool in following manner **4, 3, 2, 1**.
-   
+
 
 #. The BIG-IP system provides several Ratio load balancing methods for load balancing traffic
    to pool members including the following:
-   
-   
+
+
    +-----------------------------+----------------------------------------------+
    | Form field                  | Value                                        |
    +=============================+==============================================+
@@ -331,7 +326,7 @@ Task 5 – Use Different Pool Options
    |                             | RADIUS, DIAMETER, or other protocols         |
    +-----------------------------+----------------------------------------------+
    | Ratio Least Connections     | Use this method when you want the BIG-IP     |
-   | (member)                    | to weight connections to each pool member    | 
+   | (member)                    | to weight connections to each pool member    |
    +-----------------------------+----------------------------------------------+
    | Ratio Least Connections     | Us this method allows the BIG-IP to assign   |
    |                             | ratio weights applies to all pools of which  |
@@ -341,11 +336,10 @@ Task 5 – Use Different Pool Options
    |                             | pool members and assigns a weight value      |
    |                             | to each member.                              |
    +-----------------------------+----------------------------------------------+
-   
-   
-   
+
+
+
 
 .. |image1| image:: images/image1.PNG
-   :width: 5.32107in
+   :width: 3.32107in
    :height: 0.55645in
-
