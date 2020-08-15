@@ -1,8 +1,3 @@
-.. toctree::
-   :maxdepth: 1
-   :glob:
-
-
 Lab 1: Explore the F5 BIG-IP network configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -16,7 +11,7 @@ Addresses and map them to individual VLANs.
 and choose the **RDP** option.
 
 
-|image1|
+   |image1|
 
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -31,7 +26,7 @@ and choose the **RDP** option.
 
 
    
-|image2|
+   |image2|
 
 
 
@@ -362,13 +357,11 @@ Task 5 – Use Different Pool Options
 .. |image1| image:: images/image1.PNG
    :width: 1.32107in
    :height: 0.33645in
-   
 .. |image2| image:: images/image2.PNG
-   :width: 1.32107in
+   :width: 4.32107in
    :height: 0.33645in
-   
 .. |image3| image:: images/image3.PNG
-   :width: 1.32107in
+   :width: 4.32107in
    :height: 0.33645in
 
    
