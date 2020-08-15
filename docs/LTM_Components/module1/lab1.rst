@@ -1,3 +1,8 @@
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+
 Lab 1: Explore the F5 BIG-IP network configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
