@@ -1,215 +1,126 @@
-Lab 4: Configure High-Availability
+Lab 5: Profiles
 ----------------------------------
+Profiles are a powerful configuration tool providing an easy
+way to define traffic policies and apply those policies across
+many virtual servers.  Profiles allow one to change a setting
+for traffic across different applications.   Profiles provide
+the following:
 
-In this lab you will set up a high availability pair using two BIG-IP
-systems. You’ll then test failover between the two HA members.
+-  A centralized place to define specific traffic behavior
 
-Task 1 – Configure Device Trust and a Device Group
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-#. From the Windows 10 Jump Host open up two browser tabs and log into both the **BIGIP01** bookmark and the **BIGIP02** system.
-
-#. From the Navigation pane, expand the **Device Management** menu. 
-
-#. Select the **Device Trust** pane, then click on the **Device Trust Members**
-
-#. On **BIGIP01** click Add, and enter the following information
-
-
-   +----------------+--------------------------------+
-   | Form field     | Value                          |
-   +================+================================+
-   | Device Type    | Peer                           |
-   +----------------+--------------------------------+
-   | Device IP      | 10.1.1.6                       |
-   | Address        |                                |
-   +----------------+--------------------------------+
-   | Administrator  | admin                          |
-   | Username       |                                |
-   +----------------+--------------------------------+
-   | Administrator  | admin.F5demo.com               |
-   | Password       |                                |
-   +----------------+--------------------------------+
+-  A centralized place to change any setting and have them
+   applied to all applications using an existing profile
    
-   
-#. Click on **Retrieve Device Information**
+**Profile Types**
 
-n **BIGIP02** click Add, and enter the following information
+Profiles are grouped to make configuration clearer.  In general, a virtual
+server would have at most one profile from a given group.   There are six
+types of profiles:
 
+-  Services
+-  Content
+-  Persistence
+-  Protocols
+-  SSL
+-  Authentication
+-  Message Routing
+-  Other
 
-   +----------------+--------------------------------+
-   | **Form field** | **Value**                      |
-   +==============+==================================+
-   | Device Type    | Peer                           |
-   +----------------+--------------------------------+
-   | Device IP      | 10.1.1.4                       |
-   | Address        |                                |
-   +----------------+--------------------------------+
-   | Administrator  | admin                          |
-   | Username       |                                |
-   +----------------+--------------------------------+
-   | Administrator  | admin.F5demo.com               |
-   | Password       |                                |
-   +----------------+--------------------------------+
-   
-   
-#. Click on **Retrieve Device Information**
-   
-#. Note the status of both BIG-IP systems. Each BIG-IP system should trust each other 
-   through a public/private encryption key exchange.  Note the new status of both BIG-IP systems.
+When you configure a profile you must use an existing profile as template (the parent)
+make the desired changes, and save the new profile.   The parent can either be one of
+the default templates or a custom template.  If the parent is later changed, the
+changes may flow through to your custom profile.
 
-
-Task 2 – Configure a **Sync-Failover** Group
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-
-#. From the Navigation Pane, expand **Device Management, Device Groups** and click
-   **Create**. (ENSURE you are on **BIGIP01**.)
-
-#. Create a device group using the following information, and then click
-   **Finished**.
-
-   +--------------+--------------------------------+
-   | Form field   | Value                          |
-   +==============+================================+
-   | Name         | syncfailover                   |
-   +--------------+--------------------------------+
-   | Group Type   | Sync-Failover                  |
-   +--------------+--------------------------------+
-   | Members      | bigip01.f5demo.com             |
-   |              | bigip02.f5demo.com             |
-   +--------------+--------------------------------+
-   | Sync Type    | Manual with Incremental Sync   |
-   +--------------+--------------------------------+
-   
-#. Click Finished
-
-#. From the Navigation Pane under **Device Management** click on **Traffic Groups**
-
-#. Within the **Failover Order** section select both **BIGIP01** and **BIGIP02** and click the
-   left arrow button.   Both BIGIP objects should now be in the **Preferred Order** section with
-   **BIGIP01** listed above **BIGIP02**.   Click Save.
-
-#. Note the new status of **bigip01.f5demo.com**.
-
-#. Click **Awaiting Initial Sync**.
-
-   This directs you to the **Device Management > Overview** page.
-
-#. In the **Devices** section, leave the **bigip01.f5demo.com (Self)**
-   option selected.
-
-#. For **Sync Options** leave **Push the selected device configuration
-   to the group** selected and click **Sync**.
-
-#. Note the status of **bigip01.f5demo.com**.
-
-   Both BIG-IP systems should no be in sync with each other.
-
-**On bigip02.f5demo.com**
-
-#. Attempt to log in as **admin** / **admin**.
-
-   Why do you think your login failed?
-
-#. Log in as **admin** / **admin.F5demo.com**.
-
-#. Examine the **Virtual Server List** and **Pool List** pages.
-
-#. On BIGIP01 from the Navigation pane click on Local Traffic, Virtual Servers, Virtual Server List
-
-#. Click on the **LAMP** Virtual Server, and change the **HTTP Profile (Client) to **http**
-
-#. Click on **Resources** 
-
-#. Change the **Default Persistence Profile** to **cookie** and then click on **Update**
-
-#. Note the status message of **Changes Pending** in the top left corner of BIGIP01**
-
-#. Click **Changes Pending**.
-
-#. In the **Devices** section leave the default options selected and
-   click **Sync**.
-
-#. On **BIGIP02** examine the **LAMP** Virtual Server
-
-Task 3 – Traffic Groups
-
-A traffic-group is a collection of related configuration objects which together, process a particular type of traffic.
-These include  Self IPs, Virtual IPs, iApps, SNATs and VLANs objects.  A Local Traffic group – is local significant only;
-it has no scope beyond the device where it’s configured. A default local traffic group is created automatically during 
-the initial setup wizard called traffic-group-local-only – it contains the non-floating self IPs associated to the external
-and internal VLANs.
-
-There are also floating traffic groups, and as the name suggests, these can be automatically reassigned (float) between
-devices part of the same device-group. Objects which belong to a floating traffic group are called failover objects
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#. From the **Navigation Pane*, on BIGIP01, click on Network, Self-IP's, and create the following Floating Self-IP addresses:
-
-   +--------------+-------------------------------------------+
-   | Form field   | Value                                     |
-   +==============+===========================================+
-   | Name         | external_selfip_floating                  |
-   +--------------+-------------------------------------------+
-   | IP Address   | 10.1.10.248                               |
-   +--------------+-------------------------------------------+
-   | Netmask      | 255.255.255.0                             |
-   +--------------+-------------------------------------------+
-   | Traffic Group| traffic-group-1 (floating)                |
-   +--------------+-------------------------------------------+
-
-
-   +--------------+-------------------------------------------+
-   | Form field   | Value                                     |
-   +==============+===========================================+
-   | Name         | _internal_selfip_floating                 |
-   +--------------+-------------------------------------------+
-   | IP Address   | 10.1.20.248                               |
-   +--------------+-------------------------------------------+
-   | Netmask      | 255.255.255.0                             |
-   +--------------+-------------------------------------------+
-   | Traffic Group| traffic-group-1 (floating)                |
-   +--------------+-------------------------------------------+
-
-
-Task 4 – Test Failover
+**Task 1** – Configure a custom Client SSL Profile
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**On BIGIP01**
+#.  From the Windows 10 Jump Host log into BIG-IP01
 
-#. From the **Navigation Pane*, on BIGIP01, click on Device Management, Devices
-
-#. Scroll to the bottom and click on **Force Offline**
-
-#. Notice in the top left corner the device status should reflect **FORCED OFFLINE**
-
-
-**On BIGIP02**
-
-#. Note the status of **BIGIP02**.
-
-#. BIGIP02 status as displayed in the top left corner of the GUI should reflect **ONLINE ACTIVE**, (In Sync)
-
-#. Verify that the Self IP objects are now active on BIGIP02 by navigating to the Network menu object and clicking on
-   the Self IP objects.
+#.  Click on **Local Traffic**, then click on **Profiles, SSL,** and then click on the 
+    **+** sign to create a new Client SSL Profile
    
-#. Virtual Servers, Pools, Pool members and any SNAT object should also exist on BIGIP02 which is now the active BIG-IP device
+#.  Name the custom Profile **LTM_ClientSSL**
 
-**On BIGIP01**
+#.  Check the **Custom** box
 
-#. On the **Devices** page click **Release Offline** and then **OK**.
+#.  Click on the Add button within the **Certificate Key Chain** section
 
-**On BIGIP01**
+#.  Select the **f5demo.crt Certificate, then select the **f5demo.key** and click Add
 
-#. Note the status of **BIGIP01**.
+#.  Click **Finished**
 
-This concludes Lab 4
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+**Task 2** - Assign the new Client SSL Profile to the **LAMP_SSL** Virtual Server
 
-   |image19|
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#.  From the Navigation pane expand the **Local Traffic** section and select
+    **Virtual Servers**.
+    
+#.  Select the **LAMP_SSL** Virtual Server
+
+#.  Scroll down to the **SSL Profile (Client)** section and select the **LTM_ClientSSL** profile
+    click the left arrow while ensuring there is only one Client SSL Profile selected.
+    
+#.  Click **Update**
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Task 3** - Configure a custom Persistence Profile
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#.  From the Navigation pane expand the **Local Traffic** section and select
+    **Profiles**, **Persistence** and click the **+** sign to create a new Profile
+    
+#.  Name the new Profile **LTM_Cookie_Insert**
+
+#.  Select the **cookie** Parent Profile, then select the **HTTP Cookie Insert** Method.
+
+#.  In the **Cookie Name** field enter **HelloWorld**.
+
+#.  Click Finished
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Task 4** - Assign the new Persistence Profile to the **LAMP_SSL** Virtual Server
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#.  From the Navigation pane expand the **Local Traffic** section and select
+    **Virtual Servers**.
+    
+#.  Select the **LAMP_SSL** Virtual Server
+
+#.  Select the **Resources** tab at the top of the screen.
+
+#.  Select the drop down for **Default Persistence Profile** and select **LTM_Cookie_Insert**.
+    
+#.  Click **Update**
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Task 5** - Checking the new SSL configuration and Persistence
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#.  From the Windows 10 Jump Host open a new tab in Google Chrome and enter **https://10.1.10.201**.
+
+#.  Google Chrome allows a user to view attributes such as SSL certificates and cookies.  In order to verify 
+    the **HelloWorld** cookie attribute click on the **Not Secure** section to the left of the URL and then click
+    the **Cookies** object.   We can view the cookie by clicking the 10.1.10.201 IP Address and then clicking on
+    the Cookies object.
+
+#.  Refresh the page a couple of times and check if your persistence profile is working. You should only receive elements from a single server.
+    
+This concludes Lab 5 and a basic introduction into the different types of Profiles  as well as the capabilities and actions
+Profiles can have on Virtual Servers.
+
 
 
 

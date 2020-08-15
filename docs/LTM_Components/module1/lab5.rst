@@ -1,135 +1,192 @@
-Lab 5: Profiles
-----------------------------------
-Profiles are a powerful configuration tool providing an easy
-way to define traffic policies and apply those policies across
-many virtual servers.  Profiles allow one to change a setting
-for traffic across different applications.   Profiles provide
-the following:
+Lab 6 – Introduction to F5 iApps and FAST Templates
 
--  A centralized place to define specific traffic behavior
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
--  A centralized place to change any setting and have them
-   applied to all applications using an existing profile
-   
-**Profile Types**
+F5 iApps are a powerful features on every BIG-IP system
+that provides a better way to architect application delivery.
+iApp technology abstracts the many individual components required
+to deliver an application grouping resources together in templates
+associated with a specific application.  iApps have been available
+on the BIG-IP system for a number of years, and consist of 
+three main components:
 
-Profiles are grouped to make configuration clearer.  In general, a virtual
-server would have at most one profile from a given group.   There are six
-types of profiles:
+-  Application Services
+-  Templates
+-  Devcentral Ecosystem
 
--  Services
--  Content
--  Persistence
--  Protocols
--  SSL
--  Authentication
--  Message Routing
--  Other
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When you configure a profile you must use an existing profile as template (the parent)
-make the desired changes, and save the new profile.   The parent can either be one of
-the default templates or a custom template.  If the parent is later changed, the
-changes may flow through to your custom profile.
+Recently F5 introduced the next phase of evoltion for the BIG-IP
+ADC platform known ad FAST (F5 Application Services Templates).  FAST
+technology was developed for the following reasons:
+
+-  Replacement for deprecated iApp templates
+-  Consistent, cross-platform declarative APIs
+-  Seamless integration and insertion into CI/CD pipelines
+-  Modern development languages like Node.js and Python
+-  Templates and automation
+-  Declarative Interface
+-  JSON Schema
+-  Less error prone
+
+
+In short, FAST will enable and empower customers while they
+navigate their digital transformation journey, and ensure 
+their apps are available, performant, and secure.
 
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Task 1** – Configure a custom Client SSL Profile
+Task 1 – Configure the F5 NIST iApp.   F5 provides a number of different
+iApp Templates many of which require multiple F5 modules such as Access
+Policy Manager and Application Security Manager to be provisioned.   The 
+F5 NIST iApp only requires LTM to be provisioned and is relatively simple 
+to deploy and appply.   
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#.  From the Windows 10 Jump Host log into BIG-IP01
+#.  The F5 NIST sp800-53 iApp has already been uploaded to BIG-IP01
 
-#.  Click on **Local Traffic**, then click on **Profiles, SSL,** and then click on the 
-    **+** sign to create a new Client SSL Profile
+#.  Under the iApps menu, click on Templates object, then click on the **+**
+    to the right of Templates.  Click on the f5.nist_sp800-53.v1.0.0 iApp
+    template to view the properties.  The NIST iApp only requires the LTM module.
+    Please review each section of the iApp and become familiar with the various
+    components of an iApp.
    
-#.  Name the custom Profile **LTM_ClientSSL**
+#.  For this part of the lab we will provision a new application
+    service leveraging the NIST sp800-53 the purpose of which is to configure
+    a BIG-IP system to be compliant with security controls outlined in the NIST
+    SP800-53 special publication.
 
-#.  Check the **Custom** box
+#.  Within the iApps menu, click on **Application Services** then click on
+    the + sign to the right of **Applications**.
+   
+#.  Name the Application **NIST**, click the down arrow to the right of
+    **Template** and select the **f5.nist_sp800-53.v1.0.0** iApp.
+   
+#.  Under the **Usage Banner -- AC-8** enter a banner message.
 
-#.  Click on the Add button within the **Certificate Key Chain** section
+#.  Enter **time.google.com** in the NTP Server field.
 
-#.  Select the **f5demo.crt Certificate, then select the **f5demo.key** and click Add
+#. Leave all other fields with their default settings.
 
 #.  Click **Finished**
 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-**Task 2** - Assign the new Client SSL Profile to the **LAMP_SSL** Virtual Server
-
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-#.  From the Navigation pane expand the **Local Traffic** section and select
-    **Virtual Servers**.
-    
-#.  Select the **LAMP_SSL** Virtual Server
-
-#.  Scroll down to the **SSL Profile (Client)** section and select the **LTM_ClientSSL** profile
-    click the left arrow while ensuring there is only one Client SSL Profile selected.
-    
-#.  Click **Update**
+#.  Now that the **NIST** iApp has been applied to the BIG-IP system
+    if a changed it's possible to modify the application by clicking 
+    on **Application Services** under the iApps menu and then clicking 
+    on the the iApp name and then clicking on **Reconfigure**.
+   
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Task 3** - Configure a custom Persistence Profile
+Task 2 - Introduction to FAST **F5 Application Services Templates** 
+
+**F5 FAST Documentation can be found at  **https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/**
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#.  From the Navigation pane expand the **Local Traffic** section and select
-    **Profiles**, **Persistence** and click the **+** sign to create a new Profile
-    
-#.  Name the new Profile **LTM_Cookie_Insert**
+#.  F5 FAST templates are hosted on Github at the following URL - **https://github.com/F5Networks**
 
-#.  Select the **cookie** Parent Profile, then select the **HTTP Cookie Insert** Method.
+#.  The f5-appsvcs-3.21.0-4.noarch.rpm file has already been uploaded to both BIG-IP devices
 
-#.  In the **Cookie Name** field enter **HelloWorld**.
+#.  From the Windows 10 Jumphost ssh into each BIG-IP and enter the following command:
+    touch /var/config/rest/iapps/enable
+   
+#.  The rpm file has already been imported, but note that importing the rpm file is a
+    required step in order to leveral F5 FAST.
+   
+#.  The rpm import process is accomplished by clicking the iApps menu, then clicking
+    **Package Management LX**, and then **import** and selecting the rpm file.
+   
+#.  Log back into the Windows 10 Jump Host
 
-#.  Click Finished
+#.  On the Windows 10 Jump Host launch Postman
+
+#.  Using Windows Notepad open the **Hello_World** text file.
+
+#.  Copy the contents of the **Hello_World** text file
+
+#.  From within Postman we will be sending a **Post** request to the BIG-IP
+
+#.  Enter the following within **Postman** https://10.1.1.4/mgmt/shared/appsvcs/declarative
+
+#.  Click on the **Authorization** tab and ensure **Basic Auth** is selected.
+
+#.  Enter the BIG-IP credentials **admin/admin.F5admin.com**
+
+#.  Click on the **Body** section within Postman
+
+#.  Click on the **Body** section in Postman, then click **raw**
+
+#.  Ensure **JSON** is selected
+
+#.  Paste the contents of the **Hello_World** text file
+
+#.  Click the **SEND** button in Postman
+
+#.  Log back into BIG-IP01 and select the **Sample_01** partition
+
+#.  Within the **Sample_01** partition note the new Virtual Server has been created along with a pool named **web_pool**
+
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Task 4** - Assign the new Persistence Profile to the **LAMP_SSL** Virtual Server
-
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-#.  From the Navigation pane expand the **Local Traffic** section and select
-    **Virtual Servers**.
-    
-#.  Select the **LAMP_SSL** Virtual Server
-
-#.  Select the **Resources** tab at the top of the screen.
-
-#.  Select the drop down for **Default Persistence Profile** and select **LTM_Cookie_Insert**.
-    
-#.  Click **Update**
-
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-**Task 5** - Checking the new SSL configuration and Persistence
-
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-#.  From the Windows 10 Jump Host open a new tab in Google Chrome and enter **https://10.1.10.201**.
-
-#.  Google Chrome allows a user to view attributes such as SSL certificates and cookies.  In order to verify 
-    the **HelloWorld** cookie attribute click on the **Not Secure** section to the left of the URL and then click
-    the **Cookies** object.   We can view the cookie by clicking the 10.1.10.201 IP Address and then clicking on
-    the Cookies object.
-
-#.  Refresh the page a couple of times and check if your persistence profile is working. You should only receive elements from a single server.
-    
-This concludes Lab 5 and a basic introduction into the different types of Profiles  as well as the capabilities and actions
-Profiles can have on Virtual Servers.
+Completion of this task illustrates a simple **Hello World** FAST Template and the completion
+of the LTM Essentials lab.   For more information on FAST please refer to the documentation link
+below.
+   
+**https://clouddocs.f5.com/products/extensions/f5-appsvcs-templates/latest/**
+   
+   
+   
+   
+   
 
 
 
 
-.. |image17| image:: /_static/class1/image19.png
-   :width: 1.70088in
-   :height: 0.61232in
-.. |image18| image:: /_static/class1/image20.png
-   :width: 1.70088in
-   :height: 0.60540in
-.. |image19| image:: /_static/class1/image21.png
-   :width: 3.98717in
-   :height: 1.04839in
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
