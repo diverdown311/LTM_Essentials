@@ -25,10 +25,7 @@ and choose the **RDP** option.
    The **Network** menu is where you configure elements for routing and switching.
 
 
-   
    |image2|
-
-
 
 
 #. Network interface 1.1 is assigned to the external network while interface 1.2 is assigned to the internal network
@@ -86,10 +83,7 @@ to determine which member to use for that request.
 #. Open the **Local Traffic > Pools > Pool List** page and click
    **Create**.
 
-
-
    |image3|
-
 
 
 #. Use the following information for the new pool. For fields that are
