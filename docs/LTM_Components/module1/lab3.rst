@@ -14,7 +14,7 @@ the following:
 **Profile Types**
 
 Profiles are grouped to make configuration clearer.  In general, a virtual
-server would have at most one profile from a given group.   There are six
+server would have at most one profile from a given group.   There are multiple
 types of profiles:
 
 -  Services
