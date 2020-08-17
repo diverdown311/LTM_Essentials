@@ -10,9 +10,7 @@ Addresses and map them to individual VLANs.
 **Task 1** – Connect to the Windows 10 Jumphost via RDP and log into BIG-IP01. Select the **ACCESS** drop down menu under Windows 10
 and choose the **RDP** option.
 
-
    |image1|
-
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -24,9 +22,7 @@ and choose the **RDP** option.
 
    The **Network** menu is where you configure elements for routing and switching.
 
-
    |image2|
-
 
 #. Network interface 1.1 is assigned to the external network while interface 1.2 is assigned to the internal network
 
@@ -126,10 +122,10 @@ to determine which member to use for that request.
 
 #. Open the **Local Traffic > Virtual Servers > Virtual Server List**
    page and click **Create**.
-   
 
-   
-   
+
+
+
 #. Use the following information for the new virtual server, and then
    click **Finished**.
 
@@ -357,14 +353,3 @@ Task 5 – Use Different Pool Options
 .. |image3| image:: images/image3.PNG
    :width: 4.32107in
    :height: 0.33645in
-
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
