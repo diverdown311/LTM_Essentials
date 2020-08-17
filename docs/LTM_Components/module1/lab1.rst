@@ -117,14 +117,10 @@ to determine which member to use for that request.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
-
 #. Click **Finished**.
 
 #. Open the **Local Traffic > Virtual Servers > Virtual Server List**
    page and click **Create**.
-
-
-
 
 #. Use the following information for the new virtual server, and then
    click **Finished**.
@@ -155,9 +151,9 @@ to determine which member to use for that request.
 #. In the Configuration Utility, open the **Local Traffic > Pools >
    Statistics** page.
 
-#. Expand the **LAMP** by clicking on the **+** icon.
+#. Expand the **LAMP** pool by clicking on the **+** icon.
 
-   |image3|
+   |image4|
 
    You use the **Statistics** page to identify the amount of traffic sent
    to the pool members. Notice that the requests are evenly distributed
@@ -351,5 +347,8 @@ Task 5 – Use Different Pool Options
    :width: 1.32107in
    :height: 0.33645in
 .. |image3| image:: images/image3.PNG
-   :width: 4.32107in
+   :width: 1.32107in
+   :height: 0.33645in
+.. |image4| image:: images/image4.PNG
+   :width: 1.32107in
    :height: 0.33645in
