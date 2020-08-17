@@ -2,15 +2,12 @@ F5 Low Details
 ~~~~~~~~~~~~~~
 
 #. Apply a new display filter of 'tcp.port == 80' to the capture.
- 
+
 #. Select the packet with the GET request in the info field.
 
 #. In the middle section Expand F5 Ethernet Trailer.
 
 #. Then expand F5 Low Details.
-
-   .. image:: /_static/class4/low-details.png
-      :scale: 50 %
 
 #. Notice the Ingress value is True (IN).  This is from the perspective of the F5.  The traffic is inbound to the F5.
 

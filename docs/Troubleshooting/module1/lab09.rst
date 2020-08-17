@@ -3,9 +3,6 @@ F5 High Details
 
 #. Now Expand the F5 High Details on one of the SSL sessions data packets.  (You can type in a display filter of '(f5ethtrailer.peeraddr) && (tls.record.content_type == 23)' to retrieve the session we are looking for). Make sure you select a packet that has Application Data in the Info field.
 
-   .. image:: /_static/class4/high-details.png
-      :scale: 50 %
-
 #. The F5 High Details contains a lot of valuable information.  In the example above we see that the Peer IP Protocol is 6 or TCP.
 
 #. The Peer VLAN is going to be the VLAN that the traffic enters the F5 from.  In the example this is VLAN 4093 which is the internal VLAN.
@@ -27,11 +24,8 @@ High Details and Other Field Dissectors
 
 #. Notice that some of the Source and Destination fields in the results do not contain the ip address of 10.1.10.31.  Select one of the packets that does not have 10.1.10.31 as the source or destination like below.
 
-   .. image:: /_static/class4/disect-high.png
-      :scale: 50 %
-
 #. Is the display filter broken?
 
-#. No it is not.  Notice in the F5 High Details that the Peer remote address is 10.1.10.31.  This is the pool member selected for the pool in the virtual server.  
+#. No it is not.  Notice in the F5 High Details that the Peer remote address is 10.1.10.31.  This is the pool member selected for the pool in the virtual server.
 
 #. With the other field dissectors value turned on in Wireshark, you can set a display filter of the pool member you may be troubleshooting and see which virtual is being selected on the traffic.  Or you can set a display filter of the client and see all the traffic to the pool members even with a SNAT pool selected.
