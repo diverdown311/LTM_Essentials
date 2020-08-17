@@ -356,7 +356,10 @@ pre-defined monitor templates for address, service, content, and interactive che
 
 #. Use an incognito window to access **http://10.1.10.200**.
 
-You have now completed Lab 2. 
+This concludes Lab 2 and a basic overview of Secure Network Address Translation
+(SNAT), Profiles, and Monitors.  Please begin Lab 3.
+
+
 
  .. |image7| image:: images/image7.PNG
     :width: 3.32107in

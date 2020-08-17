@@ -337,7 +337,8 @@ Task 5 – Use Different Pool Options
    |                             | to each member.                              |
    +-----------------------------+----------------------------------------------+
 
-
+This concludes Lab 1 and a basic introduction into networking concepts,
+Virtual Servers, Pools, and Load Balancing methods. Please begin Lab 2.
 
 
 .. |image1| image:: images/image1.PNG
