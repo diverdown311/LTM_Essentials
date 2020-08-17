@@ -356,7 +356,7 @@ pre-defined monitor templates for address, service, content, and interactive che
 
 #. Use an incognito window to access **http://10.1.10.200**.
 
- #. Close the page.
+You have now completed Lab 2. 
 
  .. |image7| image:: images/image7.PNG
     :width: 3.32107in
