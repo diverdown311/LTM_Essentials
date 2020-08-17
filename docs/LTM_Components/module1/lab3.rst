@@ -79,7 +79,7 @@ changes may flow through to your custom profile.
    by scrolling down to the **SSL Profile Client** section and selecting the
    **LTM_ClientSSL** Profile.
 
-#. Ensure the **http** Profile is selected in the **HTTP Profile (client)
+#. Ensure the **http** Profile is selected in the **HTTP Profile Client**
    section.
 
 #. Verify that **Source Address Translation** is set to **Auto Map**
