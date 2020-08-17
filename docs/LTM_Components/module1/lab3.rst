@@ -125,5 +125,5 @@ You are encourage to become familiar with the behavior Profiles can have on Virt
    :width: 3.32107in
    :height: 0.33645in
 .. |image13| image:: images/image13.PNG
-      :width: 3.32107in
-      :height: 0.33645i
+   :width: 3.32107in
+   :height: 0.33645i
