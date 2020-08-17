@@ -217,7 +217,7 @@ Profiles provide
 
 #. From the **HTTP Profile** list select **http**.
 
-  |image9|
+|image9|
 
 #. From the **Stream Profile** list select **name\_change**.
 
@@ -364,9 +364,9 @@ pre-defined monitor templates for address, service, content, and interactive che
 ..  |image8| image:: images/image8.PNG
     :width: 3.32107in
     :height: 0.33645in
-..  |image8| image:: images/image9.PNG
-    :width: 3.32107in
+..  |image9| image:: images/image9.PNG
+    :width: 1.32107in
     :height: 0.33645in
-..  |image9| image:: images/image10.PNG
-    :width: 3.32107in
+..  |image10| image:: images/image10.PNG
+    :width: 1.32107in
     :height: 0.33645in
