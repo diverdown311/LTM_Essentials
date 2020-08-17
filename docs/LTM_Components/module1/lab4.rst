@@ -140,6 +140,12 @@ Task 2 - Introduction to FAST **F5 Application Services Templates**
 
 #.  Within the **Sample_01** partition note the new Virtual Server has been created along with a pool named **web_pool**
 
+|image18|
+
+
+
+|image19|
+
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -160,5 +166,11 @@ below.
    :width: 3.32107in
    :height: 0.33645in
 .. |image17| image:: images/image17.PNG
+   :width: 3.32107in
+   :height: 0.33645in
+.. |image18| image:: images/image18.PNG
+   :width: 3.32107in
+   :height: 0.33645in
+.. |image19| image:: images/image19.PNG
    :width: 3.32107in
    :height: 0.33645in
