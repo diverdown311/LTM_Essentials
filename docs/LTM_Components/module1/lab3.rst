@@ -109,9 +109,9 @@ changes may flow through to your custom profile.
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-  **This concludes Lab 3 and a basic introduction into the different types of Profiles
-  as well as the capabilities and actions Profiles can have on Virtual Servers.
-  You are encourage to become familiar with the behavior Profiles can have on Virtual Servers and Pools.**
+**This concludes Lab 3 and a basic introduction into the different types of Profiles
+as well as the capabilities and actions Profiles can have on Virtual Servers.
+You are encourage to become familiar with the behavior Profiles can have on Virtual Servers and Pools.**
 
 
 .. |image17| image:: /_static/class1/image19.png
