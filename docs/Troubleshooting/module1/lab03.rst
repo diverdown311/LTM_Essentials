@@ -9,15 +9,15 @@ after the interface option in the command line as follows:
 
 #. **-n** gives low details
 
-    a. for example: **tcpdump -ni 0.0:n -s0 -w /var/tmp/capture.pcap**
+- for example: **tcpdump -ni 0.0:n -s0 -w /var/tmp/capture.pcap**
 
-    b. This will give basic information such as whether the captured traffic is ingress or egress to the F5.  It will also give the TMM instance the traffic is on as well as the Chassis slot processing the traffic.  This option also lists the virtual server name that processes the traffic.
+- This will give basic information such as whether the captured traffic is ingress or egress to the F5.  It will also give the TMM instance the traffic is on as well as the Chassis slot processing the traffic.  This option also lists the virtual server name that processes the traffic.
 
 #. **-nn** gives medium details
 
-    a. for example: **tcpdump -nni 0.0:nn -s0 -w /var/tmp/capture.pcap**
+- for example: **tcpdump -nni 0.0:nn -s0 -w /var/tmp/capture.pcap**
 
-    b. This option will give all the low detail information plus the following:
+- This option will give all the low detail information plus the following:
 
        * Flow ID number
        * Peer Flow ID number
@@ -30,9 +30,9 @@ after the interface option in the command line as follows:
 
 #. **-nnn** gives high details
 
-    a. for example: **tcpdump -nnni 0.0:nnn -s0 -w /var/tmp/capture.pcap**
+- for example: **tcpdump -nnni 0.0:nnn -s0 -w /var/tmp/capture.pcap**
 
-    b. This option will give all the low and medium details plus the following
+- This option will give all the low and medium details plus the following
 
        * Peer IP Protocol
        * Peer VLAN
