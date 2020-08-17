@@ -153,9 +153,9 @@ Task 2 - Introduction to FAST **F5 Application Services Templates**
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Completion of this task illustrates a simple **Hello World** FAST Template
+Completion of this task illustrates a simple Hello World FAST Template
 and the completion of the LTM Essentials lab. For more information on FAST
-please refer to the documentation link below**
+please refer to the documentation link below.
 
 -  https://clouddocs.f5.com/products/extensions/f5-appsvcs-templates/latest/
 
