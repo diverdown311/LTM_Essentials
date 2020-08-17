@@ -147,6 +147,8 @@ Task 2 - Introduction to FAST **F5 Application Services Templates**
 |image19|
 
 
+
+
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Completion of this task illustrates a simple **Hello World** FAST Template and the completion
@@ -173,4 +175,4 @@ below.
    :height: 0.33645in
 .. |image19| image:: images/image19.PNG
    :width: 3.32107in
-   :height: 0.33645in
+   :height: 2.33645in
