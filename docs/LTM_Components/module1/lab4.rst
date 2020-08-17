@@ -127,6 +127,9 @@ Task 2 - Introduction to FAST **F5 Application Services Templates**
 
 #.  Click on the **Body** section in Postman, then click **raw**
 
+|image17|
+
+
 #.  Ensure **JSON** is selected
 
 #.  Paste the contents of the **Hello_World** text file
@@ -154,5 +157,8 @@ below.
    :width: 3.32107in
    :height: 0.33645in
 .. |image16| image:: images/image16.PNG
+   :width: 3.32107in
+   :height: 0.33645in
+.. |image17| image:: images/image17.PNG
    :width: 3.32107in
    :height: 0.33645in
