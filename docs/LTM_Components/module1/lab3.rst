@@ -76,7 +76,7 @@ changes may flow through to your custom profile.
 #. Click on **Create**, name the new Virtual Server **LAMP_SSL**
 
 #. Assign the **LTM_ClientSSL** Profile to the **LAMP_SSL** Virtual Server
-   by scrolling down to the *SSL Profile (Client) ** section and selecting the
+   by scrolling down to the *SSL Profile Client** section and selecting the
    **LTM_ClientSSL** Profile.
 
 #. Ensure the **http** Profile is selected in the **HTTP Profile (client)
