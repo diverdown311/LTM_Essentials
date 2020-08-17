@@ -1,6 +1,5 @@
 Lab 4 – Introduction to F5 iApps and FAST Templates
-
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------------
 
 F5 iApps are a powerful features on every BIG-IP system
 that provides a better way to architect application delivery.
