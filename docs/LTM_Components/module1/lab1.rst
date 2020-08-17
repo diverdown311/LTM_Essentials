@@ -161,8 +161,6 @@ to determine which member to use for that request.
 
 #. Select the checkbox next to **LAMP**, and then click **Reset**.
 
-   |image4|
-
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Task 3** – Create an IP Forwarding Virtual Server
@@ -221,6 +219,8 @@ or a network IP forwarding virtual server, which forwards traffic for a subnet.
    | Source Address Translation  | Auto Map           |
    +--------------------------------------------------+
 
+   |image5|
+
    This virtual server provides access to the **10.1.20.0/24** network on
    all ports and all protocols.
 
@@ -262,6 +262,8 @@ A Reject virtual server rejects any traffic destined for the virtual server IP a
    | Protocol                    | \* All Protocols      |
    +-----------------------------+-----------------------+
 
+   |image6|
+
 #. Reload the page directed at **http://10.1.20.252**.
 
 #. Although you still have access to the **10.1.20.0** network, you no
@@ -287,9 +289,7 @@ Task 5 – Use Different Pool Options
 #. Open the **Local Traffic > Pools > Pool List** page and click
    **LAMP** pool, and then open the **Members** page.
 
-   |image5|
-
-   Currently the pool is using the default load balancing method: **Round Robin**.
+     Currently the pool is using the default load balancing method: **Round Robin**.
 
 #. From the **Load Balancing Method** list select **Ratio (member)**,
    and then click **Update**.
@@ -341,14 +341,20 @@ Task 5 – Use Different Pool Options
 
 
 .. |image1| image:: images/image1.PNG
-   :width: 1.32107in
+   :width: 3.32107in
    :height: 0.33645in
 .. |image2| image:: images/image2.PNG
-   :width: 1.32107in
+   :width: 3.32107in
    :height: 0.33645in
 .. |image3| image:: images/image3.PNG
-   :width: 1.32107in
+   :width: 3.32107in
    :height: 0.33645in
 .. |image4| image:: images/image4.PNG
-   :width: 1.32107in
+   :width: 3.32107in
+   :height: 0.33645in
+.. |image5| image:: images/image5.PNG
+   :width: 3.32107in
+   :height: 0.33645in
+.. |image6| image:: images/image6.PNG
+   :width: 3.32107in
    :height: 0.33645in
