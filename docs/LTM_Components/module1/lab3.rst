@@ -47,7 +47,7 @@ changes may flow through to your custom profile.
 
 #.  Click on the Add button within the **Certificate Key Chain** section
 
-#.  Select the **f5demo.crt Certificate, then select the **f5demo.key** and click Add
+#.  Select the **f5demo.crt** Certificate, then select the **f5demo.key** and click Add
 
 #.  Click **Finished**
 
@@ -79,7 +79,7 @@ changes may flow through to your custom profile.
    by scrolling down to the **SSL Profile (Client) section and selecting the
    **LTM_ClientSSL** Profile.
 
-#  Ensure the **http** Profile is selected in the **HTTP Profile (client)
+#. Ensure the **http** Profile is selected in the **HTTP Profile (client)
    section.
 
 #. Verify that **Source Address Translation** is set to **Auto Map**
@@ -89,7 +89,7 @@ changes may flow through to your custom profile.
 
 #. Click finished when complete.
 
-#  You should now have an SSL Virtual Server with a Client SSL Profile, a Custom
+#. You should now have an SSL Virtual Server with a Client SSL Profile, a Custom
    Persistence Profile, and the Virtual Server should be assigned to the
    **LAMP** Pool.
 
