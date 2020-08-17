@@ -43,5 +43,5 @@ You can download the F5 Wireshark plugin from devcentral.f5.com here:  https://d
 
 
 .. |image1| image:: images/image1.PNG
-   :width: 6.32107in
-   :height: 4.33645in
+   :width: 3.32107in
+   :height: 3.33645in
