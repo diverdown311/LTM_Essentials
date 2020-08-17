@@ -118,6 +118,9 @@ Task 2 - Introduction to FAST **F5 Application Services Templates**
 
 #.  Click on the **Authorization** tab and ensure **Basic Auth** is selected.
 
+|image16|
+
+
 #.  Enter the BIG-IP credentials **admin/admin.F5admin.com**
 
 #.  Click on the **Body** section within Postman
@@ -148,5 +151,8 @@ below.
    :width: 3.32107in
    :height: 0.33645in
 .. |image15| image:: images/image15.PNG
-      :width: 3.32107in
-      :height: 0.33645in
+   :width: 3.32107in
+   :height: 0.33645in
+.. |image16| image:: images/image16.PNG
+   :width: 3.32107in
+   :height: 0.33645in
