@@ -41,11 +41,11 @@ of an incoming packet to load balance requests.  By default the source IP addres
    +---------------+------------------------------------+
    | LAMP_Server3  | Address: 10.1.20.13                |
    |               | Service Port: 80                   |
-   +---------------+------------------------------------+  
+   +---------------+------------------------------------+
    | LAMP_Server4  | Address: 10.1.20.14                |
    |               | Service Port: 80                   |
    +---------------+------------------------------------+
- 
+
 #. Open the **Virtual Server List** page and click on the **LAMP** virtual server
 
 
@@ -91,7 +91,7 @@ of an incoming packet to load balance requests.  By default the source IP addres
 
 #. From the **Source Address Translation** list select **Auto Map** which has already
    been configured when the virtual was created.  Notice there are several options to include
-   SNAT, Auto Map, and None.   
+   SNAT, Auto Map, and None.
 
    |image8|
 
@@ -105,7 +105,7 @@ of an incoming packet to load balance requests.  By default the source IP addres
 
    On the external VLAN the communication is still between the client IP
    address (**10.1.10.190**) and the virtual server (**10.1.10.200**).
-  
+
    On the internal VLAN the communication is now between the BIG-IP
    internal self IP address (**10.1.20.245**) and a back-end web
    server (**10.1.20.x**).
@@ -175,13 +175,13 @@ of an incoming packet to load balance requests.  By default the source IP addres
 Profiles are a powerful configuration tool providing an easy way to define
 traffic policies and apply those policies across virtual servers.   Through
 a profile you can also change a setting for traffic across many different
-applications.   
+applications.
 
 Profiles provide
 
-- A centralized place to define specific traffic behavior such as compression, SSL, 
+- A centralized place to define specific traffic behavior such as compression, SSL,
   and authentication that can be applied to multiple virtual servers.
-  
+
 - A centralized place to change any setting and have them applied to all applications
   using an existing profile.  A profile tells a virtual server how to process packets
   it receives through the BIG-IP system.
@@ -215,13 +215,11 @@ Profiles provide
 
 #. From the **Configuration** list select **Advanced**.
 
-   |image9|
-
 #. From the **HTTP Profile** list select **http**.
 
-#. From the **Stream Profile** list select **name\_change**.
+  |image9|
 
-   |image10|
+#. From the **Stream Profile** list select **name\_change**.
 
 #. In the **Acceleration** section, from the **HTTP Compression
    Profile** list select **httpcompression**.
@@ -234,8 +232,8 @@ Profiles provide
 
    Although the logo need to be updated, all the text on the page now
    references **Seuss Bank**.
-   
-#. Remove the **Stream Profile**, **Web Acceleration Profile**, and **Acceleration** profile 
+
+#. Remove the **Stream Profile**, **Web Acceleration Profile**, and **Acceleration** profile
    from the **LAMP** Virtual Server and update.
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -248,7 +246,7 @@ pre-defined monitor templates for address, service, content, and interactive che
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#. From the Windows Jump host open a new tab in a browser and enter the 
+#. From the Windows Jump host open a new tab in a browser and enter the
    following URL **http://10.1.10.200/HealthCheck.html**
 
    We’re going to use this web page to identify if the web server is up or down.
@@ -318,14 +316,14 @@ pre-defined monitor templates for address, service, content, and interactive che
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#. From the Windows Jump Host while logged into BIG-IP01 click on **Pools**, 
-   then click on **LAMP** pool, click the **Members** tab then click on 
+#. From the Windows Jump Host while logged into BIG-IP01 click on **Pools**,
+   then click on **LAMP** pool, click the **Members** tab then click on
    the **LAMP_Server1** then click on the **Disabled** radio button.
 
 #. In the Configuration Utility under **Local Traffic** open the
    **Network Map**.
 
-   |image11|
+   |image10|
 
 #. Use your mouse to hover over the pool members.
 
@@ -337,8 +335,8 @@ pre-defined monitor templates for address, service, content, and interactive che
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#. From the Windows Jump Host while logged into BIG-IP01 click on **Pools**, 
-   click on **LAMP** pool, click the **Members** tab, click 
+#. From the Windows Jump Host while logged into BIG-IP01 click on **Pools**,
+   click on **LAMP** pool, click the **Members** tab, click
    the **check box** to select all members and then click on the **Disable** radio button.
 
 #. In the Configuration Utility under **Local Traffic** open the
@@ -352,29 +350,23 @@ pre-defined monitor templates for address, service, content, and interactive che
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#. From the Windows Jump Host while logged into BIG-IP01 click on **Pools**, 
-   click on **LAMP** pool, click the **Members** tab, click 
+#. From the Windows Jump Host while logged into BIG-IP01 click on **Pools**,
+   click on **LAMP** pool, click the **Members** tab, click
    the **check box** to select all members and then click on the **Enable** radio button.
 
 #. Use an incognito window to access **http://10.1.10.200**.
 
  #. Close the page.
 
-.. |image7| image:: /_static/class1/image9.png
-   :width: 2.24402in
-   :height: 0.92742in
-.. |image8| image:: /_static/class1/image10.png
-   :width: 2.36229in
-   :height: 0.67742in
-.. |image9| image:: /_static/class1/image11.png
-   :width: 1.57223in
-   :height: 0.61290in
-.. |image10| image:: /_static/class1/image12.png
-   :width: 2.44448in
-   :height: 0.74194in
-.. |image11| image:: /_static/class1/image13.png
-   :width: 1.32536in
-   :height: 0.98333in
-.. |image12| image:: /_static/class1/image14.png
-   :width: 2.25614in
-   :height: 1.44256in
+ .. |image7| image:: images/image7.PNG
+    :width: 3.32107in
+    :height: 0.33645in
+..  |image8| image:: images/image8.PNG
+    :width: 3.32107in
+    :height: 0.33645in
+..  |image8| image:: images/image9.PNG
+    :width: 3.32107in
+    :height: 0.33645in
+..  |image9| image:: images/image10.PNG
+    :width: 3.32107in
+    :height: 0.33645in
