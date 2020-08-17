@@ -140,6 +140,8 @@ Task 2 - Introduction to FAST **F5 Application Services Templates**
 
 #.  Within the **Sample_01** partition note the new Virtual Server has been created along with a pool named **web_pool**
 
+
+
 |image18|
 
 
@@ -151,9 +153,9 @@ Task 2 - Introduction to FAST **F5 Application Services Templates**
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Completion of this task illustrates a simple **Hello World** FAST Template and the completion
+**Completion of this task illustrates a simple **Hello World** FAST Template and the completion
 of the LTM Essentials lab.   For more information on FAST please refer to the documentation link
-below.
+below.**
 
 **https://clouddocs.f5.com/products/extensions/f5-appsvcs-templates/latest/**
 
@@ -174,5 +176,5 @@ below.
    :width: 3.32107in
    :height: 0.33645in
 .. |image19| image:: images/image19.PNG
-   :width: 3.32107in
+   :width: 6.32107in
    :height: 4.33645in
