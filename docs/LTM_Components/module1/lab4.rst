@@ -52,7 +52,7 @@ to deploy and appply.
     The NIST iApp only requires the LTM module. Please review each section
     of the iApp and become familiar with the various components of an iApp.
 
-|image14|
+    |image14|
 
 #.  For this part of the lab we will provision a new application
     service leveraging the NIST sp800-53 the purpose of which is to configure
@@ -104,8 +104,7 @@ Task 2 - Introduction to FAST **F5 Application Services Templates**
 
 #.  On the Windows 10 Jump Host launch Postman
 
-|image15|
-
+    |image15|
 
 #.  Using Windows Notepad open the **Hello_World** text file.
 
@@ -117,8 +116,7 @@ Task 2 - Introduction to FAST **F5 Application Services Templates**
 
 #.  Click on the **Authorization** tab and ensure **Basic Auth** is selected.
 
-|image16|
-
+    |image16|
 
 #.  Enter the BIG-IP credentials **admin/admin.F5admin.com**
 
@@ -126,8 +124,7 @@ Task 2 - Introduction to FAST **F5 Application Services Templates**
 
 #.  Click on the **Body** section in Postman, then click **raw**
 
-|image17|
-
+    |image17|
 
 #.  Ensure **JSON** is selected
 
@@ -140,9 +137,7 @@ Task 2 - Introduction to FAST **F5 Application Services Templates**
 #.  Within the **Sample_01** partition note the new Virtual Server has been created along with a pool named **web_pool**
 
 
-
 |image18|
-
 
 
 |image19|
