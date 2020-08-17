@@ -105,6 +105,8 @@ Task 2 - Introduction to FAST **F5 Application Services Templates**
 
 #.  On the Windows 10 Jump Host launch Postman
 
+
+
 #.  Using Windows Notepad open the **Hello_World** text file.
 
 #.  Copy the contents of the **Hello_World** text file
@@ -144,3 +146,6 @@ below.
 .. |image14| image:: images/image14.PNG
    :width: 3.32107in
    :height: 0.33645in
+.. |image15| image:: images/image15.PNG
+      :width: 3.32107in
+      :height: 0.33645in
