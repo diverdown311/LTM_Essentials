@@ -9,25 +9,16 @@ Let's take the information we have gathered so far and take a packet capture fro
 
 #. List the destination address of the virtual on the F5 using the following command:
 
-   .. code-block:: bash
-      :linenos:
+#. tmsh list ltm virtual all
 
-      tmsh list ltm virtual all 
-	  **note there is a virtual server named **LAMP** with a destination ip address of 10.1.10.200
-	  
-	  
+#. **note there is a virtual server named **LAMP** with a destination ip address of 10.1.10.200
 
 #. Now take the destination IP address and compose a tcpdump command to track the traffic coming to this virtual server:
 
-   .. code-block:: bash
-      :linenos:
-
-      tcpdump -nni 0.0:nnn -s0 -w /var/tmp/lamp.pcap host 10.1.10.200
+$. tcpdump -nni 0.0:nnn -s0 -w /var/tmp/lamp.pcap host 10.1.10.200
 
 #. After starting the capture, start Chrome and click on the LAMP bookmark.  Stop the capture in the putty session by using 'Ctrl+c'.
 
 #. Open WinSCP on the Windows jumpbox.  Download the lamp.pcap file to the local box.
 
 #. Now open Wireshark and open the lamp.pcap file you just copied from the F5.
-
-
