@@ -33,8 +33,8 @@ changes may flow through to your custom profile.
 
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 **Task 1** – Configure a custom Client SSL Profile
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #.  From the Windows 10 Jump Host log into BIG-IP01
 
@@ -52,8 +52,8 @@ changes may flow through to your custom profile.
 #.  Click **Finished**
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 **Task 2** - Configure a custom Persistence Profile
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #.  From the Navigation pane expand the **Local Traffic** section and select
     **Profiles**, **Persistence** and click the **+** sign to create a new Profile
@@ -67,8 +67,8 @@ changes may flow through to your custom profile.
 #.  Click Finished
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 **Task 3** – Configure an SSL Virtual Server
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. From the Navigation pane, expand the **Local Traffic** section
    and select **Virtual Servers**.
@@ -95,9 +95,7 @@ changes may flow through to your custom profile.
 
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 **Task 4** - Verifying the new SSL configuration and Persistence
-
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #.  From the Windows 10 Jump Host open a new tab in Google Chrome and enter **https://10.1.10.201**.
@@ -109,9 +107,9 @@ changes may flow through to your custom profile.
 
 #.  Refresh the page a couple of times and check if your persistence profile is working. You should only receive elements from a single server.
 
-This concludes Lab 3 and a basic introduction into the different types of Profiles  as well as the capabilities and actions
-Profiles can have on Virtual Servers.  You are encourage to become familiar with the behavior Profiles can have
-on Virtual Servers and Pools.
+  This concludes Lab 3 and a basic introduction into the different types of Profiles
+  as well as the capabilities and actions Profiles can have on Virtual Servers.
+  You are encourage to become familiar with the behavior Profiles can have on Virtual Servers and Pools.
 
 
 
