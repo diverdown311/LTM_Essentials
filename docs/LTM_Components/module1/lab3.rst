@@ -51,6 +51,8 @@ changes may flow through to your custom profile.
 
 #.  Click **Finished**
 
+|image11|
+
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 **Task 2** - Configure a custom Persistence Profile
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -65,6 +67,8 @@ changes may flow through to your custom profile.
 #.  In the **Cookie Name** field enter **HelloWorld**.
 
 #.  Click Finished
+
+|image12|
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 **Task 3** – Configure an SSL Virtual Server
@@ -93,6 +97,7 @@ changes may flow through to your custom profile.
    Persistence Profile, and the Virtual Server should be assigned to the
    **LAMP** Pool.
 
+|image13|
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 **Task 4** - Verifying the new SSL configuration and Persistence
@@ -113,13 +118,12 @@ changes may flow through to your custom profile.
 as well as the capabilities and actions Profiles can have on Virtual Servers.
 You are encourage to become familiar with the behavior Profiles can have on Virtual Servers and Pools.**
 
-
-.. |image17| image:: /_static/class1/image19.png
-   :width: 1.70088in
-   :height: 0.61232in
-.. |image18| image:: /_static/class1/image20.png
-   :width: 1.70088in
-   :height: 0.60540in
-.. |image19| image:: /_static/class1/image21.png
-   :width: 3.98717in
-   :height: 1.04839in
+.. |image11| image:: images/image11.PNG
+   :width: 3.32107in
+   :height: 0.33645in
+.. |image12| image:: images/image12.PNG
+   :width: 3.32107in
+   :height: 0.33645in
+.. |image13| image:: images/image13.PNG
+      :width: 3.32107in
+      :height: 0.33645i
