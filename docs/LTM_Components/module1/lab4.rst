@@ -175,4 +175,4 @@ below.
    :height: 0.33645in
 .. |image19| image:: images/image19.PNG
    :width: 3.32107in
-   :height: 2.33645in
+   :height: 4.33645in
