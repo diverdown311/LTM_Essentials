@@ -157,9 +157,9 @@ Task 2 - Introduction to FAST **F5 Application Services Templates**
 and the completion of the LTM Essentials lab. For more information on FAST
 please refer to the documentation link below**
 
-**https://clouddocs.f5.com/products/extensions/f5-appsvcs-templates/latest/**
+-  https://clouddocs.f5.com/products/extensions/f5-appsvcs-templates/latest/
 
-**If you have completed all labs please begin the **Troubleshooting** labs.
+If you have completed all labs please begin the **Troubleshooting** labs.
 
 
 .. |image14| image:: images/image14.PNG
