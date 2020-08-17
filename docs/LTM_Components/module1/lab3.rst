@@ -97,8 +97,6 @@ changes may flow through to your custom profile.
    Persistence Profile, and the Virtual Server should be assigned to the
    **LAMP** Pool.
 
-   |image13|
-
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 **Task 4** - Verifying the new SSL configuration and Persistence
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -124,6 +122,3 @@ You are encourage to become familiar with the behavior Profiles can have on Virt
 .. |image12| image:: images/image12.PNG
    :width: 3.32107in
    :height: 0.33645in
-.. |image13| image:: images/image13.PNG
-   :width: 3.32107in
-   :height: 0.33645i
