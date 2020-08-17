@@ -17,7 +17,6 @@ When running tcpdump capture from the F5 you should always use a filter to limit
    **tcpdump dst host 192.168.2.5**
    This will filter the packet capture to only gather packets going to 192.168.2.5.
 
-
 #. Port Filters
 
    **tcpdump port 443**

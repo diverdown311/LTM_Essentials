@@ -14,8 +14,6 @@ Wireshark version 3.2.5 and higher have the F5 ethtrailer plugin already install
 
 #. In Wireshark select Edit, then Preferences, Expand Protocols and scroll down to Ethernet.  Uncheck the option `Assume short frames which include a trailer contain padding`.
 
-   .. image:: /_static/class4/wireshark-ethernet-protocol.png
-      :scale: 50 %
 
 If you have a version prior to Wireshark 3.0 you will need to download and install the F5 Wireshark plugin.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -39,6 +37,3 @@ You can download the F5 Wireshark plugin from devcentral.f5.com here:  https://d
 #. Click on Help and then About Wireshark.
 
 #. Check the plugins tab again and make sure the F5 plugin is installed.
-
-   .. image:: /_static/class4/wireshark-plugin.png
-      :scale: 50 %

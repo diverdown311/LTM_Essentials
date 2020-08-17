@@ -16,17 +16,11 @@ password: 'admin.F5demo.com'
 
    The 'any' interface will be taken by TMM and made into the interface '0.0'
 
-   .. image:: /_static/class4/tcpdump-d.png
-      :scale: 50 %
-
 #. **tcpdump -i**
 
    To capture traffic on a specific interface use tcpdump -i <interface name>. i.e. 'tcpdump -i 0.0'
 
    When using 0.0 for the interface on a capture make sure to use a capture filter or you will get too much information and may impact performance on the F5.
-
-   .. image:: /_static/class4/tcpdump-i.png
-      :scale: 50 %
 
 #. **tcpdump -n**
 
@@ -40,9 +34,6 @@ password: 'admin.F5demo.com'
 
    Use tcpdump -X to show output including ASCII and hex.  This will making reading screen output easier.
 
-   .. image:: /_static/class4/tcpdump-x.png
-      :scale: 50 %
-
 #. **tcpdump -w**
 
    Use tcpdump -w to write the packet capture to a capture file that is readable in an application such as Wireshark.
@@ -54,5 +45,5 @@ password: 'admin.F5demo.com'
 #. **tcpdump -W 4 -C 50 -w /var/tmp/file.pcap**
 
    Use the -W switch to write a number of files.  In combination with the -C of filesize.  In this example we will get a rotation of 4 files each 50 Mb in size.  After the fourth file is finished the first will be deleted and a new file written and keep going until the capture is stopped.
-   
+
    This is a good option for circular logging when it is unclear when an event will happen and you can stop shortly after the even happens.

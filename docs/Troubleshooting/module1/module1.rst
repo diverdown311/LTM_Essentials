@@ -9,10 +9,5 @@ This lab covered the following topics:
 - Using the F5 Wireshark Plugin
 - SSL decrypt packet capture
 
-We will be using a jumpbox to connect to the lab environment.  Click on the lab link given out during class and select the RDP option to connect to the lab box.
-
-.. toctree::
-   :maxdepth: 1
-   :glob:
-
-   lab*
+We will be using a Windows 10 Jumpbox to connect to the lab environment.
+Click on the lab link given out during class and select the RDP option to connect to the lab box.
