@@ -1,4 +1,4 @@
-Lab 5: Profiles
+Lab 3: Profiles
 ----------------------------------
 Profiles are a powerful configuration tool providing an easy
 way to define traffic policies and apply those policies across
@@ -10,7 +10,7 @@ the following:
 
 -  A centralized place to change any setting and have them
    applied to all applications using an existing profile
-   
+
 **Profile Types**
 
 Profiles are grouped to make configuration clearer.  In general, a virtual
@@ -36,13 +36,11 @@ changes may flow through to your custom profile.
 
 **Task 1** – Configure a custom Client SSL Profile
 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 #.  From the Windows 10 Jump Host log into BIG-IP01
 
-#.  Click on **Local Traffic**, then click on **Profiles, SSL,** and then click on the 
+#.  Click on **Local Traffic**, then click on **Profiles, SSL,** and then click on the
     **+** sign to create a new Client SSL Profile
-   
+
 #.  Name the custom Profile **LTM_ClientSSL**
 
 #.  Check the **Custom** box
@@ -55,29 +53,11 @@ changes may flow through to your custom profile.
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Task 2** - Assign the new Client SSL Profile to the **LAMP_SSL** Virtual Server
-
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-#.  From the Navigation pane expand the **Local Traffic** section and select
-    **Virtual Servers**.
-    
-#.  Select the **LAMP_SSL** Virtual Server
-
-#.  Scroll down to the **SSL Profile (Client)** section and select the **LTM_ClientSSL** profile
-    click the left arrow while ensuring there is only one Client SSL Profile selected.
-    
-#.  Click **Update**
-
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-**Task 3** - Configure a custom Persistence Profile
-
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Task 2** - Configure a custom Persistence Profile
 
 #.  From the Navigation pane expand the **Local Traffic** section and select
     **Profiles**, **Persistence** and click the **+** sign to create a new Profile
-    
+
 #.  Name the new Profile **LTM_Cookie_Insert**
 
 #.  Select the **cookie** Parent Profile, then select the **HTTP Cookie Insert** Method.
@@ -88,39 +68,50 @@ changes may flow through to your custom profile.
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Task 4** - Assign the new Persistence Profile to the **LAMP_SSL** Virtual Server
+**Task 3** – Configure an SSL Virtual Server
+
+#. From the Navigation pane, expand the **Local Traffic** section
+   and select **Virtual Servers**.
+
+#. Click on **Create**, name the new Virtual Server **LAMP_SSL**
+
+#. Assign the **LTM_ClientSSL** Profile to the **LAMP_SSL** Virtual Server
+   by scrolling down to the **SSL Profile (Client) section and selecting the
+   **LTM_ClientSSL** Profile.
+
+#  Ensure the **http** Profile is selected in the **HTTP Profile (client)
+   section.
+
+#. Verify that **Source Address Translation** is set to **Auto Map**
+
+#. Click on the **Resources** tab, and select the **LAMP** Pool, and ensure
+   that the Default Persistence Profile is set to **LTM_Cookie_Insert**.
+
+#. Click finished when complete.
+
+#  You should now have an SSL Virtual Server with a Client SSL Profile, a Custom
+   Persistence Profile, and the Virtual Server should be assigned to the
+   **LAMP** Pool.
+
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#.  From the Navigation pane expand the **Local Traffic** section and select
-    **Virtual Servers**.
-    
-#.  Select the **LAMP_SSL** Virtual Server
-
-#.  Select the **Resources** tab at the top of the screen.
-
-#.  Select the drop down for **Default Persistence Profile** and select **LTM_Cookie_Insert**.
-    
-#.  Click **Update**
-
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-**Task 5** - Checking the new SSL configuration and Persistence
+**Task 4** - Verifying the new SSL configuration and Persistence
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #.  From the Windows 10 Jump Host open a new tab in Google Chrome and enter **https://10.1.10.201**.
 
-#.  Google Chrome allows a user to view attributes such as SSL certificates and cookies.  In order to verify 
+#.  Google Chrome allows a user to view attributes such as SSL certificates and cookies.  In order to verify
     the **HelloWorld** cookie attribute click on the **Not Secure** section to the left of the URL and then click
     the **Cookies** object.   We can view the cookie by clicking the 10.1.10.201 IP Address and then clicking on
     the Cookies object.
 
 #.  Refresh the page a couple of times and check if your persistence profile is working. You should only receive elements from a single server.
-    
-This concludes Lab 5 and a basic introduction into the different types of Profiles  as well as the capabilities and actions
-Profiles can have on Virtual Servers.
 
+This concludes Lab 3 and a basic introduction into the different types of Profiles  as well as the capabilities and actions
+Profiles can have on Virtual Servers.  You are encourage to become familiar with the behavior Profiles can have
+on Virtual Servers and Pools.
 
 
 
