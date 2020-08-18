@@ -1,5 +1,6 @@
 Lab  5 High Availability
-----------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 BIG-IP systems are generally deployed in pairs since redundant systems add
 reliability and management stability over a single system.  BIG-IP systems
 typically are configured in Active-Standby mode.   This lab will familiarize
@@ -41,6 +42,7 @@ and BIGIP02 with BIGIP01 serving as the Active device in the DSC cluster.
 | Port Lockdown| Allow Default                  |
 +--------------+--------------------------------+
 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 +--------------+--------------------------------+
 | Form field   | Value                          |
@@ -60,16 +62,16 @@ and BIGIP02 with BIGIP01 serving as the Active device in the DSC cluster.
     will send to other BIG-IP systems that are part of a sync-only or
     sync-failover group
 
--   Under Device Management, Devices, select the local BIG-IP **it will be
+#.  Under Device Management, Devices, select the local BIG-IP **it will be
     notated with teh (Self) suffix.
 
--  Under Device Connectivity on the top bar select:
+#. Under Device Connectivity on the top bar select:
 
--  ConfigSync
+#. ConfigSync
 
--  Use the Sefl-IP Address of the HA VLAN for the local addresses
+#. Use the Self-IP Address of the HA VLAN for the local addresses
 
--  Failover Network
+#. Failover Network
 
 #. In the **Failover Unicast Configuration** section select the **Add** button
 
@@ -116,6 +118,34 @@ Task 3 - Configure a Sync-Failover Group
 -  Was the full synchronization successful?
 
 -  Are the configurations identical on both BIG-IP systems?
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Task 4 - Configure a Floating Traffic-Group
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The default Traffic-Group processes application traffic for the local device.
+A Floating Traffic-Group contains the following objects:
+
+  - Virtual IP addresses
+  - NATs
+  - SNAT translation addresses
+  - Self IP Addresses
+  - Folders
+
+#. From the **Device Management** Navigation pane, click on **Traffic Groups**
+
+#. Click on create
+
+#. Name the new Floating Traffic-Group **traffic-group-1**
+
+#. The **Failover Method** default should be set to
+   **Failover using Preferred Device Order and then Load Aware**
+
+#. Ensure BIGIP01 and BIGIP02 have been added to the **Preferred Order**
+   window.
+
+#.  Click on **Create Traffic Group**
 
 
 .. |image14| image:: images/image14.PNG
