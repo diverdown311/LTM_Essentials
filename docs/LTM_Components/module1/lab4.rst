@@ -112,13 +112,13 @@ Task 2 - Introduction to FAST **F5 Application Services Templates**
 
 #.  From within Postman we will be sending a **Post** request to the BIG-IP
 
-#.  Enter the following within **Postman** https://10.1.1.4/mgmt/shared/appsvcs/declarative
+#.  Enter the following within **Postman** https://10.1.1.4/mgmt/shared/appsvcs/declare
 
 #.  Click on the **Authorization** tab and ensure **Basic Auth** is selected.
 
     |image16|
 
-#.  Enter the BIG-IP credentials **admin/admin.F5admin.com**
+#.  Enter the BIG-IP credentials **admin/admin.F5demo.com**
 
 #.  Click on the **Body** section within Postman
 
