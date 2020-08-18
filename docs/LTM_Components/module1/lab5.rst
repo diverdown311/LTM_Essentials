@@ -44,6 +44,9 @@ and BIGIP02 with BIGIP01 serving as the Active device in the DSC cluster.
 +--------------+--------------------------------+
 
 
+|image20|
+
+
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
@@ -60,6 +63,10 @@ and BIGIP02 with BIGIP01 serving as the Active device in the DSC cluster.
 +--------------+--------------------------------+
 | Port Lockdown| Allow Default                  |
 +--------------+--------------------------------+
+
+
+|image21|
+
 
 #.  On each BIG-IP configure the device object failover parameters the BIG-IP
     will send to other BIG-IP systems that are part of a sync-only or
@@ -98,6 +105,9 @@ Task 2 - Configure the Device Trust
 #. On BIGIP02, follow the same process, but enter 10.1.1.4 which is the
    Management IP Address of BIGIP01.   The admin User ID and Password should
    be the same for both BIG-IP systems.
+
+
+|image22|
 
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -152,6 +162,9 @@ A Floating Traffic-Group contains the following objects:
 #.  Click on **Create Traffic Group**
 
 
-.. |image14| image:: images/image14.PNG
-   :width: 3.32107in
-   :height: 0.33645in
+.. |image20| image:: images/image20.PNG
+   :width: 4.32107in
+   :height: 1.33645in
+.. |image21| image:: images/image21.PNG
+      :width: 6.32107in
+      :height: 2.33645in
