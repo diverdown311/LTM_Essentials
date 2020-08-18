@@ -1,5 +1,5 @@
 Lab 1: Explore the F5 BIG-IP network configuration
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------------------------
 
 It is assumed that you have already licensed each of the BIG-IP devices. In this lab you will explore network settings on the BIG-IP.
 You will also configure a default route, internal and external vlans, and finally you will configure Self-IP
@@ -120,9 +120,6 @@ to determine which member to use for that request.
    |               | Address: 10.1.20.14                |
    |               | Service Port: 80 (Click **Add**)   |
    +---------------+------------------------------------+
-
-
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 #. Click **Finished**.
