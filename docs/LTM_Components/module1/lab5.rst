@@ -166,5 +166,8 @@ A Floating Traffic-Group contains the following objects:
    :width: 4.32107in
    :height: 1.33645in
 .. |image21| image:: images/image21.PNG
-      :width: 6.32107in
-      :height: 2.33645in
+   :width: 6.32107in
+   :height: 2.33645in
+.. |image22| image:: images/image22.PNG
+   :width: 6.32107in
+   :height: 2.33645in
