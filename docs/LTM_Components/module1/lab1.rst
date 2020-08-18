@@ -13,6 +13,7 @@ Select the **ACCESS** drop down menu under Windows 10 and choose the **RDP** opt
    |image1|
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 The Windows 10 Jumphost Remote RDP User ID and Password is located within the
 **Documentation** Section.   If you are using MAC or non Windows system you may
 need to download the Microsoft Remote Desktop App from the Mac App Store.
