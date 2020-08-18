@@ -132,6 +132,11 @@ Task 3 - Configure a Sync-Failover Group
 
 -  Are the configurations identical on both BIG-IP systems?
 
+
+|image23|
+
+
+
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Task 4 - Configure a Floating Traffic-Group
@@ -171,3 +176,6 @@ A Floating Traffic-Group contains the following objects:
 .. |image22| image:: images/image22.PNG
    :width: 6.32107in
    :height: 5.33645in
+.. |image23| image:: images/image23.PNG
+      :width: 6.32107in
+      :height: 5.33645in
