@@ -17,6 +17,8 @@ after the interface option in the command line as follows:
 
 - for example: **tcpdump -nni 0.0:nn -s0 -w /var/tmp/capture.pcap**
 
+
+
 - This option will give all the low detail information plus the following:
 
        * Flow ID number
