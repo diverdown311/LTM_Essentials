@@ -7,12 +7,20 @@ Addresses and map them to individual VLANs.
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Task 1** – Connect to the Windows 10 Jumphost via RDP and log into BIG-IP01. Select the **ACCESS** drop down menu under Windows 10
-and choose the **RDP** option.
+**Task 1** – Connect to the Windows 10 Jumphost via Remote Desktop Protocol **RDP**
+Select the **ACCESS** drop down menu under Windows 10 and choose the **RDP** option.
 
    |image1|
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The Windows 10 Jumphost Remote RDP User ID and Password is located within the
+**Documentation** Section.   If you are using MAC or non Windows system you may
+need to download the Microsoft Remote Desktop App from the Mac App Store.
+
+
+  |image24|
+
+
 
 #. From the Windows 10 Jumphost using a web browser (Chrome), log into BIG-IP01 (https://10.1.1.4) system with the below credentials.
 
@@ -357,5 +365,8 @@ Virtual Servers, Pools, and Load Balancing methods. Please begin Lab 2.
    :width: 3.32107in
    :height: 0.33645in
 .. |image6| image:: images/image6.PNG
+   :width: 3.32107in
+   :height: 0.33645in
+.. |image24| image:: images/image24.PNG
    :width: 3.32107in
    :height: 0.33645in
