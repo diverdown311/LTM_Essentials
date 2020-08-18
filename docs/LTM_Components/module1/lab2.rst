@@ -217,7 +217,7 @@ Profiles provide
 
 #. From the **HTTP Profile** list select **http**.
 
-|image9|
+   |image9|
 
 #. From the **Stream Profile** list select **name\_change**.
 
@@ -228,7 +228,7 @@ Profiles provide
    **optimized-caching**, and then click **Update**.
 
 #. Use an incognito window to access **http://10.1.10.200**, and then
-   select the links at the top of the page.
+   select the **Stream Profile Example** link toward the bottom of the page and examine the text.
 
    Although the logo need to be updated, all the text on the page now
    references **Seuss Bank**.
