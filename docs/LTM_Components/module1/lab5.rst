@@ -1,4 +1,5 @@
 Lab  5 High Availability
+
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 BIG-IP systems are generally deployed in pairs since redundant systems add
@@ -42,7 +43,9 @@ and BIGIP02 with BIGIP01 serving as the Active device in the DSC cluster.
 | Port Lockdown| Allow Default                  |
 +--------------+--------------------------------+
 
+
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 +--------------+--------------------------------+
 | Form field   | Value                          |
@@ -124,6 +127,7 @@ Task 3 - Configure a Sync-Failover Group
 Task 4 - Configure a Floating Traffic-Group
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 The default Traffic-Group processes application traffic for the local device.
 A Floating Traffic-Group contains the following objects:
 
