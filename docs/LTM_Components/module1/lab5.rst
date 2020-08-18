@@ -146,11 +146,11 @@ Task 4 - Configure a Floating Traffic-Group
 The default Traffic-Group processes application traffic for the local device.
 A Floating Traffic-Group contains the following objects:
 
-  - Virtual IP addresses
-  - NATs
-  - SNAT translation addresses
-  - Self IP Addresses
-  - Folders
+- Virtual IP addresses
+- NATs
+- SNAT translation addresses
+- Self IP Addresses
+- Folders
 
 #. From the **Device Management** Navigation pane, click on **Traffic Groups**
 
