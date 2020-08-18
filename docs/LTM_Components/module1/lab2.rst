@@ -217,7 +217,7 @@ Profiles provide
 
 #. From the **HTTP Profile** list select **http**.
 
-|image9|
+   |image9|
 
 #. From the **Stream Profile** list select **name\_change**.
 
