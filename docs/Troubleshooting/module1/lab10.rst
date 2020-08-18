@@ -44,8 +44,6 @@ password: 'admin.F5demo.com'
 
 #. Configure an iRule as follows (ours is named 'ssl-decrypt.ir'):
 
-   .. code-block:: tcl
-      :linenos:
 
       when CLIENTSSL_HANDSHAKE {
         log local0. "RSA Session-ID:[SSL::sessionid] Master-Key:[SSL::sessionsecret]"
@@ -54,6 +52,8 @@ password: 'admin.F5demo.com'
       when SERVERSSL_HANDSHAKE {
          log local0. "RSA Session-ID:[SSL::sessionid] Master-Key:[SSL::sessionsecret]"
       }
+
+
 
 #. Apply this new iRule to the LAMP virtual server.
 
