@@ -53,7 +53,7 @@ password: 'admin.F5demo.com'
          log local0. "RSA Session-ID:[SSL::sessionid] Master-Key:[SSL::sessionsecret]"
       }
 
-
+|image4|
 
 #. Apply this new iRule to the LAMP virtual server.
 
@@ -66,3 +66,7 @@ password: 'admin.F5demo.com'
       grep Session-ID /var/log/ltm | sed 's/.*\(RSA.*\)/\1/' > /var/tmp/session.pms
 
 #. Now the session.pms file can be pulled from the F5 and put into Wireshark.
+
+.. |image4| image:: images/image4.PNG
+   :width: 6.32107in
+   :height: 4.33645in
