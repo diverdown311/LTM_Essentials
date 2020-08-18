@@ -1,13 +1,11 @@
 Lab  5 High Availability
-
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------------
 
 BIG-IP systems are generally deployed in pairs since redundant systems add
 reliability and management stability over a single system.  BIG-IP systems
 typically are configured in Active-Standby mode.   This lab will familiarize
 students with High-Availability.   High-Availability on the BIG-IP platform
 is referred to as Device Service Clusters (DSC)
-
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -16,7 +14,11 @@ and BIGIP02 with BIGIP01 serving as the Active device in the DSC cluster.
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#. Task 1 – From the Windows 10 Jumphost log into BIGIP01 and BIGIP02
+**Task 2** - Configure the failover networking
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#. From the Windows 10 Jumphost log into BIGIP01 and BIGIP02
 
 #. Configure the HA VLAN on both BIG-IP systems by navigation to the Network
    pane, clicking on VLANs, and click on create.
@@ -92,7 +94,7 @@ and BIGIP02 with BIGIP01 serving as the Active device in the DSC cluster.
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Task 2 - Configure the Device Trust
+**Task 2** - Configure the Device Trust
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -112,7 +114,7 @@ Task 2 - Configure the Device Trust
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Task 3 - Configure a Sync-Failover Group
+**Task 3** - Configure a Sync-Failover Group
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -139,7 +141,7 @@ Task 3 - Configure a Sync-Failover Group
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Task 4 - Configure a Floating Traffic-Group
+**Task 4** - Configure a Floating Traffic-Group
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
